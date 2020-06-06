@@ -1,14 +1,14 @@
 export default () => {
-  const viewRegister = `
+  const viewHome = `
   <div>
-  <h1>CREA TU CUENTA</h1>
-  <input type="text" placeholder="Nombres y Apellidos">
+  <h1>INICIA SESION</h1>
   <input type="text" placeholder="Correo electronico">
   <input type="text" placeholder="Contraseña">
-  <a href="#/register">registrate</a>
+  <a href="#/">Ingresar</a>
+  <h1>No tienes cuenta <a href="#/register">Registrate</a></h1>
   </div>`;
   const divElemt = document.createElement('div');
 
-  divElemt.innerHTML = viewRegister;
+  divElemt.innerHTML = viewHome;
   return divElemt;
 };
