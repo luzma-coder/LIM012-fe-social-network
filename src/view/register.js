@@ -14,4 +14,3 @@ export default () => {
   divElemt.innerHTML = viewRegister;
   return divElemt;
 };
-
