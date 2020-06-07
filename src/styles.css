@@ -1,0 +1,93 @@
+@media only screen and (max-width: 768px) {
+    body{
+        padding-top: 0%;
+        background-color: #6cd3ff;
+    }
+    #container{
+        box-sizing: border-box;
+        border-radius: 5%;
+        margin:7%;
+        padding:6%;
+        background-color: #fff;
+    }
+    .logo{
+        margin-left:9%;
+        margin-right: 9%;
+        margin-top: 1%;
+        width:80%;
+    }
+    #dance{
+        margin-top: 0%;
+        margin-right:12%;
+        margin-left: 12%;
+        width:70%;
+    }
+    #face{
+        width:15%;
+        margin-top: 2%;
+        margin-left: 30%;
+        margin-right: 4%;
+    
+    }
+    #gmail{
+        width:14%;
+        margin-top: 2%;
+        margin-left: 4%;
+        margin-right: 30%;
+    }
+    .subtitle{
+        font-family: 'Oswald', sans-serif;
+        font-size: 145%;
+        text-align:center;
+        margin-bottom: 1%;
+        margin-top: 1%;
+    }
+    input{
+        margin-top: 1%;
+        margin-bottom: 5%;
+        margin-left: 5%;
+        margin-right: 5%;
+        font-family: 'Oswald', sans-serif;
+        height: 30%;
+        font-size: 120%;
+        width: 80%;
+    }
+    .main-icons{
+        color:black;
+        width: 200%;
+    }
+    .principal-button{
+        width: 40%;
+        margin-top: 0%;
+        margin-left: 30%;
+        margin-right: 30%;
+        margin-bottom: 1%;
+        font-family: 'Oswald', sans-serif;
+        font-size: 110%;
+        background-color: #F991CF;
+    }
+    .links-on-buttons{
+        text-decoration: none;
+        color:black;
+    }
+    
+    .lil-text{
+        text-align: center;
+        font-family: 'Oswald', sans-serif;
+        font-size: 90%; 
+        color: black;
+    }
+    
+    #just-link{
+        color: black;
+        margin-left: 35%;
+        margin-right: 35%;
+        font-family: 'Oswald', sans-serif;
+    }
+    
+    #extraEdits{
+        padding-top: 35%;
+        padding-bottom: 30%;
+    }
+    };
+    
