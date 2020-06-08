@@ -1,4 +1,3 @@
-// import { viewRegister } from './controller/router.js';
 import { components } from '../view/index.js';
 
 // Funcion para cambio de la url, asociado a las opciones register, etc
@@ -7,12 +6,15 @@ const changeView = (hash) => {
   const container = document.getElementById('container');
   container.innerHTML = '';
   switch (hash) {
+    case '':
+    case '/':
+    case '#':
     case '#/':
       container.appendChild(components.hom());
       break;
     case '#/register':
-    // case '#/register':
-    // case '#/register':
+    // case '#/other':
+    // case '#/other':
       container.appendChild(components.regis());
       break;
     default:
