@@ -7,7 +7,7 @@ export default () => {
   <img id="dance" src="img/dance.png">
   <p class='subtitle'>INICIA SESIÓN</p>
   <div><i class="far fa-user"></i><input id ="email" type="text" placeholder="Correo electronico"></div>
-  <div><i class="fas fa-lock"></i><input id ="pass" type="text" placeholder="Contraseña"><div>
+  <div><i class="fas fa-lock"></i><input id ="pass" type="password" placeholder="Contraseña"><div>
   <button id = "btn-login" class='principal-button'><a class='links-on-buttons' href="#/">INGRESAR</a></button>
   <p class='lil-text'>O ingresa con...</p>
   <a class='links-on-buttons' href="#/"><img id="face" src="img/facebook.png"></a>

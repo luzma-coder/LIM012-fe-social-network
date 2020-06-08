@@ -17,4 +17,5 @@ const mocksdk = new firebasemock.MockFirebaseSdk(
   () => mockstorage,
   // use null if your code does not use MESSAGING
   () => mockmessaging,
-); */
+);
+*/
