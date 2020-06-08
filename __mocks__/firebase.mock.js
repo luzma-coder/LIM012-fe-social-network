@@ -1,4 +1,4 @@
-/* const firebasemock = require('firebase-mock');
+const firebasemock = require('firebase-mock');
 
 const mockauth = new firebasemock.MockAuthentication();
 const mockdatabase = new firebasemock.MockFirebase();
@@ -17,4 +17,4 @@ const mocksdk = new firebasemock.MockFirebaseSdk(
   () => mockstorage,
   // use null if your code does not use MESSAGING
   () => mockmessaging,
-); */
+);
