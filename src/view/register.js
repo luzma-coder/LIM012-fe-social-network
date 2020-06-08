@@ -1,4 +1,4 @@
-import { newUser } from '../model/firebase.js';
+import { newUser, verifEmail } from '../model/firebase.js';
 
 export default () => {
   const viewRegister = `
@@ -22,6 +22,7 @@ export default () => {
     const userPass = pass.value;
     alert(`${userNames} ${userEmail} ${userPass}`);
     newUser(userEmail, userPass);
+    verifEmail(userEmail);
   });
   return divElemt;
 };
