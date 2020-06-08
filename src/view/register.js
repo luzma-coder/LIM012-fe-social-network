@@ -6,7 +6,7 @@ export default () => {
   <h1>CREA TU CUENTA</h1>
   <input type="text" id ="names" placeholder ="Nombres y Apellidos">
   <input type="text" id = "email" placeholder="Correo electronico">
-  <input type="text" id = "pass" placeholder="Contraseña">
+  <input type="password" id = "pass" placeholder="Contraseña">
   <button type="button" id="btn-register"><a href="#/register">registrate</a></button>
   </div>`;
   const divElemt = document.createElement('div');
