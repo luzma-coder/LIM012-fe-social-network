@@ -1,14 +1,8 @@
 export const newUser = (email, pass) => firebase.auth()
-  .createUserWithEmailAndPassword(email, pass).catch((error) => {
-    const errorMessage = error.message;
-    alert(errorMessage);
-  });
+  .createUserWithEmailAndPassword(email, pass);
 
 export const logIn = (email, pass) => firebase.auth()
-  .signInWithEmailAndPassword(email, pass).catch((error) => {
-    const errorMessage = error.message;
-    alert(errorMessage);
-  });
+  .signInWithEmailAndPassword(email, pass);
 
 export const verifEmail = (email) => {
   const user = firebase.auth().currentUser;
