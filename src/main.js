@@ -6,7 +6,6 @@ const init = () => {
 };
 window.addEventListener('load', init);
 
-
 const firebaseConfig = {
   apiKey: 'AIzaSyB1D4hXOGoyu4izGlp_CdZSWlIH0J0ihQc',
   authDomain: 'moves-a5e09.firebaseapp.com',

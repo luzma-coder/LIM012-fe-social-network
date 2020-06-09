@@ -13,8 +13,6 @@ const changeView = (hash) => {
       container.appendChild(components.hom());
       break;
     case '#/register':
-    // case '#/other':
-    // case '#/other':
       container.appendChild(components.regis());
       break;
     case '#/wall':
