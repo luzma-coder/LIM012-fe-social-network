@@ -17,6 +17,9 @@ const changeView = (hash) => {
     // case '#/other':
       container.appendChild(components.regis());
       break;
+    case '#/wall':
+      container.appendChild(components.wal());
+      break;
     default:
       container.appendChild(components.different());
   }
