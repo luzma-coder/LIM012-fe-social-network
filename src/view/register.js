@@ -32,6 +32,7 @@ export default () => {
         divElemt.querySelector('#messages').innerHTML = '⚠️ Por favor ingrese un correo electronico';
       } else if (userPass === '') {
         divElemt.querySelector('#messages').innerHTML = '⚠️ Por favor ingrese su contraeña';
+      } else {
         newUser(userEmail, userPass);
         verifEmail(userEmail);
         divElemt.querySelector('#messages').innerHTML = `${userNames}, te has registrado correctamente, hemos enviado un email de confirmacion a tu direccion de correo.`;
