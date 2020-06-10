@@ -1,10 +1,11 @@
 import { changeView } from './controller/router.js';
 
-const init = () => {
+export const init = () => {
   changeView(window.location.hash);
   window.addEventListener('hashchange', () => changeView(window.location.hash));
 };
 window.addEventListener('load', init);
+
 
 const firebaseConfig = {
   apiKey: 'AIzaSyB1D4hXOGoyu4izGlp_CdZSWlIH0J0ihQc',
@@ -17,5 +18,3 @@ const firebaseConfig = {
 };
   // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
-
-

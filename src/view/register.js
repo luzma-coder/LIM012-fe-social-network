@@ -2,7 +2,6 @@ import { newUser, verifEmail } from '../model/firebase.js';
 
 export default () => {
   const viewRegister = `
-  <div>
   <img class="logo" src="img/logo.png">
   <img id="dance" src="img/dance.png">
   <p class='subtitle'>CREA TU CUENTA</p>
@@ -15,6 +14,7 @@ export default () => {
   </div>
 `;
   const divElemt = document.createElement('div');
+  divElemt.classList.add('view-register');
   divElemt.innerHTML = viewRegister;
 
   const btnNewUser = divElemt.querySelector('#btn-register');
