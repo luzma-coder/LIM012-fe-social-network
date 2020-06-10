@@ -1,17 +1,16 @@
 import { logIn } from '../model/firebase.js';
 
 const changeHash = (hash) => {
-  location.hash = hash;
+  window.location.hash = hash;
 };
 
 export default () => {
   const viewHome = `
-  <div>
   <img class="logo" src="img/logo.png">
   <img id="dance" src="img/dance.png">
   <p class='subtitle'>INICIA SESIÓN</p>
   <div><i class="far fa-user"></i><input id ="email" type="text" placeholder="Correo electronico"></div>
-  <div><i class="fas fa-lock"></i><input id ="pass" type="password" placeholder="Contraseña"><div>
+  <div><i class="fas fa-lock"></i><input id ="pass" type="password" placeholder="Contraseña"></div>
   <button id = "btn-login" class='principal-button'><a class='links-on-buttons'>INGRESAR</a></button>
   <span id="messages" class="messages"></span>
   <p class='lil-text'>O ingresa con...</p>
@@ -20,6 +19,7 @@ export default () => {
   <p class='lil-text'>¿No tienes una cuenta?</p><a id='just-link'href="#/register"> REGISTRATE</a>
   </div>`;
   const divElemt = document.createElement('div');
+  divElemt.classList.add('view-register');
   divElemt.innerHTML = viewHome;
 
   const btnLogIn = divElemt.querySelector('#btn-login');
