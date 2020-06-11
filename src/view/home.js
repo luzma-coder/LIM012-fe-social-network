@@ -16,8 +16,10 @@ export default () => {
   <button id = "btn-login" class='principal-button'><a class='links-on-buttons'>INGRESAR</a></button>
   <span id="messages" class="messages"></span>
   <p class='lil-text'>O ingresa con...</p>
+  <div>
   <a class='links-on-buttons'><img id="face" src="img/facebook.png"></a>
   <a class='links-on-buttons'><img id="gmail" src="img/gmail.png"></a>
+  </div>
   <p class='lil-text'>¿No tienes una cuenta?</p><a id='just-link'href="#/register"> REGISTRATE</a>
   `;
   const divElemt = document.createElement('div');

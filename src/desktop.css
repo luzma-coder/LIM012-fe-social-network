@@ -24,7 +24,7 @@ body {
     .view-register{
         box-sizing: border-box;
         border-radius: 20px;
-        margin: 3% 40% 4% 1%;
+        margin: 3% 20% 4% 1%;
         padding: 4%;
         background-color: #fff;
         max-width: 90vh;
@@ -42,7 +42,7 @@ body {
     }
     #just-link{
         font-size: 1.3em;
-        margin: 1em 0em;
+        margin: 0em 0em 1em;
     }
     .logo{
         margin: 1%;
@@ -56,5 +56,4 @@ body {
         text-align:center;
         font-size: 130%;
     }
-
 }
