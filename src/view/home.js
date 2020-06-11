@@ -1,4 +1,4 @@
-import { logIn, googleSignIn } from '../model/firebase.js';
+import { logIn, googleSignIn, loginFacebook } from '../model/firebase.js';
 
 const changeHash = (hash) => {
   window.location.hash = hash;
@@ -21,21 +21,6 @@ export default () => {
   const divElemt = document.createElement('div');
   divElemt.classList.add('view-register');
   divElemt.innerHTML = viewHome;
-  // googlesignin function
-  const btngoogleSignIn = divElemt.querySelector('#gmail');
-  btngoogleSignIn.addEventListener(('click'), () => {
-    googleSignIn()
-      .then((result) => {
-        console.log(result);
-        console.log('Cuenta de Google registrada!!!');
-      }).catch((error) => {
-        console.log(error);
-        console.log('No se registro la cuenta :c');
-      });
-    return divElemt;
-  });
-
-
   const btnLogIn = divElemt.querySelector('#btn-login');
   btnLogIn.addEventListener(('click'), () => {
     const email = divElemt.querySelector('#email');
@@ -45,6 +30,28 @@ export default () => {
     logIn(logInEmail, logInPass)
       .then(() => changeHash('#/wall'))
       .catch(() => { divElemt.querySelector('#messages').innerHTML = '⚠️ Usuario no registrado'; });
+  });
+  // googlesignin function
+  const btngoogleSignIn = divElemt.querySelector('#gmail');
+  btngoogleSignIn.addEventListener(('click'), () => {
+    googleSignIn()
+      .then((result) => {
+        changeHash('#/wall');
+        console.log(result);
+        console.log('Cuenta de Google registrada!!!');
+      }).catch((error) => {
+        console.log(error);
+        console.log('No se registro la cuenta :c');
+      });
+  });
+
+  const btnLoginFAcebook = divElemt.querySelector('#face');
+  btnLoginFAcebook.addEventListener(('click'), () => {
+    loginFacebook()
+      .then((result) => {
+        changeHash('#/wall');
+      })
+      .catch(() => {});
   });
   return divElemt;
 };
