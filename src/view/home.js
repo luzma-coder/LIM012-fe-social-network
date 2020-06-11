@@ -1,4 +1,4 @@
-import { logIn } from '../model/firebase.js';
+import { logIn, loginFacebook } from '../model/firebase.js';
 
 const changeHash = (hash) => {
   window.location.hash = hash;
@@ -14,7 +14,7 @@ export default () => {
   <button id = "btn-login" class='principal-button'><a class='links-on-buttons'>INGRESAR</a></button>
   <span id="messages" class="messages"></span>
   <p class='lil-text'>O ingresa con...</p>
-  <a class='links-on-buttons' href="#/"><img id="face" src="img/facebook.png"></a>
+  <a class='links-on-buttons'><img id="face" src="img/facebook.png"></a>
   <a class='links-on-buttons' href="#/"><img id="gmail" src="img/gmail.png"></a>
   <p class='lil-text'>¿No tienes una cuenta?</p><a id='just-link'href="#/register"> REGISTRATE</a>
   </div>`;
@@ -31,6 +31,15 @@ export default () => {
     logIn(logInEmail, logInPass)
       .then(() => changeHash('#/wall'))
       .catch(() => { divElemt.querySelector('#messages').innerHTML = '⚠️ Usuario no registrado'; });
+  });
+
+  const btnLoginFAcebook = divElemt.querySelector('#face');
+  btnLoginFAcebook.addEventListener(('click'), () => {
+    loginFacebook()
+      .then((result) => {
+        changeHash('#/');
+      })
+      .catch(() => {});
   });
   return divElemt;
 };

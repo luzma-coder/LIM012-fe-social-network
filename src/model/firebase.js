@@ -11,6 +11,16 @@ export const verifEmail = (route) => {
       console.log(route);
     });
 };
+
+// const user = firebase.auth().currentUser;
+
+export const loginFacebook = () => {
+  const provider = new firebase.auth.FacebookAuthProvider();
+  return firebase.auth().signInWithPopup(provider);
+
+};
+
+
 /* export const loginAndVerif = firebase.auth().onAuthStateChanged((user) => {
   if (user) {
     window.location.hash = '#/wall';
