@@ -15,12 +15,26 @@ export default () => {
   <span id="messages" class="messages"></span>
   <p class='lil-text'>O ingresa con...</p>
   <a class='links-on-buttons' href="#/"><img id="face" src="img/facebook.png"></a>
-  <a class='links-on-buttons' href="#/"><img id="gmail" src="img/gmail.png"></a>
+  <a class='links-on-buttons'><img id="gmail" src="img/gmail.png"></a>
   <p class='lil-text'>¿No tienes una cuenta?</p><a id='just-link'href="#/register"> REGISTRATE</a>
   </div>`;
   const divElemt = document.createElement('div');
   divElemt.classList.add('view-register');
   divElemt.innerHTML = viewHome;
+  // googlesignin function
+  const googleSignIn = divElemt.querySelector('#gmail');
+  googleSignIn.addEventListener(('click'), () => {
+    const base = new firebase.auth.GoogleAuthProvider();
+    firebase.auth().signInWithPopup(base)
+      .then((result) => {
+        console.log(result);
+        console.log('Cuenta de Google registrada!!!');
+      }).catch((error) => {
+        console.log(error);
+        console.log('No se registro la cuenta :c');
+      });
+    return divElemt;
+  });
 
   const btnLogIn = divElemt.querySelector('#btn-login');
   btnLogIn.addEventListener(('click'), () => {
