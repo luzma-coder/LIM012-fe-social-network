@@ -17,7 +17,6 @@ export const verifEmail = (route) => {
 export const loginFacebook = () => {
   const provider = new firebase.auth.FacebookAuthProvider();
   return firebase.auth().signInWithPopup(provider);
-
 };
 
 
