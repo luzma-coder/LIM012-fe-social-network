@@ -7,8 +7,8 @@ const changeHash = (hash) => {
 export default () => {
   const viewHome = `
   <img class="logo" src="img/logo.png">
-  <p id='texto'>¿Qué bailes practicas?  
-  Comparte tus mejores pasos en la comunidad más grande de baile de Latinoamerica.</p>
+  <p id='texto'>¿Cuál baile practicas?  
+  Comparte tus mejores pasos en la comunidad de baile más grande de internet.</p>
   <img id="dance" src="img/dance.png">
   <p class='subtitle'>INICIA SESIÓN</p>
   <div><i class="far fa-user"></i><input id ="email" type="text" placeholder="Correo electronico"></div>
