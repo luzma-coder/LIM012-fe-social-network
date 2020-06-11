@@ -11,6 +11,10 @@ export const verifEmail = (route) => {
       console.log(route);
     });
 };
+export const googleSignIn = () => {
+  const base = new firebase.auth.GoogleAuthProvider();
+  return firebase.auth().signInWithPopup(base);
+};
 /* export const loginAndVerif = firebase.auth().onAuthStateChanged((user) => {
   if (user) {
     window.location.hash = '#/wall';

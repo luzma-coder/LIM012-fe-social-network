@@ -1,4 +1,4 @@
-import { logIn } from '../model/firebase.js';
+import { logIn, googleSignIn } from '../model/firebase.js';
 
 const changeHash = (hash) => {
   window.location.hash = hash;
@@ -14,7 +14,7 @@ export default () => {
   <button id = "btn-login" class='principal-button'><a class='links-on-buttons'>INGRESAR</a></button>
   <span id="messages" class="messages"></span>
   <p class='lil-text'>O ingresa con...</p>
-  <a class='links-on-buttons' href="#/"><img id="face" src="img/facebook.png"></a>
+  <a class='links-on-buttons'><img id="face" src="img/facebook.png"></a>
   <a class='links-on-buttons'><img id="gmail" src="img/gmail.png"></a>
   <p class='lil-text'>¿No tienes una cuenta?</p><a id='just-link'href="#/register"> REGISTRATE</a>
   </div>`;
@@ -22,10 +22,9 @@ export default () => {
   divElemt.classList.add('view-register');
   divElemt.innerHTML = viewHome;
   // googlesignin function
-  const googleSignIn = divElemt.querySelector('#gmail');
-  googleSignIn.addEventListener(('click'), () => {
-    const base = new firebase.auth.GoogleAuthProvider();
-    firebase.auth().signInWithPopup(base)
+  const btngoogleSignIn = divElemt.querySelector('#gmail');
+  btngoogleSignIn.addEventListener(('click'), () => {
+    googleSignIn()
       .then((result) => {
         console.log(result);
         console.log('Cuenta de Google registrada!!!');
@@ -35,6 +34,7 @@ export default () => {
       });
     return divElemt;
   });
+
 
   const btnLogIn = divElemt.querySelector('#btn-login');
   btnLogIn.addEventListener(('click'), () => {
