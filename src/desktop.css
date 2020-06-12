@@ -3,7 +3,7 @@ body {
     /* background: linear-gradient(90deg,#7992ff, #6cd3ff ); */
     /* background: linear-gradient(90deg,#7992ff, #7992ff 10% ); */
     /* background: linear-gradient(90deg,#6cd3ff, #7992ff);*/
-    background-image: url(https://i.blogs.es/ee0260/appsnotas/450_1000.jpg);
+    background-image: url(img/fondomobile.jpg);
     background-size: cover;
     /* background: linear-gradient(90deg,#e75053 10%, #f9d423 ); */
     font-family: 'Oswald','Open Sans', sans-serif;
@@ -15,6 +15,10 @@ body {
 }
 
 @media only screen and (min-width: 768px) {
+    body{
+        background-image: url(img/fondo.jpg);
+        background-size: cover;   
+    }
     .container{
         max-height: 100vh;
         /* display: flex; */
@@ -41,7 +45,6 @@ body {
         width: 80%;
     }
     #just-link{
-        font-size: 1.3em;
         margin: 0em 0em 1em;
     }
     .logo{
@@ -55,5 +58,30 @@ body {
         color:#726767;
         text-align:center;
         font-size: 130%;
+        margin-bottom: 2%;
+        margin-top: 2%;
+        margin-left: 7%;
+        margin-right: 7%;
+    }
+    .subtitle{
+        margin-top: 1%;
+        margin-bottom: 1%;;
+        font-size: 135%;
+    }
+    #face{
+        width:10%;
+        margin-right: 5%;
+        margin-left: 35%;
+    }
+    #gmail{
+        width:9%;
+        margin-left: 0%;
+        margin-right: 35%;
+    }
+    .lil-text{
+        margin-bottom: 1%;
+        margin-top: 1%;
+        font-size: 90%;
+
     }
 }
