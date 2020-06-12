@@ -3,6 +3,7 @@ import { newUser, verifEmail } from '../model/firebase.js';
 export default () => {
   const viewRegister = `
   <img class="logo" src="img/logo.png">
+  <p id='texto'>¿Qué esperas para unirte? Somos la comunidad de baile más grande de internet. Aprende, comparte y disfruta en MOVES.</p>
   <img id="dance" src="img/dance.png">
   <p class='subtitle'>CREA TU CUENTA</p>
   <div><i class="far fa-user"></i><input type="text" id ="names" placeholder ="Nombres y Apellidos"></div>
