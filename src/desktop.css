@@ -3,7 +3,7 @@ body {
     /* background: linear-gradient(90deg,#7992ff, #6cd3ff ); */
     /* background: linear-gradient(90deg,#7992ff, #7992ff 10% ); */
     /* background: linear-gradient(90deg,#6cd3ff, #7992ff);*/
-    background-image: url(img/fondo.jpg);
+    background-image: url(img/fondomobile.jpg);
     background-size: cover;
     /* background: linear-gradient(90deg,#e75053 10%, #f9d423 ); */
     font-family: 'Oswald','Open Sans', sans-serif;
@@ -15,6 +15,10 @@ body {
 }
 
 @media only screen and (min-width: 768px) {
+    body{
+        background-image: url(img/fondo.jpg);
+        background-size: cover;   
+    }
     .container{
         max-height: 100vh;
         /* display: flex; */
