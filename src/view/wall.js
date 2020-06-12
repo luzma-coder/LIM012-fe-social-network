@@ -1,5 +1,8 @@
 export default () => {
   const viewWal = `
+  <header> <span>MOVES</span>
+  <button id = "btn-logout" class=''><a class='' href="#/">CERRAR SESIÓN</a></button>  
+  </header>
   <aside class="user">
       <div id="user-data">
           <img id="user-img" src="./img/foto.jpg" alt="">
@@ -12,7 +15,7 @@ export default () => {
               <option value="privacity">privado</option>
               <option value="public">publico</option>
           </select>
-          <textarea id="post-new-text" cols="" rows="5">¿Qué pasos compartiras hoy?</textarea>
+          <textarea id="post-new-text" cols="" rows="5" placeholder="¿Qué pasos compartiras hoy?"></textarea>
           <div class="post-buttoms">
               <button id="post-btn-image">IMAGEN</button>
               <button id="post-btn-publish">PUBLICAR</button>
