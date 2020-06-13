@@ -1,5 +1,5 @@
 export default () => {
-  const viewWal = `
+  const viewWall = `
   <header> <span>MOVES</span>
   <button id = "btn-logout" class=''><a class='' href="#/">CERRAR SESIÓN</a></button>  
   </header>
@@ -41,6 +41,8 @@ export default () => {
     `;
   const divElemt = document.createElement('div');
   divElemt.classList.add('view-wall');
-  divElemt.innerHTML = viewWal;
+  divElemt.innerHTML = viewWall;
+  const user = firebase.auth().currentUser;
+  console.log(user);
   return divElemt;
 };
