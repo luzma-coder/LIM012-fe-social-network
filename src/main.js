@@ -18,3 +18,5 @@ const firebaseConfig = {
 };
   // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
+
+//  <script src="https://www.gstatic.com/firebasejs/7.2.3/firebase-firestore.js"></script>
