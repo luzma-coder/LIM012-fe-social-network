@@ -1,12 +1,19 @@
+import { createPost, getPosts } from '../model/firebase_wall.js';
+// import { allPost } from './postpublish.js';
+
 export default () => {
+  const user = firebase.auth().currentUser;
+  const nameUser = user.displayName;
+  const photoUser = user.photoURL;
+  console.log(nameUser, photoUser);
   const viewWall = `
   <header> <span>MOVES</span>
   <button id = "btn-logout" class=''><a class='' href="#/">CERRAR SESIÓN</a></button>  
   </header>
   <aside class="user">
       <div id="user-data">
-          <img id="user-img" src="./img/foto.jpg" alt="">
-          <p class="user-name">Victoria Robertson</p>
+          <img id="user-img" src="${photoUser}" alt="">
+          <p id="user-name">${nameUser}</p>
       </div>
   </aside>
   <section class="post">
@@ -22,27 +29,33 @@ export default () => {
           </div>
       </section>
       <section id="post-publish">
-          <article id="post-publish-1">
-              <div>
-                  <p>Nombre Apellido</p>
-                  <p class="post-text">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-                  <p class="post-show-like-comments">likes comentarios</p>
-              </div>
-          </article>
-          <article id="post-publish-2">
-              <div>
-                  <p>Nombre Apellido</p>
-                  <p class="post-text">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-                  <p class="post-show-like-comments">Like      Comentario</p>
-              </div>
-          </article>
       </section>
   </section>
     `;
   const divElemt = document.createElement('div');
   divElemt.classList.add('view-wall');
   divElemt.innerHTML = viewWall;
-  const user = firebase.auth().currentUser;
-  console.log(user);
+
+  // divElemt.appendChild(allPost(getPosts()));
+
+  const btnCreatePost = divElemt.querySelector('#post-btn-publish');
+  // const user = firebase.auth().currentUser;
+  if (user) {
+    // console.log(user);
+    firebase.firestore().collection('users').doc(user.uid).set({
+      displayName: user.displayName,
+      photoURL: user.photoURL,
+    });
+    btnCreatePost.addEventListener('click', () => {
+      const privacy = divElemt.querySelector('#post-new-privacity').value;
+      const contentText = divElemt.querySelector('#post-new-text').value;
+      // console.log(contentText, privacy);
+      createPost(user.uid, contentText, privacy, '')
+        .then((result) => {
+          getPosts();
+        // console.log(result);
+        });
+    });
+  }
   return divElemt;
 };

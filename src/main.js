@@ -12,11 +12,9 @@ const firebaseConfig = {
   authDomain: 'moves-a5e09.firebaseapp.com',
   databaseURL: 'https://moves-a5e09.firebaseio.com',
   projectId: 'moves-a5e09',
-  storageBucket: 'moves-a5e09.appspot.com',
+  storageBucket: 'gs://moves-a5e09.appspot.com',
   messagingSenderId: '770078226800',
   appId: '1:770078226800:web:1fa5e66ecca2adf3d077b5',
 };
-  // Initialize Firebase
+// Initialize Firebase
 firebase.initializeApp(firebaseConfig);
-
-//  <script src="https://www.gstatic.com/firebasejs/7.2.3/firebase-firestore.js"></script>

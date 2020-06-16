@@ -1,26 +1,35 @@
-export const db = firebase.firestore();
+
 // Agrega datos
-export const createPost = db.collection('users').add({
+export const createPost = (uid, contentText, privacy, imgPost) => firebase.firestore().collection('posts').add({
   userId: uid,
-  user: userName,
-  userPhoto,
   content: contentText,
   likes: 0,
   date: new Date(),
   state: privacy,
-  image: postImage,
-})
-  .then((user) => {
-    console.log('Document written with ID: ', user.id);
-  })
-  .catch((error) => {
-    console.error('Error adding document: ', error);
-  });
+  img: imgPost,
+});
 
 // lee datos
-
-export const getPosts = db.collection('users').get().then((querySnapshot) => {
-  querySnapshot.forEach((doc) => {
-    console.log(`${doc.id} => ${doc.data()}`);
+export const getPosts = () => firebase.firestore().collection('posts')
+  .orderBy('date', 'desc')
+  .onSnapshot((querySnapshot) => {
+    const data = [];
+    querySnapshot.forEach((doc) => {
+      data.push({ data: doc.data() });
+      // data.push({ id: doc.id, ...doc.data() });
+    });
+    return data;
+    // callback(data);
   });
-});
+
+export const getAllPosts = (callback) => {
+  firebase.firestore().collection('posts')
+    .orderBy('date', 'desc')
+    .onSnapshot((querySnapshot) => {
+      const data = [];
+      querySnapshot.forEach((doc) => {
+        data.push({ id: doc.id, ...doc.data() });
+      });
+      callback(data);
+    });
+};
