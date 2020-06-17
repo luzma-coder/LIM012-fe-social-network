@@ -10,26 +10,35 @@ export const createPost = (uid, contentText, privacy, imgPost) => firebase.fires
 });
 
 // lee datos
-export const getPosts = () => firebase.firestore().collection('posts')
-  .orderBy('date', 'desc')
-  .onSnapshot((querySnapshot) => {
-    const data = [];
-    querySnapshot.forEach((doc) => {
-      data.push({ data: doc.data() });
-      // data.push({ id: doc.id, ...doc.data() });
-    });
-    return data;
-    // callback(data);
-  });
+// export const getPosts = () => firebase.firestore().collection('posts')
+//   .orderBy('date', 'desc')
+//   .onSnapshot((querySnapshot) => {
+//     const data = [];
+//     querySnapshot.forEach((doc) => {
+//       data.push({ data: doc.data() });
+//       // data.push({ id: doc.id, ...doc.data() });
+//     });
+//     return data;
+//     // callback(data);
+//   });
 
-export const getAllPosts = (callback) => {
-  firebase.firestore().collection('posts')
-    .orderBy('date', 'desc')
-    .onSnapshot((querySnapshot) => {
-      const data = [];
-      querySnapshot.forEach((doc) => {
-        data.push({ id: doc.id, ...doc.data() });
-      });
-      callback(data);
+// export const getAllPosts = (callback) => {
+//   firebase.firestore().collection('posts')
+//     .orderBy('date', 'desc')
+//     .onSnapshot((querySnapshot) => {
+//       const data = [];
+//       querySnapshot.forEach((doc) => {
+//         data.push({ id: doc.id, ...doc.data() });
+//       });
+//       callback(data);
+//     });
+// };
+export const getPosts = () => firebase.firestore().collection('posts').get()
+  .then((snapshot) => {
+    snapshot.forEach((doc) => {
+      console.log(doc.userId, '=>', doc.data());
     });
-};
+  })
+  .catch((err) => {
+    console.log('Error getting documents', err);
+  });
