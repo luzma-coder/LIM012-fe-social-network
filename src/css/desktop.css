@@ -5,8 +5,6 @@ body {
     font-size: 100%;
     margin: 0;
     padding: 0;
-    display: flex;
-    justify-content: flex-end;
 }
 
 @media only screen and (min-width: 768px) {
@@ -14,23 +12,27 @@ body {
         background-image: url(../img/fondo.jpg);
         background-size: cover;
     }
-    .container{
+    section{
+        display: flex;
+        justify-content: flex-end;
+    }
+    #container{
         max-height: 100vh;
     }
     .view-register{
         box-sizing: border-box;
         border-radius: 20px;
-        margin: 3% 20% 4% 1%;
-        padding: 4%;
+        margin: 1% 7%;
+        padding: 3%;
         background-color: #fff;
-        max-width: 90vh;
+        max-width: 75vh;
         display: flex;
         flex-direction: column;
         align-items: center;
     }
     .view-register div{
-        width: 100%;
-        margin-left: 1em;
+        width: 80%;
+        /* margin-left: 1em; */
     }
     input{
         margin-top: 4em 0em;
@@ -76,12 +78,40 @@ body {
         font-size: 90%;
 
     }
+     /*========== user ========== */
+     .user{
+         background-color: rgba(133, 198, 224, 0.3);
+         border-radius: 3%;
+         height: 20%;
+     }
+
      /*========== post ========== */
      .view-wall{
+        background-color:floralwhite;
         width: 100%;
-        padding: 1% 2%;
         display: flex;
-        /* flex-direction: column; */
-        align-items: center;
+        padding: 2% 20%;
+    }
+    .user{
+        width: 40%;
+        flex: auto;
+    }
+    .post{
+        box-sizing: border-box;
+        width: 60%;
+        flex: auto;
+        display: flex;
+        flex-direction: column;
+    }
+    #post-published{
+        /* height: max-height; */
+        display: flex;
+        flex-direction: column;
+        padding: 0% 2%;
+    }
+    textarea.header-post-publish{
+        outline-color: aqua;
+        outline-style: dashed;
+        outline-width: 4px;
     }
 }
