@@ -1,11 +1,6 @@
 body {
-    /* background-color:#6cd3ff; */
-    /* background: linear-gradient(90deg,#7992ff, #6cd3ff ); */
-    /* background: linear-gradient(90deg,#7992ff, #7992ff 10% ); */
-    /* background: linear-gradient(90deg,#6cd3ff, #7992ff);*/
-    background-image: url(img/fondomobile.jpg);
+    background-image: url(../img/fondomobile.jpg);
     background-size: cover;
-    /* background: linear-gradient(90deg,#e75053 10%, #f9d423 ); */
     font-family: 'Oswald','Open Sans', sans-serif;
     font-size: 100%;
     margin: 0;
@@ -16,14 +11,11 @@ body {
 
 @media only screen and (min-width: 768px) {
     body{
-        background-image: url(img/fondo.jpg);
-        background-size: cover;   
+        background-image: url(../img/fondo.jpg);
+        background-size: cover;
     }
     .container{
         max-height: 100vh;
-        /* display: flex; */
-        /* flex-direction: row; */
-        /* justify-content: flex-end; */
     }
     .view-register{
         box-sizing: border-box;
@@ -83,5 +75,13 @@ body {
         margin-top: 1%;
         font-size: 90%;
 
+    }
+     /*========== post ========== */
+     .view-wall{
+        width: 100%;
+        padding: 1% 2%;
+        display: flex;
+        /* flex-direction: column; */
+        align-items: center;
     }
 }

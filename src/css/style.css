@@ -96,4 +96,28 @@ input{
         padding-top: 35%;
         padding-bottom: 30%;
     }
+ /*========== post ========== */
+    .view-wall{
+        padding: 1% 2%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    aside{
+        margin: 1% 0%;
+    }
+    #post-new{
+        background-color:rgb(245, 236, 236);
+        border: 1px solid #666;
+        padding: 5%;
+        display: flex;
+        flex-direction: column;
+    }
+    #post-new-text{
+        margin: 2% 0%;
+    }
+    #post-publish{
+        border: 1px solid #666;
+        margin: 1% 0%;
+    }
 }
