@@ -43,16 +43,20 @@ export default () => {
           </div>
       </section>
       <section id="post-published">
-      ${allPost(postPublicar)}
       </section>
   </section>
     `;
+  //  ${allPost(getPosts())}
+  getPosts((objArray) => {
+    allPost(objArray);
+    console.log(objArray);
+  });
+
   const divElemt = document.createElement('div');
   divElemt.classList.add('view-wall');
   // divElemt.appendChild(allPost());
   divElemt.innerHTML = viewWall;
   // divElemt.appendChild(allPost(getPosts()));
-  getPosts();
   const btnCreatePost = divElemt.querySelector('#post-btn-publish');
   // const user = firebase.auth().currentUser;
   if (user) {
@@ -76,9 +80,8 @@ export default () => {
       // console.log(contentText, privacy);
       createPost(user.uid, contentText, privacy, imgPost)
         .then((result) => {
-          getPosts();
-          console.log(result);
-        // console.log(result);
+          getPosts(() => {
+          });
         });
     });
   }
