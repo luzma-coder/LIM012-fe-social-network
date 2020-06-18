@@ -5,11 +5,17 @@ export default () => {
   const user = firebase.auth().currentUser;
   const nameUser = user.displayName;
   const photoUser = user.photoURL;
-  const post_a_publicar=[
-    {content:"Holaaaa1", date:"16/6/2020",state:"privacity", likes:5},
-    {content:"Holaaaa2", date:"15/6/2020",state:"public", likes:3},
-    {content:"Holaaaa4", date:"6/6/2020",state:"privacity", likes:1}
-];
+  const post_a_publicar = [
+    {
+      content: 'Holaaaa1', date: '16/6/2020', state: 'privacity', likes: 5,
+    },
+    {
+      content: 'Holaaaa2', date: '15/6/2020', state: 'public', likes: 3,
+    },
+    {
+      content: 'Holaaaa4', date: '6/6/2020', state: 'privacity', likes: 1,
+    },
+  ];
   // console.log(nameUser, photoUser);
   const viewWall = `
   <aside class="user">
