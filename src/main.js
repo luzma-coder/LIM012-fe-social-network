@@ -18,3 +18,7 @@ const firebaseConfig = {
 };
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
+
+export const storage = firebase.storage();
+
+export const storageRef = storage.ref('');
