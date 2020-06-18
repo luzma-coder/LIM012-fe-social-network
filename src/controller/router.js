@@ -14,15 +14,16 @@ const changeView = (hash) => {
     case '#/register':
       container.appendChild(components.regis());
       break;
-    case '#/wall': {
-      // la idea es que aqui se muestre el header
-      // const cab = document.querySelector('header');
-      // cab.classList.add('show');
+    case '#/wall':
       container.appendChild(components.wal());
-    }
       break;
     default:
       container.appendChild(components.different());
   }
 };
 export { changeView };
+
+// comen wall
+// la idea es que aqui se muestre el header //
+// const cab = document.querySelector('header');
+// cab.classList.add('show');

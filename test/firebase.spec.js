@@ -1,4 +1,4 @@
-import { logIn } from '../src/model/firebase.js';
+import { logIn, googleSignIn, loginFacebook } from '../src/model/firebase.js';
 
 const firebasemock = require('firebase-mock');
 
@@ -19,4 +19,30 @@ describe('logIn', () => {
     .then((user) => {
       expect(user.email).toBe('acuario@gmail.com');
     }));
+});
+
+describe('googleSignIn', () => {
+  it('debería ser una funcion', () => {
+    expect(typeof googleSignIn).toBe('function');
+  });
+
+  it('debería poder iniciar sesion utilizando una cuenta de google', () => {
+    const input = [{ providerId: 'google.com' }];
+    return googleSignIn().then(() => {
+      expect(mockauth.getAuth().providerData).toEqual(expect.arrayContaining(input));
+    });
+  });
+});
+
+describe('loginFacebook ', () => {
+  it('debería ser una funcion', () => {
+    expect(typeof loginFacebook).toBe('function');
+  });
+
+  it('debería poder iniciar sesion utilizando una cuenta de google', () => {
+    const input = [{ providerId: 'facebook.com' }];
+    return loginFacebook().then(() => {
+      expect(mockauth.getAuth().providerData).toEqual(expect.arrayContaining(input));
+    });
+  });
 });
