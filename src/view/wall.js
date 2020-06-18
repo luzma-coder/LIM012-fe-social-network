@@ -3,9 +3,10 @@ import { allPost } from './postpublish.js';
 
 export default () => {
   const user = firebase.auth().currentUser;
+  const db = firebase.firestore();
   const nameUser = user.displayName;
   const photoUser = user.photoURL;
-  const post_a_publicar = [
+  const postPublicar = [
     {
       content: 'Holaaaa1', date: '16/6/2020', state: 'privacity', likes: 5,
     },
@@ -42,7 +43,7 @@ export default () => {
           </div>
       </section>
       <section id="post-published">
-      ${allPost(post_a_publicar)}
+      ${allPost(postPublicar)}
       </section>
   </section>
     `;
@@ -56,17 +57,27 @@ export default () => {
   // const user = firebase.auth().currentUser;
   if (user) {
     // console.log(user);
-    firebase.firestore().collection('users').doc(user.uid).set({
+    db.collection('users').doc(user.uid).set({
       displayName: user.displayName,
       photoURL: user.photoURL,
     });
     btnCreatePost.addEventListener('click', () => {
       const privacy = divElemt.querySelector('#post-new-privacity').value;
       const contentText = divElemt.querySelector('#post-new-text').value;
+
+      //
+      const file = divElemt.querySelector('#get-file');
+      let imgPost = '';
+      if (file.value !== '') {
+        imgPost = file.value;
+      }
+      console.log(imgPost);
+      //
       // console.log(contentText, privacy);
-      createPost(user.uid, contentText, privacy, '')
+      createPost(user.uid, contentText, privacy, imgPost)
         .then((result) => {
           getPosts();
+          console.log(result);
         // console.log(result);
         });
     });

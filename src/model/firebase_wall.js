@@ -1,4 +1,4 @@
-
+// const db = firebase.firestore();
 // Agrega datos
 export const createPost = (uid, contentText, privacy, imgPost) => firebase.firestore().collection('posts').add({
   userId: uid,
@@ -36,9 +36,13 @@ export const createPost = (uid, contentText, privacy, imgPost) => firebase.fires
 export const getPosts = () => firebase.firestore().collection('posts').get()
   .then((snapshot) => {
     snapshot.forEach((doc) => {
-      console.log(doc.userId, '=>', doc.data());
+      console.log(doc.userId, 'alo', doc.data());
     });
   })
   .catch((err) => {
     console.log('Error getting documents', err);
   });
+
+/* console.log(doc.content, '=>', doc.data());
+      console.log(doc.state);
+      console.log(doc.date); */
