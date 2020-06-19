@@ -8,6 +8,8 @@ export const createPost = (uid, contentText, privacy, imgPost) => firebase.fires
   state: privacy,
   img: imgPost,
 });
+// export const createImagePost = () => firebase.storage().ref();
+// export const uploadTask = createImagePost.child('imagenes/' + file.name).put();
 
 // lee datos
 // export const getPosts = () => firebase.firestore().collection('posts')
@@ -42,7 +44,6 @@ export const getPosts = () => firebase.firestore().collection('posts').get()
   .catch((err) => {
     console.log('Error getting documents', err);
   });
-
 /* console.log(doc.content, '=>', doc.data());
       console.log(doc.state);
       console.log(doc.date); */
