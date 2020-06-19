@@ -8,7 +8,7 @@ export default () => {
   const photoUser = user.photoURL;
 
   // console.log(nameUser, photoUser);
-  let viewWall = `
+  const viewWall = `
   <aside class="user">
       <div id="user-data">
         <div class="circulo">
@@ -43,6 +43,7 @@ export default () => {
   divElemt.innerHTML = viewWall;
   getPosts((objArray) => {
     divElemt.innerHTML += allPost(objArray);
+    console.log(allPost(objArray));
   });
   divElemt.innerHTML += `
     </section>
@@ -68,10 +69,6 @@ export default () => {
       if (file.value !== '') {
         imgPost = file.value;
       }
-<<<<<<< HEAD
-
-=======
->>>>>>> 02f59250b553b16d909103b74a8b60011ed82752
       // Seccion crear nuevo post
       createPost(user.uid, contentText, privacy, imgPost);
     });
