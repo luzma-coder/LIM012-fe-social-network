@@ -4,7 +4,7 @@ export const createPost = (uid, contentText, privacy, imgPost) => firebase.fires
   userId: uid,
   content: contentText,
   likes: 0,
-  date: new Date(),
+  date: new Date().toString,
   state: privacy,
   img: imgPost,
 });
@@ -18,6 +18,7 @@ export const getPosts = callback => firebase.firestore().collection('posts')
       output.push({
         id: doc.id,
         content: doc.data().content,
+        likes: doc.data().likes,
         date: doc.data().date,
         state: doc.data().state,
         img: doc.data().img,
