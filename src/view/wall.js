@@ -9,7 +9,7 @@ export default () => {
   // const publicar = getPosts((objArray);
 
   // console.log(nameUser, photoUser);
-  const viewWall = `
+  let viewWall = `
   <aside class="user">
       <div id="user-data">
         <div class="circulo">
@@ -34,19 +34,22 @@ export default () => {
           </div>
       </section>
       <section id="post-published">
-      </section>
-  </section>
-
     `;
-  getPosts((objArray) => {
-    allPost(objArray);
-    console.log(objArray);
-  });
-
+  // getPosts((objArray) => {
+  //   console.log(objArray);
+  // });
 
   const divElemt = document.createElement('div');
   divElemt.classList.add('view-wall');
   divElemt.innerHTML = viewWall;
+  getPosts((objArray) => {
+    divElemt.innerHTML += allPost(objArray);
+  });
+  divElemt.innerHTML += `
+    </section>
+  </section>
+  `;
+
   const btnCreatePost = divElemt.querySelector('#post-btn-publish');
   if (user) {
     db.collection('users').doc(user.uid).set({
@@ -63,14 +66,8 @@ export default () => {
       if (file.value !== '') {
         imgPost = file.value;
       }
-      console.log(imgPost);
-
       // Seccion crear nuevo post
-      createPost(user.uid, contentText, privacy, imgPost)
-        .then((result) => {
-          getPosts(() => {
-          });
-        });
+      createPost(user.uid, contentText, privacy, imgPost);
     });
   }
   return divElemt;
