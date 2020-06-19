@@ -6,17 +6,8 @@ export default () => {
   const db = firebase.firestore();
   const nameUser = user.displayName;
   const photoUser = user.photoURL;
-  const postPublicar = [
-    {
-      content: 'Holaaaa1', date: '16/6/2020', state: 'privacity', likes: 5,
-    },
-    {
-      content: 'Holaaaa2', date: '15/6/2020', state: 'public', likes: 3,
-    },
-    {
-      content: 'Holaaaa4', date: '6/6/2020', state: 'privacity', likes: 1,
-    },
-  ];
+  // const publicar = getPosts((objArray);
+
   // console.log(nameUser, photoUser);
   const viewWall = `
   <aside class="user">
@@ -45,22 +36,19 @@ export default () => {
       <section id="post-published">
       </section>
   </section>
+
     `;
-  //  ${allPost(getPosts())}
   getPosts((objArray) => {
     allPost(objArray);
     console.log(objArray);
   });
 
+
   const divElemt = document.createElement('div');
   divElemt.classList.add('view-wall');
-  // divElemt.appendChild(allPost());
   divElemt.innerHTML = viewWall;
-  // divElemt.appendChild(allPost(getPosts()));
   const btnCreatePost = divElemt.querySelector('#post-btn-publish');
-  // const user = firebase.auth().currentUser;
   if (user) {
-    // console.log(user);
     db.collection('users').doc(user.uid).set({
       displayName: user.displayName,
       photoURL: user.photoURL,
@@ -69,15 +57,15 @@ export default () => {
       const privacy = divElemt.querySelector('#post-new-privacity').value;
       const contentText = divElemt.querySelector('#post-new-text').value;
 
-      //
+      // Seccion cargar imagen en el post
       const file = divElemt.querySelector('#get-file');
       let imgPost = '';
       if (file.value !== '') {
         imgPost = file.value;
       }
       console.log(imgPost);
-      //
-      // console.log(contentText, privacy);
+
+      // Seccion crear nuevo post
       createPost(user.uid, contentText, privacy, imgPost)
         .then((result) => {
           getPosts(() => {
