@@ -6,7 +6,6 @@ export default () => {
   const db = firebase.firestore();
   const nameUser = user.displayName;
   const photoUser = user.photoURL;
-  // const publicar = getPosts((objArray);
 
   // console.log(nameUser, photoUser);
   const viewWall = `
@@ -35,9 +34,7 @@ export default () => {
       </section>
       <section id="post-published">
       </section>
-  </section>
-
-    `;
+  </section>`;
   getPosts((objArray) => {
     allPost(objArray);
     console.log(objArray);
@@ -53,17 +50,19 @@ export default () => {
       displayName: user.displayName,
       photoURL: user.photoURL,
     });
+
     btnCreatePost.addEventListener('click', () => {
       const privacy = divElemt.querySelector('#post-new-privacity').value;
       const contentText = divElemt.querySelector('#post-new-text').value;
 
       // Seccion cargar imagen en el post
+      // const date = new Date().toString;
+
       const file = divElemt.querySelector('#get-file');
       let imgPost = '';
       if (file.value !== '') {
         imgPost = file.value;
       }
-      console.log(imgPost);
 
       // Seccion crear nuevo post
       createPost(user.uid, contentText, privacy, imgPost)

@@ -27,6 +27,13 @@ export const getPosts = callback => firebase.firestore().collection('posts')
   });
 
 
+export const uploadImage = (date, img) => {
+  const postImageRef = firebase.storage().ref().child(`images/${date}-${img.name}`);
+  const metadata = { contentType: img.type };
+  return postImageRef.put(img, metadata)
+    .then(snapshot => snapshot.ref.getDownloadURL());
+};
+
 /* export const getPosts = () => firebase.firestore().collection('posts').get()
   .then((snapshot) => {
     snapshot.forEach((doc) => {
