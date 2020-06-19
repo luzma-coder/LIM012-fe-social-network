@@ -12,38 +12,43 @@ export const createPost = (uid, contentText, privacy, imgPost) => firebase.fires
 // export const uploadTask = createImagePost.child('imagenes/' + file.name).put();
 
 // lee datos
-// export const getPosts = () => firebase.firestore().collection('posts')
-//   .orderBy('date', 'desc')
-//   .onSnapshot((querySnapshot) => {
-//     const data = [];
-//     querySnapshot.forEach((doc) => {
-//       data.push({ data: doc.data() });
-//       // data.push({ id: doc.id, ...doc.data() });
-//     });
-//     return data;
-//     // callback(data);
-//   });
+export const getPosts = callback => firebase.firestore().collection('posts')
+  .orderBy('date', 'desc')
+  .onSnapshot((querySnapshot) => {
+    const output = [];
+    querySnapshot.forEach((doc) => {
+      output.push({
+        id: doc.id,
+        content: doc.data().content,
+        date: doc.data().date,
+        state: doc.data().state,
+        img: doc.data().img,
+      });
+    });
+    callback(output);
+  });
 
-// export const getAllPosts = (callback) => {
-//   firebase.firestore().collection('posts')
-//     .orderBy('date', 'desc')
-//     .onSnapshot((querySnapshot) => {
-//       const data = [];
-//       querySnapshot.forEach((doc) => {
-//         data.push({ id: doc.id, ...doc.data() });
-//       });
-//       callback(data);
-//     });
-// };
-export const getPosts = () => firebase.firestore().collection('posts').get()
+
+/* export const getPosts = () => firebase.firestore().collection('posts').get()
   .then((snapshot) => {
     snapshot.forEach((doc) => {
-      console.log(doc.userId, 'alo', doc.data());
+      console.log(doc.data().userId);
+      console.log(doc.data().date);
+      console.log(`${doc.data().state}`);
     });
   })
   .catch((err) => {
     console.log('Error getting documents', err);
-  });
-/* console.log(doc.content, '=>', doc.data());
-      console.log(doc.state);
-      console.log(doc.date); */
+  }); */
+
+/* export const getPosts = () => firebase.firestore().collection('posts')
+   .orderBy('date', 'desc')
+  .onSnapshot((querySnapshot) => {
+     const data = [];
+     querySnapshot.forEach((doc) => {
+       data.push({ data: doc.data() });
+       // data.push({ id: doc.id, ...doc.data() });
+     });
+     return data;
+     // callback(data);
+   }); */
