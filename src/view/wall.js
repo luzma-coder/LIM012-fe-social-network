@@ -69,7 +69,12 @@ export default () => {
       }
       // Seccion crear nuevo post
       createPost(user.uid, contentText, privacy, imgPost);
+    .then((result) => {
+          getPosts(() => {
+          });
+        });
     });
   }
   return divElemt;
 };
+
