@@ -1,6 +1,8 @@
 body {
     background-image: url(../img/fondomobile.jpg);
     background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
     font-family: 'Oswald','Open Sans', sans-serif;
     font-size: 100%;
     margin: 0;
