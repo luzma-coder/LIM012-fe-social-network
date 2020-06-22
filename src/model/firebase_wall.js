@@ -8,9 +8,12 @@ export const createPost = (uid, contentText, privacy, imgPost) => firebase.fires
   state: privacy,
   img: imgPost,
 });
-// export const createImagePost = () => firebase.storage().ref();
-// export const uploadTask = createImagePost.child('imagenes/' + file.name).put();
-
+/* export const uploadImage = (date, file) => {
+  const postfileRef = firebase.storage().ref().child(`images/${date}-${file.name}`);
+  const metadata = { contentType: file.type };
+  return postfileRef.put(file, metadata)
+    .then(snapshot => snapshot.ref.getDownloadURL());
+}; */
 // lee datos
 export const getPosts = callback => firebase.firestore().collection('posts')
   .orderBy('date', 'desc')
@@ -20,6 +23,7 @@ export const getPosts = callback => firebase.firestore().collection('posts')
       output.push({
         id: doc.id,
         content: doc.data().content,
+        likes: doc.data().likes,
         date: doc.data().date,
         state: doc.data().state,
         img: doc.data().img,

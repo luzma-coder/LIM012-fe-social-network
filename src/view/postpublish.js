@@ -1,7 +1,7 @@
 export const allPost = (data) => {
-  let viewpostpublish = '';
-  viewpostpublish += `
-     <article class="post-format">
+  const viewpostpublish = document.createElement('article');
+  viewpostpublish.classList.add('post-format');
+  viewpostpublish.innerHTML = `
         <div class="header-post-publish">
           <span>${data.date}</span>
           <select>
@@ -15,7 +15,6 @@ export const allPost = (data) => {
         </div>
         <textarea class="only-lines">${data.content}</textarea>
         <span class="post-show-like-comments">${data.likes}</span>
-    </article>
     `;
   // console.log(data.content);
   // console.log(viewpostpublish);

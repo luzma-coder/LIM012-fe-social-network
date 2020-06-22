@@ -36,17 +36,21 @@ export default () => {
       <section id="post-published">
       </section>
   </section>
-
     `;
-  getPosts((objArray) => {
-    allPost(objArray);
-    console.log(objArray);
-  });
-
+//añadir este estilo clase overflow para crear un scroll
 
   const divElemt = document.createElement('div');
   divElemt.classList.add('view-wall');
   divElemt.innerHTML = viewWall;
+  const postSection = divElemt.querySelector('#post-published');
+  getPosts((objArray) => {
+    // allPost(objArray);
+    postSection.innerHTML = '';
+    objArray.forEach(element => {
+      postSection.appendChild(allPost(element));
+    });
+    console.log(objArray);
+  });
   const btnCreatePost = divElemt.querySelector('#post-btn-publish');
   if (user) {
     db.collection('users').doc(user.uid).set({
