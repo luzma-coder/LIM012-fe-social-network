@@ -229,7 +229,7 @@ article.post-format{
     section{
         width: 100%;
         box-sizing: border-box;
-        background-color: #EDF1EB;
+        /* background-color: #EDF1EB; */
     }
     .view-wall{
         box-sizing: border-box;
