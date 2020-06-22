@@ -4,7 +4,7 @@ export const createPost = (uid, contentText, privacy, imgPost) => firebase.fires
   userId: uid,
   content: contentText,
   likes: 0,
-  date: new Date(),
+  date: new Date().toString,
   state: privacy,
   img: imgPost,
 });
@@ -31,7 +31,6 @@ export const getPosts = callback => firebase.firestore().collection('posts')
     });
     callback(output);
   });
-
 
 /* export const getPosts = () => firebase.firestore().collection('posts').get()
   .then((snapshot) => {

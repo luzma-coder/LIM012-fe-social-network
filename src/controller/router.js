@@ -14,8 +14,12 @@ const changeView = (hash) => {
     case '#/register':
       container.appendChild(components.regis());
       break;
-    case '#/wall':
+    case '#/wall': {
+      const headerElem = document.querySelector('header');
+      headerElem.classList.remove('hide');
+      headerElem.classList.add('show');
       container.appendChild(components.wal());
+    }
       break;
     default:
       container.appendChild(components.different());
