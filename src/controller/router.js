@@ -1,7 +1,6 @@
 import { components } from '../view/index.js';
 
 // Funcion para cambio de la url, asociado a las opciones register, etc
-// eslint-disable-next-line consistent-return
 const changeView = (hash) => {
   const container = document.getElementById('container');
   container.innerHTML = '';
@@ -13,8 +12,6 @@ const changeView = (hash) => {
       container.appendChild(components.hom());
       break;
     case '#/register':
-    // case '#/other':
-    // case '#/other':
       container.appendChild(components.regis());
       break;
     case '#/wall':
@@ -25,3 +22,8 @@ const changeView = (hash) => {
   }
 };
 export { changeView };
+
+// comen wall
+// la idea es que aqui se muestre el header //
+// const cab = document.querySelector('header');
+// cab.classList.add('show');
