@@ -3,13 +3,11 @@ import { allPost } from './postpublish.js';
 
 export default () => {
   const user = firebase.auth().currentUser;
-  const db = firebase.firestore();
+  // const db = firebase.firestore();
   const nameUser = user.displayName;
   const photoUser = user.photoURL;
-  // const publicar = getPosts((objArray);
-
   // console.log(nameUser, photoUser);
-  let viewWall = `
+  const viewWall = `
   <aside class="user">
       <div id="user-data">
         <div class="circulo">
@@ -37,7 +35,7 @@ export default () => {
     `;
   // getPosts((objArray) => {
   //   console.log(objArray);
-  // });
+  //  });
 
   const divElemt = document.createElement('div');
   divElemt.classList.add('view-wall');
@@ -45,30 +43,39 @@ export default () => {
   getPosts((objArray) => {
     divElemt.innerHTML += allPost(objArray);
   });
-  divElemt.innerHTML += `
-    </section>
-  </section>
-  `;
+  // divElemt.innerHTML += `
+  //   </section>
+  // </section>
+  // `;
 
   const btnCreatePost = divElemt.querySelector('#post-btn-publish');
-  if (user) {
-    db.collection('users').doc(user.uid).set({
-      displayName: user.displayName,
-      photoURL: user.photoURL,
-    });
-    btnCreatePost.addEventListener('click', () => {
-      const privacy = divElemt.querySelector('#post-new-privacity').value;
-      const contentText = divElemt.querySelector('#post-new-text').value;
+  console.log(user);
+  // if (user) {
+  console.log(btnCreatePost);
+  console.log('user actual');
+  // db.collection('users').doc(user.uid).set({
+  //   displayName: user.displayName,
+  //  photoURL: user.photoURL,
+  // });
+  btnCreatePost.addEventListener('click', (event) => {
+    event.preventDefault();
+    console.log('Evento clic');
+    const privacy = divElemt.querySelector('#post-new-privacity').value;
+    const contentText = divElemt.querySelector('#post-new-text').value;
 
-      // Seccion cargar imagen en el post
-      const file = divElemt.querySelector('#get-file');
-      let imgPost = '';
-      if (file.value !== '') {
-        imgPost = file.value;
-      }
-      // Seccion crear nuevo post
-      createPost(user.uid, contentText, privacy, imgPost);
-    });
-  }
+    // Seccion cargar imagen en el post
+    const file = divElemt.querySelector('#get-file');
+    let imgPost = '';
+    if (file.value !== '') {
+      imgPost = file.value;
+    }
+    // Seccion crear nuevo post
+    createPost(user.uid, contentText, privacy, imgPost)
+      .then((result) => {
+        getPosts(() => {
+        });
+      });
+  });
+  // }
   return divElemt;
 };
