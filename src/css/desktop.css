@@ -91,7 +91,8 @@ body {
 
      /*========== post ========== */
      .view-wall{
-        background-color:floralwhite;
+        background-color:#E5E5E5;
+       /* background-color:floralwhite;*/
         width: 100%;
         display: flex;
         padding: 2% 20%;
