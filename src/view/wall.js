@@ -37,7 +37,7 @@ export default () => {
       </section>
   </section>
     `;
-//añadir este estilo clase overflow para crear un scroll
+  // añadir este estilo clase overflow para crear un scroll
   const divElemt = document.createElement('div');
   divElemt.classList.add('view-wall');
   divElemt.innerHTML = viewWall;
@@ -45,7 +45,7 @@ export default () => {
   getPosts((objArray) => {
     // allPost(objArray);
     postSection.innerHTML = '';
-    objArray.forEach(element => {
+    objArray.forEach((element) => {
       postSection.appendChild(allPost(element));
     });
     console.log(objArray);
@@ -69,7 +69,12 @@ export default () => {
       }
       // Seccion crear nuevo post
       createPost(user.uid, contentText, privacy, imgPost);
+    .then((result) => {
+          getPosts(() => {
+          });
+        });
     });
   }
   return divElemt;
 };
+

@@ -32,6 +32,8 @@ export const getPosts = callback => firebase.firestore().collection('posts')
     callback(output);
   });
 
+export const deletePost = idPost => firebase.firestore().collection('posts').doc(idPost).delete();
+
 /* export const getPosts = () => firebase.firestore().collection('posts').get()
   .then((snapshot) => {
     snapshot.forEach((doc) => {
