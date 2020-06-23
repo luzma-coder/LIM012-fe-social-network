@@ -9,7 +9,7 @@ const ToEditPost = (btnSavePost, btnCancelPost, textAPost, selPrivPost, idDoc) =
     btnToHide.classList.remove('show');
     btnToHide.classList.add('hide');
   };
-  let oldtextAPost = textAPost.value;
+  const oldtextAPost = textAPost.value;
   textAPost.disabled = false;
   selPrivPost.disabled = false;
   btnShow(btnSavePost);
