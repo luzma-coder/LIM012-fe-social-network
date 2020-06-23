@@ -1,4 +1,4 @@
-import { updatePost } from '../model/firebase_wall.js';
+import { updatePost, deletePost } from '../model/firebase_wall.js';
 
 const ToEditPost = (btnSavePost, btnCancelPost, textAPost, selPrivPost, idDoc) => {
   const btnShow = (btnToShow) => {
@@ -32,17 +32,31 @@ const ToEditPost = (btnSavePost, btnCancelPost, textAPost, selPrivPost, idDoc) =
 export const allPost = (data) => {
   const viewpostpublish = document.createElement('article');
   viewpostpublish.classList.add('post-format');
+  const user = firebase.auth().currentUser;
+  const nameUser = user.displayName;
+  const photoUser = user.photoURL;
   viewpostpublish.innerHTML = `
-        <div class="header-post-publish">
-          <span>${data.date}</span>
-          <select id="selec-privacy-${data.id}" disabled="true">
-            <option value="privacity">privado</option>
-            <option value="public">publico</option>
+     <div class="user">
+        <div id="user-data">
+        <div>
+          <img class="circulo-min" src="${photoUser}" alt="">
+        </div>
+        <p class="user-name">${nameUser}</p> 
+        <span> ${data.state}</span>
+        <select id="selec-privacy-${data.id}" disabled="true">
+          <option value="privacity">privado</option>
+          <option value="public">publico</option>
+        </select>
+      </div>
+      <span>${data.date}</span>
+          <select>
+          <option value="edit">Editar</option>
+          <option value="del">Eliminar</option>
           </select>
-          <span>${data.privacy}</span>
           <img id="btn-edit-post-${data.id}" class="show circulo-imgbut bgcolor" src="img/edit.svg" alt="Editar Post">
           <img id="btn-save-post-${data.id}" class="hide circulo-imgbut bgcolor" src="img/save.svg" alt="Guardar cambios">
           <img id="btn-cancel-post-${data.id}" class="hide circulo-imgbut bgcolor" src="img/x.svg" alt="Cancelar cambios">
+          <a id='btn-delete-${data.id}'><img class="mini-img bgcolor" src="img/trash.png" alt="Insertar imagen"></a>
         </div>
         <textarea id="textarea-${data.id}" class="only-lines" disabled="true">${data.content}</textarea>
         <span class="post-show-like-comments">${data.likes}</span>
@@ -59,5 +73,15 @@ export const allPost = (data) => {
     viewpostpublish.querySelector(`#btn-edit-post-${data.id}`).classList.add('hide');
     ToEditPost(btnSavePost, btnCancelPost, textAPost, selPrivPost, data.id);
   });
+  // const btnDeletePost = document.querySelector(`#btn-delete-${data.id}`);
+  viewpostpublish.querySelector(`#btn-delete-${data.id}`).addEventListener('click', () => deletePost(data.id));
+  console.log(`#btn-delete-${data.id}`);
+  // btnDeletePost.addEventListener('click', () => {
+  //   deletePost(data.id);
+  //   console.log(data.id);
+  // });
+  // console.log(data.content);
+  // console.log(viewpostpublish);
+  // console.log(data);
   return viewpostpublish;
 };

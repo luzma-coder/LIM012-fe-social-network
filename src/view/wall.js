@@ -19,8 +19,8 @@ export default () => {
   <section class="post">
       <section id="post-new">
           <select id="post-new-privacity">
-              <option value="privacity">privado</option>
-              <option value="public">publico</option>
+          <option value="privacity">Privado</option>
+          <option value="public">Publico</option>
           </select>
           <textarea id="post-new-text" cols="" rows="3" placeholder="¿Qué pasos compartiras hoy?"></textarea>
           <div class="post-buttoms">
@@ -31,11 +31,12 @@ export default () => {
             <button class="bgcolor" id="post-btn-publish">PUBLICAR</button>
           </div>
       </section>
-      <section id="post-published">
+      <section class="prueba" id="post-published">
       </section>
   </section>
     `;
 
+  // añadir este estilo clase overflow para crear un scroll
   const divElemt = document.createElement('div');
   divElemt.classList.add('view-wall');
   divElemt.innerHTML = viewWall;
@@ -45,7 +46,6 @@ export default () => {
     objArray.forEach((element) => {
       postSection.appendChild(allPost(element));
     });
-    console.log(objArray);
   });
 
   const btnCreatePost = divElemt.querySelector('#post-btn-publish');
@@ -54,17 +54,23 @@ export default () => {
       displayName: user.displayName,
       photoURL: user.photoURL,
     });
-    btnCreatePost.addEventListener('click', () => {
+    btnCreatePost.addEventListener('click', (event) => {
+      event.preventDefault();
       const privacy = divElemt.querySelector('#post-new-privacity').value;
       const contentText = divElemt.querySelector('#post-new-text').value;
+      divElemt.querySelector('#post-new-text').value = '';
 
       // Seccion cargar imagen en el post
+      // const date = new Date().toString;
+
       const file = divElemt.querySelector('#get-file');
       let imgPost = '';
       if (file.value !== '') {
         imgPost = file.value;
       }
       // Seccion crear nuevo post
+      // const date = new Date().toLocaleString();
+      // console.log(date);
       createPost(user.uid, contentText, privacy, imgPost)
         .then((result) => {
           getPosts(() => {
