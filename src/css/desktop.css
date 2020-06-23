@@ -1,6 +1,8 @@
 body {
     background-image: url(../img/fondomobile.jpg);
     background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
     font-family: 'Oswald','Open Sans', sans-serif;
     font-size: 100%;
     margin: 0;
@@ -89,7 +91,8 @@ body {
 
      /*========== post ========== */
      .view-wall{
-        background-color:floralwhite;
+        background-color:#E5E5E5;
+       /* background-color:floralwhite;*/
         width: 100%;
         display: flex;
         padding: 2% 20%;
@@ -100,17 +103,26 @@ body {
         width: 60%;
         flex: auto;
         display: flex;
-        flex-direction: column;
+        flex-direction: column; 
     }
     #post-published{
         /* height: max-height; */
         display: flex;
         flex-direction: column;
         padding: 0% 2%;
+        
+    }
+    #post-published.prueba{
+       overflow: scroll;
+        height: 100%;
+
     }
     textarea.header-post-publish{
         outline-color: aqua;
         outline-style: dashed;
         outline-width: 4px;
+    }
+    .mini-img{
+    width: 5%;
     }
 }

@@ -6,8 +6,6 @@ export default () => {
   const db = firebase.firestore();
   const nameUser = user.displayName;
   const photoUser = user.photoURL;
-
-  // console.log(nameUser, photoUser);
   const viewWall = `
   <aside class="user">
       <div id="user-data">
@@ -20,8 +18,8 @@ export default () => {
   <section class="post">
       <section id="post-new">
           <select id="post-new-privacity">
-              <option value="privacity">privado</option>
-              <option value="public">publico</option>
+          <option value="privacity">Privado</option>
+          <option value="public">Publico</option>
           </select>
           <textarea id="post-new-text" cols="" rows="3" placeholder="¿Qué pasos compartiras hoy?"></textarea>
           <div class="post-buttoms">
@@ -32,23 +30,22 @@ export default () => {
             <button class="bgcolor" id="post-btn-publish">PUBLICAR</button>
           </div>
       </section>
-      <section id="post-published">
+      <section class="prueba" id="post-published">
+      </section>
+  </section>
     `;
-  // getPosts((objArray) => {
-  //   console.log(objArray);
-  // });
-
+  // añadir este estilo clase overflow para crear un scroll
   const divElemt = document.createElement('div');
   divElemt.classList.add('view-wall');
   divElemt.innerHTML = viewWall;
+  const postSection = divElemt.querySelector('#post-published');
   getPosts((objArray) => {
-    divElemt.innerHTML += allPost(objArray);
-    console.log(allPost(objArray));
+    // allPost(objArray);
+    postSection.innerHTML = '';
+    objArray.forEach((element) => {
+      postSection.appendChild(allPost(element));
+    });
   });
-  divElemt.innerHTML += `
-    </section>
-  </section>
-  `;
 
   const btnCreatePost = divElemt.querySelector('#post-btn-publish');
   if (user) {
@@ -56,10 +53,11 @@ export default () => {
       displayName: user.displayName,
       photoURL: user.photoURL,
     });
-
-    btnCreatePost.addEventListener('click', () => {
+    btnCreatePost.addEventListener('click', (event) => {
+      event.preventDefault();
       const privacy = divElemt.querySelector('#post-new-privacity').value;
       const contentText = divElemt.querySelector('#post-new-text').value;
+      divElemt.querySelector('#post-new-text').value = '';
 
       // Seccion cargar imagen en el post
       // const date = new Date().toString;
@@ -70,7 +68,13 @@ export default () => {
         imgPost = file.value;
       }
       // Seccion crear nuevo post
-      createPost(user.uid, contentText, privacy, imgPost);
+      // const date = new Date().toLocaleString();
+      // console.log(date);
+      createPost(user.uid, contentText, privacy, imgPost)
+        .then((result) => {
+          getPosts(() => {
+          });
+        });
     });
   }
   return divElemt;

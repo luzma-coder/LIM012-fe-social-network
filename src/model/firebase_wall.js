@@ -4,7 +4,7 @@ export const createPost = (uid, contentText, privacy, imgPost) => firebase.fires
   userId: uid,
   content: contentText,
   likes: 0,
-  date: new Date().toString,
+  date: new Date(),
   state: privacy,
   img: imgPost,
 });
@@ -27,13 +27,7 @@ export const getPosts = callback => firebase.firestore().collection('posts')
     callback(output);
   });
 
-
-export const uploadImage = (date, img) => {
-  const postImageRef = firebase.storage().ref().child(`images/${date}-${img.name}`);
-  const metadata = { contentType: img.type };
-  return postImageRef.put(img, metadata)
-    .then(snapshot => snapshot.ref.getDownloadURL());
-};
+export const deletePost = idPost => firebase.firestore().collection('posts').doc(idPost).delete();
 
 /* export const getPosts = () => firebase.firestore().collection('posts').get()
   .then((snapshot) => {
