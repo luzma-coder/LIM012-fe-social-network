@@ -4,16 +4,11 @@ export const createPost = (uid, contentText, privacy, imgPost) => firebase.fires
   userId: uid,
   content: contentText,
   likes: 0,
-  date: new Date().toString,
+  date: new Date(),
   state: privacy,
   img: imgPost,
 });
-/* export const uploadImage = (date, file) => {
-  const postfileRef = firebase.storage().ref().child(`images/${date}-${file.name}`);
-  const metadata = { contentType: file.type };
-  return postfileRef.put(file, metadata)
-    .then(snapshot => snapshot.ref.getDownloadURL());
-}; */
+
 // lee datos
 export const getPosts = callback => firebase.firestore().collection('posts')
   .orderBy('date', 'desc')

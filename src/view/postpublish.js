@@ -3,13 +3,18 @@ import { deletePost } from '../model/firebase_wall.js';
 export const allPost = (data) => {
   const viewpostpublish = document.createElement('article');
   viewpostpublish.classList.add('post-format');
+  const user = firebase.auth().currentUser;
+  const nameUser = user.displayName;
+  const photoUser = user.photoURL;
   viewpostpublish.innerHTML = `
-        <div class="header-post-publish">
-          <span>${data.date}</span>
-          <select>
-            <option value="privacity">privado</option>
-            <option value="public">publico</option>
-          </select>
+     <div class="user">
+      <div id="user-data">
+      <div>
+          <img class="circulo-min" src="${photoUser}" alt="">
+      </div>
+      <p class="user-name">${nameUser}</p> <span> ${data.state}</span>
+      </div>
+      <span>${data.date}</span>
           <select>
           <option value="edit">Editar</option>
           <option value="del">Eliminar</option>
@@ -28,9 +33,6 @@ export const allPost = (data) => {
   // });
   // console.log(data.content);
   // console.log(viewpostpublish);
-  // const seccionElemt = document.createElement('section');
-  // // divElemt.classList.add('viewpostpublish');
-  // seccionElemt.innerHTML = viewpostpublish;
   // console.log(data);
   return viewpostpublish;
 };
