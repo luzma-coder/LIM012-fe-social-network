@@ -14,7 +14,7 @@ export const allPost = (data) => {
           <option value="edit">Editar</option>
           <option value="del">Eliminar</option>
           </select>
-          <button id='btn-delete-${data.id}'>ELIMINAR</button>
+          <a id='btn-delete-${data.id}'><img class="mini-img bgcolor" src="img/trash.png" alt="Insertar imagen"></a>
         </div>
         <textarea class="only-lines">${data.content}</textarea>
         <span class="post-show-like-comments">${data.likes}</span>
