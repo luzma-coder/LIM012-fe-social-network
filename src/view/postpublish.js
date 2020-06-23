@@ -36,7 +36,7 @@ export const allPost = (data) => {
   const nameUser = user.displayName;
   const photoUser = user.photoURL;
   viewpostpublish.innerHTML = `
-     <div class="user">
+     <div>
         <div id="user-data">
         <div>
           <img class="circulo-min" src="${photoUser}" alt="">
@@ -49,10 +49,6 @@ export const allPost = (data) => {
         </select>
       </div>
       <span>${data.date}</span>
-          <select>
-          <option value="edit">Editar</option>
-          <option value="del">Eliminar</option>
-          </select>
           <img id="btn-edit-post-${data.id}" class="show circulo-imgbut bgcolor" src="img/edit.svg" alt="Editar Post">
           <img id="btn-save-post-${data.id}" class="hide circulo-imgbut bgcolor" src="img/save.svg" alt="Guardar cambios">
           <img id="btn-cancel-post-${data.id}" class="hide circulo-imgbut bgcolor" src="img/x.svg" alt="Cancelar cambios">

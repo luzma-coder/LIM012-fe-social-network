@@ -21,6 +21,13 @@
     padding: 1%;
     cursor: pointer;
 }
+.mini-img{
+    width: 9%;
+    border-radius: 100%;
+    border: 2px solid #FFFFFF;
+    cursor: pointer;
+}
+
 /* ---------- estilo general para view-register view-home  --------- */
 button{
     cursor: pointer;
