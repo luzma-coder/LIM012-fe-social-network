@@ -91,7 +91,10 @@ header{
     text-align: center;
 }
 .show{
-    visibility: visible;
+    display: block;
+}
+.hide{
+    display: none;
 }
 /* --------- estilos generales datos del usuario ------------ */
 .circulo{
