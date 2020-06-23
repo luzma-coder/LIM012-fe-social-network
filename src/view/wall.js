@@ -6,6 +6,7 @@ export default () => {
   const db = firebase.firestore();
   const nameUser = user.displayName;
   const photoUser = user.photoURL;
+
   const viewWall = `
   <aside class="user">
       <div id="user-data">
@@ -34,13 +35,13 @@ export default () => {
       </section>
   </section>
     `;
+
   // añadir este estilo clase overflow para crear un scroll
   const divElemt = document.createElement('div');
   divElemt.classList.add('view-wall');
   divElemt.innerHTML = viewWall;
   const postSection = divElemt.querySelector('#post-published');
   getPosts((objArray) => {
-    // allPost(objArray);
     postSection.innerHTML = '';
     objArray.forEach((element) => {
       postSection.appendChild(allPost(element));
