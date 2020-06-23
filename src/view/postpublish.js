@@ -26,7 +26,7 @@ export const allPost = (data) => {
     `;
   // const btnDeletePost = document.querySelector(`#btn-delete-${data.id}`);
   viewpostpublish.querySelector(`#btn-delete-${data.id}`).addEventListener('click', () => deletePost(data.id));
-  console.log(`#btn-delete-${data.id}`);
+
   // btnDeletePost.addEventListener('click', () => {
   //   deletePost(data.id);
   //   console.log(data.id);
