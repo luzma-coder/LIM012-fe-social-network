@@ -6,10 +6,8 @@ export default () => {
   const db = firebase.firestore();
   const nameUser = user.displayName;
   const photoUser = user.photoURL;
-  // const publicar = getPosts((objArray);
 
-  // console.log(nameUser, photoUser);
-  let viewWall = `
+  const viewWall = `
   <aside class="user">
       <div id="user-data">
         <div class="circulo">
@@ -37,15 +35,14 @@ export default () => {
       </section>
   </section>
     `;
-//añadir este estilo clase overflow para crear un scroll
+
   const divElemt = document.createElement('div');
   divElemt.classList.add('view-wall');
   divElemt.innerHTML = viewWall;
   const postSection = divElemt.querySelector('#post-published');
   getPosts((objArray) => {
-    // allPost(objArray);
     postSection.innerHTML = '';
-    objArray.forEach(element => {
+    objArray.forEach((element) => {
       postSection.appendChild(allPost(element));
     });
     console.log(objArray);
@@ -68,7 +65,11 @@ export default () => {
         imgPost = file.value;
       }
       // Seccion crear nuevo post
-      createPost(user.uid, contentText, privacy, imgPost);
+      createPost(user.uid, contentText, privacy, imgPost)
+        .then((result) => {
+          getPosts(() => {
+          });
+        });
     });
   }
   return divElemt;

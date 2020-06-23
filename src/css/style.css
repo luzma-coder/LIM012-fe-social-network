@@ -11,6 +11,15 @@
     padding: 10%;
     cursor: pointer;
 }
+.circulo-imgbut{
+    height: 70%;
+    width: auto;
+    border-radius: 100%;
+    border: 2px solid #FFFFFF;
+    /* margin-left: 20%; */
+    padding: 1%;
+    cursor: pointer;
+}
 /* ---------- estilo general para view-register view-home  --------- */
 button{
     cursor: pointer;

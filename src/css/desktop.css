@@ -110,9 +110,9 @@ body {
         flex-direction: column;
         padding: 0% 2%;
     }
-    textarea.header-post-publish{
+    /* textarea.header-post-publish{
         outline-color: aqua;
         outline-style: dashed;
         outline-width: 4px;
-    }
+    } */
 }
