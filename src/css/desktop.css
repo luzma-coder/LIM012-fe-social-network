@@ -122,4 +122,7 @@ body {
         outline-style: dashed;
         outline-width: 4px;
     }
+    .mini-img{
+    width: 5%;
+    }
 }

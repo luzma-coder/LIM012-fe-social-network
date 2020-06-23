@@ -27,9 +27,28 @@ export const getPosts = callback => firebase.firestore().collection('posts')
     callback(output);
   });
 
-/* export const uploadImage = (date, file) => {
-  const postfileRef = firebase.storage().ref().child(`images/${date}-${file.name}`);
-  const metadata = { contentType: file.type };
-  return postfileRef.put(file, metadata)
-    .then(snapshot => snapshot.ref.getDownloadURL());
-}; */
+export const deletePost = idPost => firebase.firestore().collection('posts').doc(idPost).delete();
+
+/* export const getPosts = () => firebase.firestore().collection('posts').get()
+  .then((snapshot) => {
+    snapshot.forEach((doc) => {
+      console.log(doc.data().userId);
+      console.log(doc.data().date);
+      console.log(`${doc.data().state}`);
+    });
+  })
+  .catch((err) => {
+    console.log('Error getting documents', err);
+  }); */
+
+/* export const getPosts = () => firebase.firestore().collection('posts')
+   .orderBy('date', 'desc')
+  .onSnapshot((querySnapshot) => {
+     const data = [];
+     querySnapshot.forEach((doc) => {
+       data.push({ data: doc.data() });
+       // data.push({ id: doc.id, ...doc.data() });
+     });
+     return data;
+     // callback(data);
+   }); */
