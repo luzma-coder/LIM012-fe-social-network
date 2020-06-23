@@ -117,13 +117,13 @@ body {
         height: 100%;
 
     }
-    textarea.header-post-publish{
-        outline-color: aqua;
-        outline-style: dashed;
-        outline-width: 4px;
-    }
     .mini-img{
-    width: 5%;
+        width: 8%;
+    }
+    .circulo-imgbut{
+        height: 9%;
+        width: auto;
+        padding: 3%;
     }
 
      /*========== Header ========== */
