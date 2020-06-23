@@ -102,13 +102,19 @@ body {
         width: 60%;
         flex: auto;
         display: flex;
-        flex-direction: column;
+        flex-direction: column; 
     }
     #post-published{
         /* height: max-height; */
         display: flex;
         flex-direction: column;
         padding: 0% 2%;
+        
+    }
+    #post-published.prueba{
+       overflow: scroll;
+        height: 100%;
+
     }
     textarea.header-post-publish{
         outline-color: aqua;
