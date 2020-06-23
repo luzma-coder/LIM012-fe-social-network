@@ -10,6 +10,8 @@ export default () => {
   const viewWall = `
   <aside class="user">
       <div id="user-data">
+      ${user.photoURL === null ? '<img class="img-user" src="../src/img/avatar-perfil.jpg"/>' : `<img class="img-user" src="${user.photoURL}"/>`}
+      ${user.displayName === null ? `<p id="inf-user"><strong> ${user.email}</strong><p>` : `<p id="inf-user"><strong>${user.displayName}</strong><p>`}  
         <div class="circulo">
           <img class="img-circulo" src="${photoUser}" alt="">
         </div>
