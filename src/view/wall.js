@@ -6,17 +6,11 @@ export default () => {
   const db = firebase.firestore();
   const nameUser = user.displayName;
   const photoUser = user.photoURL;
-
   const viewWall = `
   <aside class="user">
-      <div id="user-data">
-      ${user.photoURL === null ? '<img class="img-user" src="../src/img/avatar-perfil.jpg"/>' : `<img class="img-user" src="${user.photoURL}"/>`}
-      ${user.displayName === null ? `<p id="inf-user"><strong> ${user.email}</strong><p>` : `<p id="inf-user"><strong>${user.displayName}</strong><p>`}  
-        <div class="circulo">
-          <img class="img-circulo" src="${photoUser}" alt="">
-        </div>
-        <p class="user-name">${nameUser}</p>
-      </div>
+      <div id="user-name">
+      ${photoUser === null ? '<img class="circulo" src="img/avatar-perfil.jpg"/>' : `<img class="circulo" src="${photoUser}" alt=""/>`}
+      ${nameUser === null ? `<p id="user-name">${user.email}<p>` : `'<p class="user-name">${nameUser}</p>`}  
   </aside>
   <section class="post">
       <section id="post-new">
@@ -71,8 +65,6 @@ export default () => {
         imgPost = file.value;
       }
       // Seccion crear nuevo post
-      // const date = new Date().toLocaleString();
-      // console.log(date);
       createPost(user.uid, contentText, privacy, imgPost)
         .then((result) => {
           getPosts(() => {

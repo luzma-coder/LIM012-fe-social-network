@@ -44,8 +44,8 @@ export const allPost = (data) => {
         <p class="user-name">${nameUser}</p> 
         <span> ${data.state}</span>
         <select id="selec-privacy-${data.id}" disabled="true">
-          <option value="privacity">privado</option>
-          <option value="public">publico</option>
+          <option value="privacity">Privado</option>
+          <option value="public">Publico</option>
         </select>
       </div>
       <span>${data.date}</span>
