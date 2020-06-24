@@ -29,12 +29,11 @@ const ToEditPost = (btnSavePost, btnCancelPost, textAPost, selPrivPost, idDoc) =
   });
 };
 
-export const allPost = (data) => {
+export const allPost = (data, autor) => {
   const viewpostpublish = document.createElement('article');
   viewpostpublish.classList.add('post-format');
-  const user = firebase.auth().currentUser;
-  const nameUser = user.displayName;
-  const photoUser = user.photoURL;
+  const nameUser = autor.displayName;
+  const photoUser = autor.photoURL;
   viewpostpublish.innerHTML = `
      <div>
         <div id="user-data">
