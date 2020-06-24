@@ -33,4 +33,6 @@ export const updatePost = (idPost, newContent, newPrivacy) => {
     state: newPrivacy,
   });
 };
+
+export const logOut = () => firebase.auth().signOut();
 export const deletePost = idPost => firebase.firestore().collection('posts').doc(idPost).delete();

@@ -1,5 +1,6 @@
-import { createPost, getPosts } from '../model/firebase_wall.js';
+import { createPost, getPosts, logOut } from '../model/firebase_wall.js';
 import { allPost } from './postpublish.js';
+import { changeHash } from './home.js';
 
 export default () => {
   const user = firebase.auth().currentUser;
@@ -46,6 +47,15 @@ export default () => {
     objArray.forEach((element) => {
       postSection.appendChild(allPost(element));
     });
+  });
+
+  const btnLogOut = document.querySelector('#btn-logout');
+  btnLogOut.addEventListener('click', () => {
+    logOut()
+      .then(() => {
+        window.location.hash = '#/';
+        // changeHash('#/');
+      });
   });
 
   const btnCreatePost = divElemt.querySelector('#post-btn-publish');

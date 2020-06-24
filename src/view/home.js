@@ -1,6 +1,6 @@
 import { logIn, googleSignIn, loginFacebook } from '../model/firebase.js';
 
-const changeHash = (hash) => {
+export const changeHash = (hash) => {
   window.location.hash = hash;
 };
 
