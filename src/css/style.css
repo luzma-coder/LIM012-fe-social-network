@@ -27,7 +27,12 @@
     border: 2px solid #FFFFFF;
     cursor: pointer;
 }
-
+.showbtn{
+    display: inline-block;
+}
+.icono-privacy{
+    height: 30%;
+}
 /* ---------- estilo general para view-register view-home  --------- */
 button{
     cursor: pointer;

@@ -15,6 +15,7 @@ export const getPosts = callback => firebase.firestore().collection('posts')
     querySnapshot.forEach((doc) => {
       output.push({
         id: doc.id,
+        userId: doc.data().userId,
         content: doc.data().content,
         likes: doc.data().likes,
         date: doc.data().date,

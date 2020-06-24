@@ -93,8 +93,10 @@ body {
      .view-wall{
         background-color:#E5E5E5;
        /* background-color:floralwhite;*/
+        height: 100%;
         width: 100%;
         display: flex;
+        align-items: flex-start;
         padding: 2% 20%;
     }
 
@@ -106,24 +108,16 @@ body {
         flex-direction: column; 
     }
     #post-published{
-        /* height: max-height; */
         display: flex;
         flex-direction: column;
-        padding: 0% 2%;
-        
-    }
-    #post-published.prueba{
-       overflow: scroll;
-        height: 100%;
-
     }
     .mini-img{
         width: 8%;
     }
     .circulo-imgbut{
-        height: 9%;
+        height: 8%;
         width: auto;
-        padding: 3%;
+        padding: 1%;
     }
 
      /*========== Header ========== */
