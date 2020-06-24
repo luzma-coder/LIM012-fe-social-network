@@ -1,6 +1,5 @@
 import { createPost, getPosts, logOut } from '../model/firebase_wall.js';
 import { allPost } from './postpublish.js';
-import { changeHash } from './home.js';
 
 export default () => {
   const user = firebase.auth().currentUser;
@@ -50,6 +49,8 @@ export default () => {
     logOut()
       .then(() => {
         window.location.hash = '#/';
+        document.querySelector('#header').classList.remove('show');
+        document.querySelector('#header').classList.add('hide');
         // changeHash('#/');
       });
   });
