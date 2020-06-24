@@ -40,7 +40,9 @@ export default () => {
   getPosts((objArray) => {
     postSection.innerHTML = '';
     objArray.forEach((element) => {
-      postSection.appendChild(allPost(element));
+      if (element.state !== 'privacity' || element.userId === user.uid) {
+        postSection.appendChild(allPost(element));
+      }
     });
   });
 
