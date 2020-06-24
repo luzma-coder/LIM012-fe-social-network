@@ -1,4 +1,4 @@
-import { createPost, getPosts } from '../model/firebase_wall.js';
+import { createPost, getPosts, logOut } from '../model/firebase_wall.js';
 import { allPost } from './postpublish.js';
 
 export default () => {
@@ -44,6 +44,17 @@ export default () => {
         postSection.appendChild(allPost(element));
       }
     });
+  });
+
+  const btnLogOut = document.querySelector('#btn-logout');
+  btnLogOut.addEventListener('click', () => {
+    logOut()
+      .then(() => {
+        window.location.hash = '#/';
+        document.querySelector('#header').classList.remove('show');
+        document.querySelector('#header').classList.add('hide');
+        // changeHash('#/');
+      });
   });
 
   const btnCreatePost = divElemt.querySelector('#post-btn-publish');
