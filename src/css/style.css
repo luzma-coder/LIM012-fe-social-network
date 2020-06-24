@@ -98,6 +98,7 @@ header{
     text-align: center;
 }
 .btn-logout{
+    margin-left: 85%;
     left: 88%;
     right: 3%;
     top: 40%;
@@ -111,10 +112,10 @@ header{
     display: none;
 }
 .logo-header{
-    width: 120px;
-    height: 30px;
-    left: 126px;
-    top: 27px;
+    width: 130px;
+    height: 50px;
+    left: 50%;
+    top: 50%;
 }
 
 /* --------- estilos generales datos del usuario ------------ */

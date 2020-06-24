@@ -2,7 +2,7 @@ export const createPost = (uid, contentText, privacy, imgPost) => firebase.fires
   userId: uid,
   content: contentText,
   likes: 0,
-  date: new Date(),
+  date: new Date().toLocaleString(),
   state: privacy,
   img: imgPost,
 });

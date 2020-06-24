@@ -44,8 +44,8 @@ export const allPost = (data) => {
         <p class="user-name">${nameUser}</p> 
         <span> ${data.state}</span>
         <select id="selec-privacy-${data.id}" disabled="true">
-          <option value="privacity">privado</option>
-          <option value="public">publico</option>
+          <option value="privacity">Privado</option>
+          <option value="public">Publico</option>
         </select>
       </div>
       <span>${data.date}</span>
@@ -71,7 +71,7 @@ export const allPost = (data) => {
   });
   // const btnDeletePost = document.querySelector(`#btn-delete-${data.id}`);
   viewpostpublish.querySelector(`#btn-delete-${data.id}`).addEventListener('click', () => deletePost(data.id));
-  console.log(`#btn-delete-${data.id}`);
+
   // btnDeletePost.addEventListener('click', () => {
   //   deletePost(data.id);
   //   console.log(data.id);
