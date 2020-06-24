@@ -54,7 +54,6 @@ export default () => {
     loginFacebook()
       .then((result) => {
         changeHash('#/wall');
-        console.log(result);
       })
       .catch(() => {});
   });

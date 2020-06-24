@@ -32,7 +32,6 @@ export default () => {
   </section>
     `;
 
-  // añadir este estilo clase overflow para crear un scroll
   const divElemt = document.createElement('div');
   divElemt.classList.add('view-wall');
   divElemt.innerHTML = viewWall;
@@ -41,7 +40,10 @@ export default () => {
     postSection.innerHTML = '';
     objArray.forEach((element) => {
       if (element.state !== 'privacity' || element.userId === user.uid) {
-        postSection.appendChild(allPost(element));
+        db.collection('users').doc(element.userId).get()
+          .then((doc) => {
+            postSection.appendChild(allPost(element, doc.data()));
+          });
       }
     });
   });
@@ -70,8 +72,6 @@ export default () => {
       divElemt.querySelector('#post-new-text').value = '';
 
       // Seccion cargar imagen en el post
-      // const date = new Date().toString;
-
       const file = divElemt.querySelector('#get-file');
       let imgPost = '';
       if (file.value !== '') {
