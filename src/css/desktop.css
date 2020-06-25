@@ -97,7 +97,7 @@ body {
         width: 100%;
         display: flex;
         align-items: flex-start;
-        padding: 2% 20%;
+        padding: 2% 10%;
     }
 
     .post{
@@ -106,6 +106,7 @@ body {
         flex: auto;
         display: flex;
         flex-direction: column; 
+        padding-left: 10%;
     }
     #post-published{
         display: flex;
@@ -121,10 +122,11 @@ body {
     }
 
      /*========== Header ========== */
+     .fa-sign-out-alt:before {
+        /* padding-left: 1000%; */
+    }
     .logo-header{
-        margin-left: 10%;
-        width: 130px;
         height: 50px;
-        
+        text-align: center;
     }
 }
