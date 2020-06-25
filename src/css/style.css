@@ -111,7 +111,7 @@ header{
 .fa-sign-out-alt:before {
     content: "\f2f5";
     color: #EB79BD;
-    font-size: 300%;
+    font-size: 250%;
 }
 .show{
     display: block;
@@ -132,6 +132,12 @@ header{
     box-sizing: border-box;
     box-shadow: 0px 4px 20px rgba(101, 101, 101, 0.15);
 }
+.circulo-profile{
+    width: 100px;
+    /* height: 100px; */
+    border-radius: 100%;
+    border: 4px solid #FFFFFF;
+}
 .circulo > .img-circulo{
     width:100%;
     height: 100%;
@@ -139,6 +145,7 @@ header{
 }
 .circulo-min {
     width: 44px;
+    margin: 10%;
     height: 44px;
     border-radius: 100%;
     border: 4px solid #FFFFFF;
@@ -147,12 +154,17 @@ header{
 }
 
 #user-data{
-    padding: 2% 2% 5%;
     display: flex;
     flex-direction: row;
+    align-items: center;
+    position: relative;
+    background-color: #6CD3FF;
     /* justify-content: center; */
 }
 .user-name{
+    padding-left: 2%;
+}
+.user-name-profile{
     text-align: center;
 }
 /* -------------- estilos generales para post --- -------------- */
@@ -188,6 +200,16 @@ select {
     outline-style: none;
     background-color:rgb(245, 236, 236);
     justify-self: right;
+}
+.select-edited{
+    width: 30%;
+    height: 10%;
+    margin-left: 10%;
+}
+.new-state{
+    padding-left: 1%;
+    font-size: 100%;
+    padding-top: 4%
 }
 textarea{
     color:#454546;
@@ -232,6 +254,9 @@ article.post-format{
     padding: 1% 3%;
     background-color: #DFF2FA;
 }
+.post-date{
+
+}
 @media only screen and (max-width: 768px) {
     body{
         padding-top: 0%;
@@ -245,19 +270,19 @@ article.post-format{
         background-color: #fff;
     }
     .logo{
-        margin-left:9%;
-        margin-right: 9%;
+        margin-left: 15%;
+        margin-right: 15%;
         margin-top: 1%;
-        width:80%;
+        width: 70%; 
     }
     #texto{
         display:none;
     }
     #dance{
         margin-top: 0%;
-        margin-right:12%;
-        margin-left: 12%;
-        width:70%;
+        margin-right: 20%;
+        margin-left: 20%;
+        width: 60%;
     }
     .subtitle{
         font-family: 'Oswald', sans-serif;
@@ -292,8 +317,11 @@ article.post-format{
         padding-left: 120%;
     } */
     .logo-header {
-        height: 50px;
+        height: 30px;
         /* padding-right: 5%;
         padding-left: 18%; */
+    }
+    .circulo-profile{
+        margin-top: 5%;
     }
 }

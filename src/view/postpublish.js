@@ -40,19 +40,23 @@ export const allPost = (data, autor) => {
         <div>
           <img class="circulo-min" src="${photoUser}" alt="">
         </div>
-        <p class="user-name">${nameUser}</p> 
-        <span> ${data.state}</span>
-        <select id="selec-privacy-${data.id}" disabled="true">
+        <div>
+        <h4 class="user-name">${nameUser}</h4>
+        </div>
+        <div> 
+        <p class='post-date'>${data.date}</p>
+        </div>
+        <p class='new-state'> ${data.state}</p>
+        <select class='select-edited' id="selec-privacy-${data.id}" disabled="true">
           <option value="privacity">Privado</option>
           <option value="public">Publico</option>
         </select>
-      </div>
-      <span>${data.date}</span>
+        </div>
           <img id="btn-edit-post-${data.id}" class="showbtn circulo-imgbut bgcolor" src="img/edit.svg" alt="Editar Post">
           <img id="btn-save-post-${data.id}" class="hide circulo-imgbut bgcolor" src="img/save.svg" alt="Guardar cambios">
           <img id="btn-cancel-post-${data.id}" class="hide circulo-imgbut bgcolor" src="img/x.svg" alt="Cancelar cambios">
           <a id='btn-delete-${data.id}'><img class="mini-img bgcolor" src="img/trash.png" alt="Insertar imagen"></a>
-        </div>
+      </div>
         <textarea id="textarea-${data.id}" class="only-lines" disabled="true">${data.content}</textarea>
         <span class="post-show-like-comments">${data.likes}</span>
     `;
