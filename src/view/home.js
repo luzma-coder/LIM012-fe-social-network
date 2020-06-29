@@ -20,7 +20,8 @@ export default () => {
   <a class='links-on-buttons'><img id="face" src="img/facebook.png"></a>
   <a class='links-on-buttons'><img id="gmail" src="img/gmail.png"></a>
   </div>
-  <p class='lil-text'>¿No tienes una cuenta?</p><a id='just-link'href="#/register"> REGISTRATE</a>
+  <p class='lil-text'>¿No tienes una cuenta?</p>
+  <p id='just-link'><a href="#/register">REGISTRATE</a></p>
   `;
   const divElemt = document.createElement('div');
   divElemt.classList.add('view-register');
