@@ -14,14 +14,10 @@ export const loginFacebook = () => {
   return firebase.auth().signInWithPopup(provider);
 };
 
-export const verifEmail = (route) => {
+export const verifEmail = () => {
   const user = firebase.auth().currentUser;
-  user.sendEmailVerification()
-    .then(() => {
-      console.log(route);
-    });
+  return user.sendEmailVerification();
 };
-
 /* export const loginAndVerif = firebase.auth().onAuthStateChanged((user) => {
   if (user) {
     window.location.hash = '#/wall';

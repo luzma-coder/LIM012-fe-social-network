@@ -25,7 +25,7 @@
     width: 9%;
     border-radius: 100%;
     border: 2px solid #FFFFFF;
-    cursor: pointer;
+    /* cursor: pointer; */
 }
 .showbtn{
     display: inline-block;
@@ -93,6 +93,20 @@ input{
     margin-left: 4%;
     margin-right: 30%;
     cursor: pointer;
+}
+.showWindow{
+    /* height: 20%; */
+    position: absolute;
+    right: 7%;
+    top: 50%;
+    width: fit-content;
+    height: fit-content;
+    padding: 2%;
+    background-color: khaki;
+    color: #222;
+    border-radius: 10px;
+    border: 1px solid #FFFFFF;
+    text-align: center;
 }
 /* -------------- estilo general para header  -------------- */
 header{
@@ -336,6 +350,10 @@ h4 {
         display: flex;
         flex-direction: column;
         align-items: center;
+    }
+    .showWindow{
+        right: 1%;
+        margin-left: 2%;
     }
     /* .fa-sign-out-alt:before {
         padding-left: 120%;
