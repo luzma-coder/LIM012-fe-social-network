@@ -28,7 +28,8 @@ const registerUser = (userEmail, userPass, userNames) => {
         // Error occurred. Inspect error.code.
         });
       // guardar nombre del usuario en coleccion users
-      updateUser(result.user.uid, userNames, '');
+      updateUser(result.user.uid, userNames, './img/avatar-perfil.jpg');
+      window.location.hash = '';
     })
     .catch(() => {
       // error firebase por "createUserWithEmailAndPassword()", especificar a futuro.

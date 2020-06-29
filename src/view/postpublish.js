@@ -32,8 +32,8 @@ const ToEditPost = (btnSavePost, btnCancelPost, textAPost, selPrivPost, idDoc) =
 export const allPost = (data, autor) => {
   const viewpostpublish = document.createElement('article');
   viewpostpublish.classList.add('post-format');
-  const nameUser = autor.userName;
-  const photoUser = autor.userPhoto;
+  const nameUser = autor.displayName;
+  const photoUser = autor.photoURL;
   viewpostpublish.innerHTML = `
      <div>
         <div id="user-data">

@@ -6,6 +6,15 @@ export default () => {
   const db = firebase.firestore();
   const nameUser = user.displayName;
   const photoUser = user.photoURL;
+  // dataUser(user.uid).then((userData) => {
+  //   // const photoUser = userData.photoUser;
+  //   // const nameUser = userData.nameUser;
+  //   console.log(userData);
+  //   console.log(userData.doc());
+  //   console.log(userData.doc().nameUser);
+  //   console.log(userData.doc().photoUser);
+  // });
+  // console.log(nameUser);
   const viewWall = `
   <aside class="user">
       <div id="user-name">
