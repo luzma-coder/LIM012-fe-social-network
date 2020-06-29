@@ -95,11 +95,11 @@ export default () => {
       // imgPost = file.value;
       if (imgPost === undefined) {
         // Seccion crear nuevo post
-        createPost(user.uid, contentText, privacy, imgPost);
-        /*   .then((result) => {
-            getPosts(() => {
-            });
-          }); */
+        createPost(user.uid, contentText, privacy, imgPost)
+          .then(() => {
+          });
+        // getPosts(() => {
+        //  });
       }
       uploadImage(date, imgPost)
         .then(url => console.log(url) || createPost(user.uid, contentText, privacy, url));
