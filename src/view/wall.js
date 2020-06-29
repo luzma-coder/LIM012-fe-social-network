@@ -6,6 +6,15 @@ export default () => {
   const db = firebase.firestore();
   const nameUser = user.displayName;
   const photoUser = user.photoURL;
+  // dataUser(user.uid).then((userData) => {
+  //   // const photoUser = userData.photoUser;
+  //   // const nameUser = userData.nameUser;
+  //   console.log(userData);
+  //   console.log(userData.doc());
+  //   console.log(userData.doc().nameUser);
+  //   console.log(userData.doc().photoUser);
+  // });
+  // console.log(nameUser);
   const viewWall = `
   <aside class="user">
       <div id="user-name">
@@ -61,10 +70,6 @@ export default () => {
 
   const btnCreatePost = divElemt.querySelector('#post-btn-publish');
   if (user) {
-    db.collection('users').doc(user.uid).set({
-      displayName: user.displayName,
-      photoURL: user.photoURL,
-    });
     btnCreatePost.addEventListener('click', (event) => {
       event.preventDefault();
       const privacy = divElemt.querySelector('#post-new-privacity').value;
@@ -78,11 +83,7 @@ export default () => {
         imgPost = file.value;
       }
       // Seccion crear nuevo post
-      createPost(user.uid, contentText, privacy, imgPost)
-        .then((result) => {
-          getPosts(() => {
-          });
-        });
+      createPost(user.uid, contentText, privacy, imgPost);
     });
   }
   return divElemt;
