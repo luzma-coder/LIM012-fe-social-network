@@ -33,7 +33,7 @@ const registerUser = (userEmail, userPass, userNames) => {
     })
     .catch(() => {
       // error firebase por "createUserWithEmailAndPassword()", especificar a futuro.
-      showMessage('⚠️Error al auntenticar usuario, verifique cuenta, clave o INICIE SESION, gracias.');
+      showMessage('⚠️Error al auntenticar usuario, verifique su correo, cuenta, clave o INICIE SESION, gracias.');
       // spanMessage.innerHTML = 'Error al auntenticar usuario, intentelo nuevamente, gracias.';
     });
   firebase.auth().signOut()
