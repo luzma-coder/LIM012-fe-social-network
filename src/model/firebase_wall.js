@@ -35,5 +35,15 @@ export const updatePost = (idPost, newContent, newPrivacy) => {
   });
 };
 
-export const logOut = () => firebase.auth().signOut();
+// cargar imagen
+
+export const uploadImage = (date, img) => {
+  const postImageRef = firebase.storage().ref().child(`imagenes/${img.name}`);
+  const metadata = { contentType: img.type };
+  return postImageRef.put(img, metadata)
+    .then(snapshot => (snapshot.ref.getDownloadURL()));
+};
+
 export const deletePost = idPost => firebase.firestore().collection('posts').doc(idPost).delete();
+
+export const logOut = () => firebase.auth().signOut();

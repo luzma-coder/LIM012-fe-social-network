@@ -34,6 +34,7 @@ export const allPost = (data, autor) => {
   viewpostpublish.classList.add('post-format');
   const nameUser = autor.displayName;
   const photoUser = autor.photoURL;
+  const imgPost = data.img;
   viewpostpublish.innerHTML = `
      <div>
         <div id="user-data">
@@ -42,18 +43,21 @@ export const allPost = (data, autor) => {
         </div>
         <p class="user-name">${nameUser}</p> 
         <span> ${data.state}</span>
-        <select id="selec-privacy-${data.id}" disabled="true">
-          <option value="privacity">Privado</option>
+        <select class = "selec-min" id="selec-privacy-${data.id}" disabled="true">
           <option value="public">Publico</option>
+          <option value="privacity">Privado</option>
         </select>
       </div>
       <span>${data.date}</span>
           <img id="btn-edit-post-${data.id}" class="showbtn circulo-imgbut bgcolor" src="img/edit.svg" alt="Editar Post">
           <img id="btn-save-post-${data.id}" class="hide circulo-imgbut bgcolor" src="img/save.svg" alt="Guardar cambios">
           <img id="btn-cancel-post-${data.id}" class="hide circulo-imgbut bgcolor" src="img/x.svg" alt="Cancelar cambios">
-          <a id='btn-delete-${data.id}'><img class="mini-img bgcolor" src="img/trash.png" alt="Insertar imagen"></a>
+          <a id='btn-delete-${data.id}'><img class="mini-img bgcolor" src="img/trash.png" alt="Insertar imagen"><a>
         </div>
         <textarea id="textarea-${data.id}" class="only-lines" disabled="true">${data.content}</textarea>
+        <div class="image-post" id ="get-file-upload" type="file" accept="image/*">
+        ${(data.img !== undefined) ? `<img class="image-post" src="${imgPost}" alt=""/>` : ''}
+        </div>
         <span class="post-show-like-comments">${data.likes}</span>
     `;
   // actualizar post

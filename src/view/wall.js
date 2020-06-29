@@ -1,4 +1,6 @@
-import { createPost, getPosts, logOut } from '../model/firebase_wall.js';
+import {
+  createPost, getPosts, logOut, uploadImage,
+} from '../model/firebase_wall.js';
 import { allPost } from './postpublish.js';
 
 export default () => {
@@ -10,13 +12,13 @@ export default () => {
   <aside class="user">
       <div id="user-name">
       ${photoUser === null ? '<img class="circulo" src="img/avatar-perfil.jpg"/>' : `<img class="circulo" src="${photoUser}" alt=""/>`}
-      ${nameUser === null ? `<p id="user-name">${user.email}<p>` : `'<p class="user-name">${nameUser}</p>`}  
+      ${nameUser === null ? `<p id="user-name">${user.email}<p>` : `<p class="user-name">${nameUser}</p>`}  
   </aside>
   <section class="post">
       <section id="post-new">
           <select id="post-new-privacity">
-          <option value="privacity">Privado</option>
-          <option value="public">Publico</option>
+          <option value="🌎">🌎 Público</option>
+          <option value="🔒">🔒 Privado</option>
           </select>
           <textarea id="post-new-text" cols="" rows="3" placeholder="¿Qué pasos compartiras hoy?"></textarea>
           <div class="post-buttoms">
@@ -71,18 +73,33 @@ export default () => {
       const contentText = divElemt.querySelector('#post-new-text').value;
       divElemt.querySelector('#post-new-text').value = '';
 
+      // Dom Cargar imagen
+      const uploadImageBtn = divElemt.querySelector('#post-btn-publish');
+      //  const postImage = divElemt.querySelector('#input-file');
+      uploadImageBtn.addEventListener('change', () => {
+      //  postImage.classList.add('show');
+
+        divElemt.querySelector('#post-new-text').value = '';
+      });
       // Seccion cargar imagen en el post
       const file = divElemt.querySelector('#get-file');
-      let imgPost = '';
-      if (file.value !== '') {
-        imgPost = file.value;
+      const date = new Date().toLocaleString();
+      const imgPost = file.files[0];
+      console.log(imgPost);
+      // let imgPost = '';
+      // imgPost = file.value;
+      if (imgPost === undefined) {
+        // Seccion crear nuevo post
+        createPost(user.uid, contentText, privacy, imgPost);
+        /*   .then((result) => {
+            getPosts(() => {
+            });
+          }); */
       }
-      // Seccion crear nuevo post
-      createPost(user.uid, contentText, privacy, imgPost)
-        .then((result) => {
-          getPosts(() => {
-          });
-        });
+      uploadImage(date, imgPost)
+        .then(url => console.log(url) || createPost(user.uid, contentText, privacy, url));
+      // .then(result => getPosts());
+      console.log('Se subio la imagen');
     });
   }
   return divElemt;

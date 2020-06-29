@@ -119,6 +119,12 @@ body {
         width: auto;
         padding: 1%;
     }
+    .image-post {
+        min-height: 50%;
+        border-bottom: 1px solid #ccc;
+        background-color: #fff;
+    }
+    
 
      /*========== Header ========== */
     .logo-header{

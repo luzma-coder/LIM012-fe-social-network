@@ -189,6 +189,16 @@ select {
     background-color:rgb(245, 236, 236);
     justify-self: right;
 }
+.selec-min {
+    width: 10%;
+    height: 5%;
+    padding: 1%;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    outline-style: none;
+    background-color:rgb(245, 236, 236);
+    justify-self: right;
+}
 textarea{
     color:#454546;
     margin: 2% 0%;
