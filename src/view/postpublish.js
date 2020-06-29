@@ -62,7 +62,8 @@ export const allPost = (data, autor) => {
         <div class="image-post" id ="get-file-upload" type="file" accept="image/*">
         ${(data.img !== undefined) ? `<img class="image-post" src="${imgPost}" alt=""/>` : ''}
         </div>
-        <span class="post-show-like-comments">${data.likes}</span>
+        <span id="likes-count-${data.id}"class="">${data.likes}</span>
+        <img id="btnLike-${data.id}" class="" src="img/like.svg" alt="likes" title="likes" />
     `;
   // actualizar post
   const btnEditPost = viewpostpublish.querySelector(`#btn-edit-post-${data.id}`);
