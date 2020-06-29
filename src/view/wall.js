@@ -61,10 +61,6 @@ export default () => {
 
   const btnCreatePost = divElemt.querySelector('#post-btn-publish');
   if (user) {
-    db.collection('users').doc(user.uid).set({
-      displayName: user.displayName,
-      photoURL: user.photoURL,
-    });
     btnCreatePost.addEventListener('click', (event) => {
       event.preventDefault();
       const privacy = divElemt.querySelector('#post-new-privacity').value;
@@ -78,11 +74,7 @@ export default () => {
         imgPost = file.value;
       }
       // Seccion crear nuevo post
-      createPost(user.uid, contentText, privacy, imgPost)
-        .then((result) => {
-          getPosts(() => {
-          });
-        });
+      createPost(user.uid, contentText, privacy, imgPost);
     });
   }
   return divElemt;

@@ -36,4 +36,15 @@ export const updatePost = (idPost, newContent, newPrivacy) => {
 };
 
 export const logOut = () => firebase.auth().signOut();
+
 export const deletePost = idPost => firebase.firestore().collection('posts').doc(idPost).delete();
+
+export const updateUser = (idDoc, newUserName, newUserPhoto) => firebase.firestore().collection('users').doc(idDoc).set({
+  userName: newUserName,
+  userPhoto: newUserPhoto,
+});
+
+// db.collection('users').doc(user.uid).set({
+//   displayName: user.displayName,
+//   photoURL: user.photoURL,
+// });
