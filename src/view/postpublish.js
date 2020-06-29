@@ -38,22 +38,26 @@ export const allPost = (data, autor) => {
   viewpostpublish.innerHTML = `
      <div>
         <div id="user-data">
-        <div>
           <img class="circulo-min" src="${photoUser}" alt="">
+        <div>
+        <h4 class="user-name">${nameUser}</h4>
+        <div class='post-date'> 
+        <p>${data.date}</p>
+        <p> ${data.state}</p>
         </div>
-        <p class="user-name">${nameUser}</p> 
-        <span> ${data.state}</span>
-        <select class = "selec-min" id="selec-privacy-${data.id}" disabled="true">
-          <option value="public">Publico</option>
-          <option value="privacity">Privado</option>
-        </select>
-      </div>
-      <span>${data.date}</span>
+        <div id='right-div'>
           <img id="btn-edit-post-${data.id}" class="showbtn circulo-imgbut bgcolor" src="img/edit.svg" alt="Editar Post">
           <img id="btn-save-post-${data.id}" class="hide circulo-imgbut bgcolor" src="img/save.svg" alt="Guardar cambios">
           <img id="btn-cancel-post-${data.id}" class="hide circulo-imgbut bgcolor" src="img/x.svg" alt="Cancelar cambios">
-          <a id='btn-delete-${data.id}'><img class="mini-img bgcolor" src="img/trash.png" alt="Insertar imagen"><a>
+          <a id='btn-delete-${data.id}'><img class="mini-img bgcolor" src="img/trash.png" alt="Insertar imagen"></a>
+          <select class='select-edited' id="selec-privacy-${data.id}" disabled="true">
+          <option value="privacity">Privado</option>
+          <option value="public">Publico</option>
+          </select>
         </div>
+        </div>
+        </div>
+      </div>
         <textarea id="textarea-${data.id}" class="only-lines" disabled="true">${data.content}</textarea>
         <div class="image-post" id ="get-file-upload" type="file" accept="image/*">
         ${(data.img !== undefined) ? `<img class="image-post" src="${imgPost}" alt=""/>` : ''}

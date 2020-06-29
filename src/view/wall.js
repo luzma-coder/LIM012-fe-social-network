@@ -11,8 +11,8 @@ export default () => {
   const viewWall = `
   <aside class="user">
       <div id="user-name">
-      ${photoUser === null ? '<img class="circulo" src="img/avatar-perfil.jpg"/>' : `<img class="circulo" src="${photoUser}" alt=""/>`}
-      ${nameUser === null ? `<p id="user-name">${user.email}<p>` : `<p class="user-name">${nameUser}</p>`}  
+      ${photoUser === null ? '<img class="circulo-profile" src="img/avatar-perfil.jpg"/>' : `<img class="circulo-profile" src="${photoUser}" alt=""/>`}
+      ${nameUser === null ? `<p id="user-name-profile">${user.email}<p>` : `<p class="user-name-profile">${nameUser}</p>`}  
   </aside>
   <section class="post">
       <section id="post-new">
