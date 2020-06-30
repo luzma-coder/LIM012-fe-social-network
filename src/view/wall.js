@@ -19,7 +19,8 @@ export default () => {
   <aside class="user">
       <div id="user-name">
       ${photoUser === null ? '<img class="circulo-profile" src="img/avatar-perfil.jpg"/>' : `<img class="circulo-profile" src="${photoUser}" alt=""/>`}
-      ${nameUser === null ? `<p id="user-name-profile">${user.email}<p>` : `<p class="user-name-profile">${nameUser}</p>`}  
+      ${nameUser === null ? `<p id="user-name-profile">${user.email}<p>` : `<p class="user-name-profile">${nameUser}</p>`}
+      <p class='lil-text'>Aprendiendo a bailar</p>
   </aside>
   <section class="post">
       <section id="post-new">
