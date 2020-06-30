@@ -42,7 +42,7 @@ export default () => {
       </section>
   </section>
     `;
-
+  // Pinta todos los posts y segun el state de la privacidad, los hace visible o no //
   const divElemt = document.createElement('div');
   divElemt.classList.add('view-wall');
   divElemt.innerHTML = viewWall;
@@ -58,7 +58,7 @@ export default () => {
       }
     });
   });
-
+  // DOM para el cerrar sesion //
   const btnLogOut = document.querySelector('#btn-logout');
   btnLogOut.addEventListener('click', () => {
     logOut()
@@ -74,39 +74,26 @@ export default () => {
   if (user) {
     btnCreatePost.addEventListener('click', (event) => {
       event.preventDefault();
-      const privacy = divElemt.querySelector('#post-new-privacity').value;
-      const contentText = divElemt.querySelector('#post-new-text').value;
-      divElemt.querySelector('#post-new-text').value = '';
-
-      // Dom Cargar imagen
-      const uploadImageBtn = divElemt.querySelector('#post-btn-publish');
-      //  const postImage = divElemt.querySelector('#input-file');
-      uploadImageBtn.addEventListener('change', () => {
-      //  postImage.classList.add('show');
-
-        divElemt.querySelector('#post-new-text').value = '';
-      });
-      // Seccion cargar imagen en el post
       const file = divElemt.querySelector('#get-file');
       const date = new Date().toLocaleString();
       const imgPost = file.files[0];
-      console.log(imgPost);
-      // let imgPost = '';
-      // imgPost = file.value;
-      if (imgPost === undefined) {
-        // Seccion crear nuevo post
-        createPost(user.uid, contentText, privacy, imgPost)
-          .then(() => {
-          });
-        // getPosts(() => {
-        //  });
-      }
-      uploadImage(date, imgPost)
-        .then(url => console.log(url) || createPost(user.uid, contentText, privacy, url));
-      // .then(result => getPosts());
-      console.log('Se subio la imagen');
+      const privacy = divElemt.querySelector('#post-new-privacity').value;
+      const contentText = divElemt.querySelector('#post-new-text').value;
+      divElemt.querySelector('#post-new-text').value = '';
+      // const postImage = divElemt.querySelector('#input-file');
+      //  btnCreatePost.addEventListener('click', (event) => {
+      //  postImage.classList.add('show');
       // Seccion crear nuevo post
-      createPost(user.uid, contentText, privacy, imgPost);
+      if (imgPost === undefined) {
+        createPost(user.uid, contentText, privacy, '');
+        console.log('Se creo post sin imagen');
+      } else {
+        uploadImage(date, imgPost)
+          .then(url => console.log(url) || createPost(user.uid, contentText, privacy, url));
+        file.value = '';
+        console.log('Se subio la imagen');
+      }
+      // });
     });
   }
   return divElemt;

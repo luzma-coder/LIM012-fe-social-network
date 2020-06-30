@@ -40,10 +40,9 @@ export const allPost = (data, autor) => {
         <div id="user-data">
           <img class="circulo-min" src="${photoUser}" alt="">
         <div>
-        <h4 class="user-name">${nameUser}</h4>
+        <h4 class="user-name">${nameUser}</h4> <p> ${data.state}</p>
         <div class='post-date'> 
         <p>${data.date}</p>
-        <p> ${data.state}</p>
         </div>
         <div id='right-div'>
           <img id="btn-edit-post-${data.id}" class="showbtn circulo-imgbut bgcolor" src="img/edit.svg" alt="Editar Post">
@@ -62,9 +61,9 @@ export const allPost = (data, autor) => {
         <div class="image-post" id ="get-file-upload" type="file" accept="image/*">
         ${(data.img !== undefined) ? `<img class="image-post" src="${imgPost}" alt=""/>` : ''}
         </div>
-        <span id="likes-count-${data.id}"class="">${data.likes}</span>
-        <img id="btnLike-${data.id}" class="" src="img/like.svg" alt="likes" title="likes" />
+        <img class="mini-img" src="img/like.svg" alt="likes" title="likes" /><span id="likes-count-${data.id}"class="">${data.likes} Likes</span>
     `;
+
   // actualizar post
   const btnEditPost = viewpostpublish.querySelector(`#btn-edit-post-${data.id}`);
   const btnSavePost = viewpostpublish.querySelector(`#btn-save-post-${data.id}`);
