@@ -59,7 +59,7 @@ export const allPost = (data, autor) => {
       </div>
         <textarea id="textarea-${data.id}" class="only-lines" disabled="true">${data.content}</textarea>
         <div class="image-post" id ="get-file-upload" type="file" accept="image/*">
-        ${(data.img !== undefined) ? `<img class="image-post" src="${imgPost}" alt=""/>` : ''}
+        ${(data.img !== undefined) ? `<img class="image-post" src="${imgPost}" alt=""/>` : ""}
         </div>
         <img class="mini-img" src="img/like.svg" alt="likes" title="likes" /><span id="likes-count-${data.id}"class="">${data.likes} Likes</span>
     `;

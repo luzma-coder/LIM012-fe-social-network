@@ -69,7 +69,7 @@ export default () => {
         // changeHash('#/');
       });
   });
-
+  // En esta seccion se crea post con o sin imagen
   const btnCreatePost = divElemt.querySelector('#post-btn-publish');
   if (user) {
     btnCreatePost.addEventListener('click', (event) => {
@@ -80,10 +80,6 @@ export default () => {
       const privacy = divElemt.querySelector('#post-new-privacity').value;
       const contentText = divElemt.querySelector('#post-new-text').value;
       divElemt.querySelector('#post-new-text').value = '';
-      // const postImage = divElemt.querySelector('#input-file');
-      //  btnCreatePost.addEventListener('click', (event) => {
-      //  postImage.classList.add('show');
-      // Seccion crear nuevo post
       if (imgPost === undefined) {
         createPost(user.uid, contentText, privacy, '');
         console.log('Se creo post sin imagen');
@@ -93,7 +89,6 @@ export default () => {
         file.value = '';
         console.log('Se subio la imagen');
       }
-      // });
     });
   }
   return divElemt;
