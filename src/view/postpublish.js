@@ -34,15 +34,15 @@ export const allPost = (data, autor) => {
   viewpostpublish.classList.add('post-format');
   const nameUser = autor.displayName;
   const photoUser = autor.photoURL;
+  const imgPost = data.img;
   viewpostpublish.innerHTML = `
      <div>
         <div id="user-data">
           <img class="circulo-min" src="${photoUser}" alt="">
         <div>
-        <h4 class="user-name">${nameUser}</h4>
+        <h4 class="user-name">${nameUser}</h4> <p> ${data.state}</p>
         <div class='post-date'> 
         <p>${data.date}</p>
-        <p> ${data.state}</p>
         </div>
         <div>
           <img id="btn-edit-post-${data.id}" class="showbtn circulo-imgbut bgcolor" src="img/edit.svg" alt="Editar Post">
@@ -58,8 +58,12 @@ export const allPost = (data, autor) => {
         </div>
       </div>
         <textarea id="textarea-${data.id}" class="only-lines" disabled="true">${data.content}</textarea>
-        <span class="post-show-like-comments">${data.likes}</span>
+        <div class="image-post" id ="get-file-upload" type="file" accept="image/*">
+        ${(data.img !== undefined) ? `<img class="image-post" src="${imgPost}" alt=""/>` : ""}
+        </div>
+        <img class="mini-img" src="img/like.svg" alt="likes" title="likes" /><span id="likes-count-${data.id}"class="">${data.likes} Likes</span>
     `;
+
   // actualizar post
   const btnEditPost = viewpostpublish.querySelector(`#btn-edit-post-${data.id}`);
   const btnSavePost = viewpostpublish.querySelector(`#btn-save-post-${data.id}`);
