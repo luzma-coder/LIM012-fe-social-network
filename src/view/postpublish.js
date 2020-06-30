@@ -34,32 +34,53 @@ export const allPost = (data, autor) => {
   viewpostpublish.classList.add('post-format');
   const nameUser = autor.displayName;
   const photoUser = autor.photoURL;
+  console.log(nameUser);
+  console.log(photoUser);
+
   viewpostpublish.innerHTML = `
-     <div>
-        <div id="user-data">
-          <img class="circulo-min" src="${photoUser}" alt="">
+    <div>
+      <div id="user-data">
+        <img class="circulo-min" src="${photoUser}" alt="">
         <div>
-        <h4 class="user-name">${nameUser}</h4>
-        <div class='post-date'> 
-        <p>${data.date}</p>
-        <p> ${data.state}</p>
-        </div>
-        <div id='right-div'>
-          <img id="btn-edit-post-${data.id}" class="showbtn circulo-imgbut bgcolor" src="img/edit.svg" alt="Editar Post">
-          <img id="btn-save-post-${data.id}" class="hide circulo-imgbut bgcolor" src="img/save.svg" alt="Guardar cambios">
-          <img id="btn-cancel-post-${data.id}" class="hide circulo-imgbut bgcolor" src="img/x.svg" alt="Cancelar cambios">
-          <a id='btn-delete-${data.id}'><img class="mini-img bgcolor" src="img/trash.png" alt="Insertar imagen"></a>
-          <select class='select-edited' id="selec-privacy-${data.id}" disabled="true">
-          <option value="privacity">Privado</option>
-          <option value="public">Publico</option>
-          </select>
-        </div>
-        </div>
+          <h4 class="user-name">${nameUser}</h4>
+          <div class='post-date'> 
+            <p>${data.date}</p>
+            <p> ${data.state}</p>
+          </div>
+          <div id='right-div'>
+            <img id="btn-edit-post-${data.id}" class="showbtn circulo-imgbut bgcolor" src="img/edit.svg" alt="Editar Post">
+            <img id="btn-save-post-${data.id}" class="hide circulo-imgbut bgcolor" src="img/save.svg" alt="Guardar cambios">
+            <img id="btn-cancel-post-${data.id}" class="hide circulo-imgbut bgcolor" src="img/x.svg" alt="Cancelar cambios">
+            <a id='btn-delete-${data.id}'><img class="mini-img bgcolor" src="img/trash.png" alt="Insertar imagen"></a>
+            <select class='select-edited' id="selec-privacy-${data.id}" disabled="true">
+              <option value="privacity">Privado</option>
+              <option value="public">Publico</option>
+            </select>
+          </div>
         </div>
       </div>
-        <textarea id="textarea-${data.id}" class="only-lines" disabled="true">${data.content}</textarea>
-        <span class="post-show-like-comments">${data.likes}</span>
-    `;
+    </div>
+    <textarea id="textarea-${data.id}" class="only-lines" disabled="true">${data.content}</textarea>
+    <span class="post-show-like-comments">${data.likes}</span>
+    
+    <input type="text" id="txt-comm-new" placeholder="Escribe un comentario">
+    <img id="btn-save-comm-${data.id}" src="img/x.svg" alt="Guardar Comentario">
+
+    <img class="circulo-min" src="${photoUser}" alt="">
+    <h4 class="user-name">${nameUser}</h4>
+    <input type="text" id="txt-comm${data.id}">
+    <img id="btn-delete-comm-${data.id}" src="img/x.svg" alt="Eliminar Comentario">
+
+    <img class="circulo-min" src="${photoUser}" alt="">
+    <h4 class="user-name">${nameUser}</h4>
+    <input type="text" id="txt-comm${data.id}">
+    <img id="btn-delete-comm-${data.id}" src="img/x.svg" alt="Eliminar Comentario">
+
+    <img class="circulo-min" src="${photoUser}" alt="">
+    <h4 class="user-name">${nameUser}</h4>
+    <input type="text" id="txt-comm${data.id}">
+    <img id="btn-delete-comm-${data.id}" src="img/x.svg" alt="Eliminar Comentario">
+  `;
   // actualizar post
   const btnEditPost = viewpostpublish.querySelector(`#btn-edit-post-${data.id}`);
   const btnSavePost = viewpostpublish.querySelector(`#btn-save-post-${data.id}`);
@@ -74,6 +95,15 @@ export const allPost = (data, autor) => {
   });
   // const btnDeletePost = document.querySelector(`#btn-delete-${data.id}`);
   viewpostpublish.querySelector(`#btn-delete-${data.id}`).addEventListener('click', () => deletePost(data.id));
+
+  // const allComments = `
+  // <div>
+  //   <input type="text" id="txtNewComm" placeholder="Escriba un comentario">
+  //   <img id="btn-save-comm-${data.id}" class="circulo-imgbut bgcolor" src="img/save.svg" alt="Enviar Comentario">
+  // </div>
+  // <input type="text" id="txtNewComm" placeholder="Escriba un comentario">
+  // <img id="btn-menu-comm-${data.id}" class="circulo-imgbut bgcolor" src="img/save.svg" alt="Menu Comentario">
+  // `
 
   // btnDeletePost.addEventListener('click', () => {
   //   deletePost(data.id);
