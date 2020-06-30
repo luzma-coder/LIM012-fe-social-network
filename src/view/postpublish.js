@@ -34,13 +34,7 @@ export const allPost = (data, autor) => {
   viewpostpublish.classList.add('post-format');
   const nameUser = autor.displayName;
   const photoUser = autor.photoURL;
-<<<<<<< HEAD
-  console.log(nameUser);
-  console.log(photoUser);
-
-=======
   const imgPost = data.img;
->>>>>>> 3741f22342f15769a7ea03a1451ae0e8e26265f9
   viewpostpublish.innerHTML = `
     <div>
       <div id="user-data">
