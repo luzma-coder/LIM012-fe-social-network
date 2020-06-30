@@ -112,29 +112,29 @@ input{
 /* -------------- estilo general para header  -------------- */
 header{
     width: 100%;
-    background-color:  #6CD3FF;;
+    background-color: #6CD3FF;
     text-align: center;
-    display: inline-block;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 .btn-header{
-    /* margin-left: 85%; */
-    left: 88%;
-    right: 3%;
-    top: 40%;
-    bottom: 14%;
+    display: flex;
+    text-decoration: none;
+    margin: 1%;
 }
 .fa-sign-out-alt:before {
     content: "\f2f5";
     color: #EB79BD;
-    font-size: 250%;
+    font-size: 200%;
 }
 .fa-user-edit:before {
     content: "\f4ff";
     color: #EB79BD;
-    font-size: 230%;
+    font-size: 180%;
 }
 .show{
-    display: block;
+    /* display: block; */
 }
 .hide{
     display: none;
@@ -361,9 +361,10 @@ h4 {
         padding-left: 120%;
     } */
     .logo-header {
+        display: flex;
+        height: 40px;
+        text-align: center;
         height: 30px;
-        /* padding-right: 5%;
-        padding-left: 18%; */
     }
     .circulo-profile{
         margin-top: 5%;

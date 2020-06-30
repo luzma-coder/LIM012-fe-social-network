@@ -133,8 +133,8 @@ body {
         /* padding-left: 1000%; */
     }
     .logo-header{
+        display: flex;
         height: 40px;
         text-align: center;
-        padding-top: 10px;
     }
 }

@@ -1,7 +1,7 @@
 import { createPost, getPosts, logOut } from '../model/firebase_wall.js';
 import { allPost } from './postpublish.js';
 
-export default () => {
+export default (profile) => {
   const user = firebase.auth().currentUser;
   const db = firebase.firestore();
   const nameUser = user.displayName;
@@ -49,7 +49,14 @@ export default () => {
   getPosts((objArray) => {
     postSection.innerHTML = '';
     objArray.forEach((element) => {
-      if (element.state !== 'privacity' || element.userId === user.uid) {
+      if (profile === 'true') {
+        if (element.userId === user.uid) {
+          db.collection('users').doc(element.userId).get()
+            .then((doc) => {
+              postSection.appendChild(allPost(element, doc.data()));
+            });
+        }
+      } else if (element.state !== 'privacity' || element.userId === user.uid) {
         db.collection('users').doc(element.userId).get()
           .then((doc) => {
             postSection.appendChild(allPost(element, doc.data()));

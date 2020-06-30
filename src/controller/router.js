@@ -18,11 +18,11 @@ const changeView = (hash) => {
       const headerElem = document.querySelector('header');
       headerElem.classList.remove('hide');
       headerElem.classList.add('show');
-      container.appendChild(components.wal());
+      container.appendChild(components.wal(false));
     }
       break;
     case '#/profile':
-      container.appendChild(components.profi());
+      container.appendChild(components.wal(true));
       break;
     default:
       container.appendChild(components.different());
