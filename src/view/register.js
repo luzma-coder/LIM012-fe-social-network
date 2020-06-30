@@ -80,5 +80,27 @@ export default () => {
       registerUser(userEmail, userPass, userNames);
     }
   });
+  if (btnNewUser) {
+    console.log('hola!!');
+    btnNewUser.addEventListener(('click'), () => {
+      const names = divElemt.querySelector('#names');
+      const email = divElemt.querySelector('#email');
+      const pass = divElemt.querySelector('#pass');
+      const userNames = names.value;
+      const userEmail = email.value;
+      const userPass = pass.value;
+      if (userNames === '') {
+        divElemt.querySelector('#messages').innerHTML = '⚠️ Por favor ingrese su nombre';
+      } else if (userEmail === '') {
+        divElemt.querySelector('#messages').innerHTML = '⚠️ Por favor ingrese un correo electronico';
+      } else if (userPass === '') {
+        divElemt.querySelector('#messages').innerHTML = '⚠️ Por favor ingrese su contraeña';
+      } else {
+        newUser(userEmail, userPass);
+        verifEmail(userEmail);
+        divElemt.querySelector('#messages').innerHTML = `${userNames}, te has registrado correctamente, hemos enviado un email de confirmacion a tu direccion de correo.`;
+      }
+    });
+  }
   return divElemt;
 };

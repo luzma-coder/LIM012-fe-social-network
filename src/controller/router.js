@@ -21,6 +21,9 @@ const changeView = (hash) => {
       container.appendChild(components.wal());
     }
       break;
+    case '#/profile':
+      container.appendChild(components.profi());
+      break;
     default:
       container.appendChild(components.different());
   }
