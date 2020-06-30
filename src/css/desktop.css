@@ -113,13 +113,20 @@ body {
         flex-direction: column;
     }
     .mini-img{
-        width: 8%;
+        width: 4%;
     }
     .circulo-imgbut{
         height: 8%;
         width: auto;
         padding: 1%;
     }
+    .image-post {
+        min-height: 50%;
+        border-bottom: 1px solid #ccc;
+        background-color: #fff;
+    }
+    
+
     .circulo-profile{
         margin-left: 36%;
         margin-top: 5%;

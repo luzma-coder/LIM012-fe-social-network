@@ -42,16 +42,35 @@ export const updatePost = (idPost, newContent, newPrivacy) => {
 // };
 // postComments: [],
 
-export const logOut = () => firebase.auth().signOut();
+// cargar imagen
+
+export const uploadImage = (date, img) => {
+  const postImageRef = firebase.storage().ref().child(`imagenes/${img.name}`);
+  const metadata = { contentType: img.type };
+  return postImageRef.put(img, metadata)
+    .then(snapshot => (snapshot.ref.getDownloadURL()));
+};
 
 export const deletePost = idPost => firebase.firestore().collection('posts').doc(idPost).delete();
 
 export const deleteDoc = idComm => firebase.firestore().collection('posts').doc(idComm).delete();
+export const logOut = () => firebase.auth().signOut();
+
 
 export const updateUser = (idDoc, newUserName, newUserPhoto) => firebase.firestore().collection('users').doc(idDoc).set({
   displayName: newUserName,
   photoURL: newUserPhoto,
 });
+
+export const addLikeToPost = (id, user) => firebase.firestore().collection('posts').doc(id).collection('likes')
+  .add({
+    userName: user,
+    postId: id,
+  });
+
+export const removeLikeToPost = (idPost, idLike) => firebase.firestore().collection('posts').doc(idPost).collection('likes')
+  .doc(idLike)
+  .delete();
 
 // export const dataUser = userNameDoc =>
 //  firebase.firestore().collection('users').doc(userNameDoc).get();

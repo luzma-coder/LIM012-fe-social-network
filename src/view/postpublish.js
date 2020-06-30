@@ -34,18 +34,21 @@ export const allPost = (data, autor) => {
   viewpostpublish.classList.add('post-format');
   const nameUser = autor.displayName;
   const photoUser = autor.photoURL;
+<<<<<<< HEAD
   console.log(nameUser);
   console.log(photoUser);
 
+=======
+  const imgPost = data.img;
+>>>>>>> 3741f22342f15769a7ea03a1451ae0e8e26265f9
   viewpostpublish.innerHTML = `
     <div>
       <div id="user-data">
         <img class="circulo-min" src="${photoUser}" alt="">
         <div>
-        <h4 class="user-name">${nameUser}</h4>
+        <h4 class="user-name">${nameUser}</h4> <p> ${data.state}</p>
         <div class='post-date'> 
         <p>${data.date}</p>
-        <p> ${data.state}</p>
         </div>
         <div>
           <img id="btn-edit-post-${data.id}" class="showbtn circulo-imgbut bgcolor" src="img/edit.svg" alt="Editar Post">
@@ -60,28 +63,13 @@ export const allPost = (data, autor) => {
         </div>
         </div>
       </div>
-    </div>
-    <textarea id="textarea-${data.id}" class="only-lines" disabled="true">${data.content}</textarea>
-    <span class="post-show-like-comments">${data.likes}</span>
-    
-    <input type="text" id="txt-comm-new" placeholder="Escribe un comentario">
-    <img id="btn-save-comm-${data.id}" src="img/x.svg" alt="Guardar Comentario">
+        <textarea id="textarea-${data.id}" class="only-lines" disabled="true">${data.content}</textarea>
+        <div class="image-post" id ="get-file-upload" type="file" accept="image/*">
+        ${(data.img !== undefined) ? `<img class="image-post" src="${imgPost}" alt=""/>` : ""}
+        </div>
+        <img class="mini-img" src="img/like.svg" alt="likes" title="likes" /><span id="likes-count-${data.id}"class="">${data.likes} Likes</span>
+    `;
 
-    <img class="circulo-min" src="${photoUser}" alt="">
-    <h4 class="user-name">${nameUser}</h4>
-    <input type="text" id="txt-comm${data.id}">
-    <img id="btn-delete-comm-${data.id}" src="img/x.svg" alt="Eliminar Comentario">
-
-    <img class="circulo-min" src="${photoUser}" alt="">
-    <h4 class="user-name">${nameUser}</h4>
-    <input type="text" id="txt-comm${data.id}">
-    <img id="btn-delete-comm-${data.id}" src="img/x.svg" alt="Eliminar Comentario">
-
-    <img class="circulo-min" src="${photoUser}" alt="">
-    <h4 class="user-name">${nameUser}</h4>
-    <input type="text" id="txt-comm${data.id}">
-    <img id="btn-delete-comm-${data.id}" src="img/x.svg" alt="Eliminar Comentario">
-  `;
   // actualizar post
   const btnEditPost = viewpostpublish.querySelector(`#btn-edit-post-${data.id}`);
   const btnSavePost = viewpostpublish.querySelector(`#btn-save-post-${data.id}`);
