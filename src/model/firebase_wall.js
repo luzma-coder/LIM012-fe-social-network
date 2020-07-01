@@ -54,13 +54,26 @@ export const updateUser = (idDoc, newUserName, newUserPhoto) => firebase.firesto
   photoURL: newUserPhoto,
 });
 
-export const addLikeToPost = (id, user) => firebase.firestore().collection('posts').doc(id).collection('likes')
+export const likePost = (user, idPost) => firebase.firestore().collection('posts').doc(idPost).collection('likes')
   .add({
     userName: user,
-    postId: id,
+    postId: idPost,
   });
 
-export const removeLikeToPost = (idPost, idLike) => firebase.firestore().collection('posts').doc(idPost).collection('likes')
+export const getLikesPost = (idPost, callback) => firebase.firestore().doc(`posts/${idPost}`).collection('likes')
+  .onSnapshot((querySnapshot) => {
+    const data = [];
+    querySnapshot.forEach((post) => {
+      data.push({
+        id: post.idPost,
+        userId: post.data().userId,
+        likes: post.data().likes,
+      });
+    });
+    callback(data);
+  });
+
+export const removeLikePost = (idPost, idLike) => firebase.firestore().collection('posts').doc(idPost).collection('likes')
   .doc(idLike)
   .delete();
 

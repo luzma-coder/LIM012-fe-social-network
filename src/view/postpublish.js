@@ -1,4 +1,6 @@
-import { updatePost, deletePost } from '../model/firebase_wall.js';
+import {
+  updatePost, deletePost,
+} from '../model/firebase_wall.js';
 
 const ToEditPost = (btnSavePost, btnCancelPost, textAPost, selPrivPost, idDoc) => {
   const btnShow = (btnToShow) => {
@@ -59,10 +61,37 @@ export const allPost = (data, autor) => {
       </div>
         <textarea id="textarea-${data.id}" class="only-lines" disabled="true">${data.content}</textarea>
         <div class="image-post" id ="get-file-upload" type="file" accept="image/*">
-        ${(data.img !== undefined) ? `<img class="image-post" src="${imgPost}" alt=""/>` : ""}
+        ${(data.img !== undefined) ? `<img class="image-post" src="${imgPost}" alt=""/>` : ''}
         </div>
-        <img class="mini-img" src="img/like.svg" alt="likes" title="likes" /><span id="likes-count-${data.id}"class="">${data.likes} Likes</span>
+        <img id = "#btnLike-${data.id}" class="mini-img" src="img/like.svg" alt="likes" title="likes" /><span id="#likes-count-${data.id}"class="">${data.likes} Likes</span>
     `;
+
+  /* const btnLike = viewpostpublish.querySelector(`#btnLike-${data.id}`);
+  getLikesPost(data.id, (likes) => {
+  //  .then(response => console.log(response));
+    const likesCounter = likes.length;
+    const likesSpan = viewpostpublish.querySelector(`#likes-count-${data.id}`);
+    // likesSpan.innerHTML = likesCounter;
+    console.log(likesSpan);
+    console.log(likesCounter);
+  });
+
+  btnLike.addEventListener('click', (event) => {
+    event.preventDefault();
+    // eslint-disable-next-line no-undef
+    const likesCounter = likes.length;
+    const user = firebase.auth().currentUser;
+    if (likesCounter === 0) {
+      likePost(data.id, user.email)
+        .then(response => getLikesPost(data.id, (likes) => {
+          btnLike.src = 'img/like.svg';
+          // eslint-disable-next-line no-shadow
+          const likesCounter = likes.length;
+          const likesSpan = viewpostpublish.querySelector(`#likes-count-${data.id}`);
+          likesSpan.innerHTML = likesCounter;
+        }));
+    }
+ });  */
 
   // actualizar post
   const btnEditPost = viewpostpublish.querySelector(`#btn-edit-post-${data.id}`);
@@ -79,12 +108,14 @@ export const allPost = (data, autor) => {
   // const btnDeletePost = document.querySelector(`#btn-delete-${data.id}`);
   viewpostpublish.querySelector(`#btn-delete-${data.id}`).addEventListener('click', () => deletePost(data.id));
 
-  // btnDeletePost.addEventListener('click', () => {
-  //   deletePost(data.id);
-  //   console.log(data.id);
-  // });
-  // console.log(data.content);
-  // console.log(viewpostpublish);
-  // console.log(data);
   return viewpostpublish;
 };
+
+
+// btnDeletePost.addEventListener('click', () => {
+//   deletePost(data.id);
+//   console.log(data.id);
+// });
+// console.log(data.content);
+// console.log(viewpostpublish);
+// console.log(data);
