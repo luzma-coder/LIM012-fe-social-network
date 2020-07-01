@@ -55,19 +55,11 @@ export const allPost = (data, autor) => {
             </div>
               <div class='post-date'> 
                 <p>${data.date}</p>
-                <p>${data.state}</p>
                 <select class='select-edited' id="selec-privacy-${data.id}" disabled="true">
-                    <option value="privacity">🔒</option>
-                    <option value="public">🌎</option>
                   </select>
               </div>
           </div>
         </div>
-      </div>
-        <div class='post-date'> 
-        <span>${data.date}</span>
-        <select class='select-edited' id="selec-privacy-${data.id}" disabled="true">
-      </select>
       </div>
     </div>
   </header>
