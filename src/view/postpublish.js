@@ -47,15 +47,15 @@ export const allPost = (data, autor) => {
                   <img id="btn-save-post-${data.id}" class="hide circulo-imgbut bgcolor" src="img/save.svg" alt="Guardar cambios">
                   <img id="btn-cancel-post-${data.id}" class="hide circulo-imgbut bgcolor" src="img/x.svg" alt="Cancelar cambios">
                   <a id='btn-delete-${data.id}'><img class="mini-img bgcolor" src="img/trash.png" alt="Insertar imagen"></a>
-                  <select class='select-edited' id="selec-privacy-${data.id}" disabled="true">
-                    <option value="privacity">🔒</option>
-                    <option value="public">🌎</option>
-                  </select>
               </div>
             </div>
               <div class='post-date'> 
                 <p>${data.date}</p>
                 <p>${data.state}</p>
+                <select class='select-edited' id="selec-privacy-${data.id}" disabled="true">
+                    <option value="privacity">🔒</option>
+                    <option value="public">🌎</option>
+                  </select>
               </div>
           </div>
         </div>
