@@ -27,8 +27,8 @@ export default (profile) => {
   <section class="post">
       <section id="post-new">
           <select id="post-new-privacity">
-          <option value="🌎">🌎 Público</option>
-          <option value="🔒">🔒 Privado</option>
+          <option value="public">🌎 Público</option>
+          <option value="privacity">🔒 Privado</option>
           </select>
           <textarea id="post-new-text" cols="" rows="3" placeholder="¿Qué pasos compartiras hoy?"></textarea>
           <div class="post-buttoms">
