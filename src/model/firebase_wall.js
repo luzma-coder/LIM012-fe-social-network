@@ -34,6 +34,13 @@ export const updatePost = (idPost, newContent, newPrivacy) => {
     state: newPrivacy,
   });
 };
+// export const createComm= (idPost, txtComment, idUserComm) => {
+//   const refPost = firebase.firestore().collection('posts').doc(idPost);
+//   return refPost.update({
+//     postComments[idx].commTexto : txtComment,
+//   });
+// };
+// postComments: [],
 
 // cargar imagen
 
@@ -46,6 +53,7 @@ export const uploadImage = (date, img) => {
 
 export const deletePost = idPost => firebase.firestore().collection('posts').doc(idPost).delete();
 
+export const deleteDoc = idComm => firebase.firestore().collection('posts').doc(idComm).delete();
 export const logOut = () => firebase.auth().signOut();
 
 

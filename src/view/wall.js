@@ -39,7 +39,7 @@ export default (profile) => {
             <button class="bgcolor" id="post-btn-publish">PUBLICAR</button>
           </div>
       </section>
-      <section class="prueba" id="post-published">
+      <section id="post-published">
       </section>
   </section>
     `;
