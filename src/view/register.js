@@ -12,11 +12,9 @@ const showMessage = (txtmessage) => {
 };
 
 const registerUser = (userEmail, userPass, userNames) => {
-  // const spanMessage = document.body.querySelector('#messages');
   newUser(userEmail, userPass)
     .then((result) => {
       showMessage(`⚠️ ${userNames}, enviamos un correo para activar su cuenta.`);
-      // spanMessage.innerHTML = `⚠️ ${userNames}, enviamos un correo para activar su cuenta.`;
       verifEmail()
         .then(() => {
         // Verification email sent.
@@ -24,7 +22,6 @@ const registerUser = (userEmail, userPass, userNames) => {
         .catch((error) => {
           // error firebase por "sendEmailVerification()"
           showMessage(error.code);
-          // spanMessage.innerHTML = error.code;
         // Error occurred. Inspect error.code.
         });
       // guardar nombre del usuario en coleccion users
@@ -34,7 +31,6 @@ const registerUser = (userEmail, userPass, userNames) => {
     .catch(() => {
       // error firebase por "createUserWithEmailAndPassword()", especificar a futuro.
       showMessage('⚠️Error al auntenticar usuario, verifique su correo, cuenta, clave o INICIE SESION, gracias.');
-      // spanMessage.innerHTML = 'Error al auntenticar usuario, intentelo nuevamente, gracias.';
     });
   firebase.auth().signOut()
     .then(() => {
@@ -70,12 +66,10 @@ export default () => {
     const userPass = divElemt.querySelector('#pass').value;
     if (userNames === '') {
       showMessage('⚠️ Por favor ingrese su nombre');
-      // divElemt.querySelector('#messages').innerHTML = '⚠️ Por favor ingrese su nombre';
     } else if (userEmail === '') {
       showMessage('⚠️ Por favor ingrese un correo electronico');
     } else if (userPass === '') {
       showMessage('⚠️ Por favor ingrese su contraseña');
-      // divElemt.querySelector('#messages').innerHTML = '⚠️ Por favor ingrese su contraseña';
     } else {
       registerUser(userEmail, userPass, userNames);
     }

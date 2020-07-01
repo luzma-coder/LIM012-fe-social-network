@@ -23,15 +23,19 @@ const ToEditPost = (btnSavePost, btnCancelPost, textAPost, selPrivPost, idDoc) =
     updatePost(idDoc, textAPost.value, selPrivPost.value);
   });
   btnCancelPost.addEventListener('click', () => {
+    // btnEditPost = document.querySelector();
     btnHide(btnCancelPost);
     btnHide(btnSavePost);
+    // btnShow(btnEditPost);
     textAPost.value = oldtextAPost;
     textAPost.disabled = true;
     selPrivPost.disabled = true;
+    introCancel = true;
   });
 };
 
 export const allPost = (data, autor) => {
+  const userActual = firebase.auth().currentUser;
   const viewpostpublish = document.createElement('article');
   viewpostpublish.classList.add('post-format');
   const nameUser = autor.displayName;
@@ -53,21 +57,35 @@ export const allPost = (data, autor) => {
             </div>
               <div class='post-date'> 
                 <p>${data.date}</p>
-                <p>${data.state}</p>
                 <select class='select-edited' id="selec-privacy-${data.id}" disabled="true">
-                    <option value="privacity">🔒</option>
-                    <option value="public">🌎</option>
                   </select>
               </div>
           </div>
         </div>
       </div>
-        <textarea id="textarea-${data.id}" class="only-lines" disabled="true">${data.content}</textarea>
-        <div class="image-post" id ="get-file-upload" type="file" accept="image/*">
-        ${(data.img !== undefined) ? `<img class="image-post" src="${imgPost}" alt=""/>` : ''}
-        </div>
-        <img id = "#btnLike-${data.id}" class="mini-img" src="img/like.svg" alt="likes" title="likes" /><span id="#likes-count-${data.id}"class="">${data.likes} Likes</span>
-    `;
+    </div>
+  </header>
+  <textarea id="textarea-${data.id}" class="only-lines" disabled="true">${data.content}</textarea>
+  <div class="image-post" id ="get-file-upload" type="file" accept="image/*">
+    ${(data.img !== undefined) ? `<img class="image-post" src="${imgPost}" alt=""/>` : ""}
+  </div>
+  <img class="mini-img" src="img/like.svg" alt="likes" title="likes" /><span id="likes-count-${data.id}"class="">${data.likes} Likes</span>
+  `;
+  // cargar valor de privacidad en select
+  const selectPriv = viewpostpublish.querySelector(`#selec-privacy-${data.id}`);
+  const optionpublic = document.createElement('option');
+  const optionprivac = document.createElement('option');
+  optionpublic.value = 'public';
+  optionprivac.value = 'privacity';
+  optionpublic.innerHTML = '🌎';
+  optionprivac.innerHTML = '🔒';
+  if (data.state === 'privacity') {
+    selectPriv.appendChild(optionprivac);
+    selectPriv.appendChild(optionpublic);
+  } else {
+    selectPriv.appendChild(optionpublic);
+    selectPriv.appendChild(optionprivac);
+  }
 
   /* const btnLike = viewpostpublish.querySelector(`#btnLike-${data.id}`);
   getLikesPost(data.id, (likes) => {
@@ -107,10 +125,28 @@ export const allPost = (data, autor) => {
     viewpostpublish.querySelector(`#btn-edit-post-${data.id}`).classList.remove('showbtn');
     viewpostpublish.querySelector(`#btn-edit-post-${data.id}`).classList.add('hide');
     ToEditPost(btnSavePost, btnCancelPost, textAPost, selPrivPost, data.id);
+    viewpostpublish.querySelector(`#btn-edit-post-${data.id}`).classList.remove('hide');
+    viewpostpublish.querySelector(`#btn-edit-post-${data.id}`).classList.add('showbtn');
   });
   // const btnDeletePost = document.querySelector(`#btn-delete-${data.id}`);
   viewpostpublish.querySelector(`#btn-delete-${data.id}`).addEventListener('click', () => deletePost(data.id));
 
+  // const allComments = `
+  // <div>
+  //   <input type="text" id="txtNewComm" placeholder="Escriba un comentario">
+  //   <img id="btn-save-comm-${data.id}" class="circulo-imgbut bgcolor" src="img/save.svg" alt="Enviar Comentario">
+  // </div>
+  // <input type="text" id="txtNewComm" placeholder="Escriba un comentario">
+  // <img id="btn-menu-comm-${data.id}" class="circulo-imgbut bgcolor" src="img/save.svg" alt="Menu Comentario">
+  // `
+
+  // btnDeletePost.addEventListener('click', () => {
+  //   deletePost(data.id);
+  //   console.log(data.id);
+  // });
+  // console.log(data.content);
+  // console.log(viewpostpublish);
+  // console.log(data);
   return viewpostpublish;
 };
 
