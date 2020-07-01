@@ -39,22 +39,25 @@ export const allPost = (data, autor) => {
      <div>
         <div id="user-data">
           <img class="circulo-min" src="${photoUser}" alt="">
-        <div>
-        <h4 class="user-name">${nameUser}</h4> <p> ${data.state}</p>
-        <div class='post-date'> 
-        <p>${data.date}</p>
-        </div>
-        <div>
-          <img id="btn-edit-post-${data.id}" class="showbtn circulo-imgbut bgcolor" src="img/edit.svg" alt="Editar Post">
-          <img id="btn-save-post-${data.id}" class="hide circulo-imgbut bgcolor" src="img/save.svg" alt="Guardar cambios">
-          <img id="btn-cancel-post-${data.id}" class="hide circulo-imgbut bgcolor" src="img/x.svg" alt="Cancelar cambios">
-          <a id='btn-delete-${data.id}'><img class="mini-img bgcolor" src="img/trash.png" alt="Insertar imagen"></a>
-          <select class='select-edited' id="selec-privacy-${data.id}" disabled="true">
-          <option value="privacity">🔒</option>
-          <option value="public">🌎</option>
-          </select>
-        </div>
-        </div>
+          <div id='infoUserPost'>
+            <div id='infoAlign'>
+              <h4 class="user-name">${nameUser}</h4>
+              <div id='miniButtons'>
+                  <img id="btn-edit-post-${data.id}" class="showbtn circulo-imgbut bgcolor" src="img/edit.svg" alt="Editar Post">
+                  <img id="btn-save-post-${data.id}" class="hide circulo-imgbut bgcolor" src="img/save.svg" alt="Guardar cambios">
+                  <img id="btn-cancel-post-${data.id}" class="hide circulo-imgbut bgcolor" src="img/x.svg" alt="Cancelar cambios">
+                  <a id='btn-delete-${data.id}'><img class="mini-img bgcolor" src="img/trash.png" alt="Insertar imagen"></a>
+              </div>
+            </div>
+              <div class='post-date'> 
+                <p>${data.date}</p>
+                <p>${data.state}</p>
+                <select class='select-edited' id="selec-privacy-${data.id}" disabled="true">
+                    <option value="privacity">🔒</option>
+                    <option value="public">🌎</option>
+                  </select>
+              </div>
+          </div>
         </div>
       </div>
         <textarea id="textarea-${data.id}" class="only-lines" disabled="true">${data.content}</textarea>
