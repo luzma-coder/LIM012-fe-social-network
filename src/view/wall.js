@@ -3,7 +3,7 @@ import {
 } from '../model/firebase_wall.js';
 import { allPost } from './postpublish.js';
 
-export default () => {
+export default (profile) => {
   const user = firebase.auth().currentUser;
   const db = firebase.firestore();
   const nameUser = user.displayName;
@@ -21,13 +21,14 @@ export default () => {
   <aside class="user">
       <div id="user-name">
       ${photoUser === null ? '<img class="circulo-profile" src="img/avatar-perfil.jpg"/>' : `<img class="circulo-profile" src="${photoUser}" alt=""/>`}
-      ${nameUser === null ? `<p id="user-name-profile">${user.email}<p>` : `<p class="user-name-profile">${nameUser}</p>`}  
+      ${nameUser === null ? `<p id="user-name-profile">${user.email}<p>` : `<p class="user-name-profile">${nameUser}</p>`}
+      <p class='lil-text'>Aprendiendo a bailar</p>
   </aside>
   <section class="post">
       <section id="post-new">
           <select id="post-new-privacity">
-          <option value="🌎">🌎 Público</option>
-          <option value="🔒">🔒 Privado</option>
+          <option value="public">🌎 Público</option>
+          <option value="privacity">🔒 Privado</option>
           </select>
           <textarea id="post-new-text" cols="" rows="3" placeholder="¿Qué pasos compartiras hoy?"></textarea>
           <div class="post-buttoms">
@@ -50,7 +51,14 @@ export default () => {
   getPosts((objArray) => {
     postSection.innerHTML = '';
     objArray.forEach((element) => {
-      if (element.state !== 'privacity' || element.userId === user.uid) {
+      if (profile === 'true') {
+        if (element.userId === user.uid) {
+          db.collection('users').doc(element.userId).get()
+            .then((doc) => {
+              postSection.appendChild(allPost(element, doc.data()));
+            });
+        }
+      } else if (element.state !== 'privacity' || element.userId === user.uid) {
         db.collection('users').doc(element.userId).get()
           .then((doc) => {
             postSection.appendChild(allPost(element, doc.data()));
