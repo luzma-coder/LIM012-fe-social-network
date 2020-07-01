@@ -21,48 +21,65 @@ const ToEditPost = (btnSavePost, btnCancelPost, textAPost, selPrivPost, idDoc) =
     updatePost(idDoc, textAPost.value, selPrivPost.value);
   });
   btnCancelPost.addEventListener('click', () => {
+    // btnEditPost = document.querySelector();
     btnHide(btnCancelPost);
     btnHide(btnSavePost);
+    // btnShow(btnEditPost);
     textAPost.value = oldtextAPost;
     textAPost.disabled = true;
     selPrivPost.disabled = true;
+    introCancel = true;
   });
 };
 
 export const allPost = (data, autor) => {
+  const userActual = firebase.auth().currentUser;
   const viewpostpublish = document.createElement('article');
   viewpostpublish.classList.add('post-format');
   const nameUser = autor.displayName;
   const photoUser = autor.photoURL;
   const imgPost = data.img;
   viewpostpublish.innerHTML = `
+  <header class="article-post-user">
+    <img class="circulo-min" src="${photoUser}" alt="">
     <div>
-      <div id="user-data">
-        <img class="circulo-min" src="${photoUser}" alt="">
-        <div>
-        <h4 class="user-name">${nameUser}</h4> <p> ${data.state}</p>
-        <div class='post-date'> 
-        <p>${data.date}</p>
-        </div>
+      <div>
+        <h4 class="user-name">${nameUser}</h4> 
         <div>
           <img id="btn-edit-post-${data.id}" class="showbtn circulo-imgbut bgcolor" src="img/edit.svg" alt="Editar Post">
           <img id="btn-save-post-${data.id}" class="hide circulo-imgbut bgcolor" src="img/save.svg" alt="Guardar cambios">
           <img id="btn-cancel-post-${data.id}" class="hide circulo-imgbut bgcolor" src="img/x.svg" alt="Cancelar cambios">
           <a id='btn-delete-${data.id}'><img class="mini-img bgcolor" src="img/trash.png" alt="Insertar imagen"></a>
-          <select class='select-edited' id="selec-privacy-${data.id}" disabled="true">
-          <option value="privacity">🔒</option>
-          <option value="public">🌎</option>
-          </select>
-        </div>
-        </div>
-        </div>
+          </div>
       </div>
-        <textarea id="textarea-${data.id}" class="only-lines" disabled="true">${data.content}</textarea>
-        <div class="image-post" id ="get-file-upload" type="file" accept="image/*">
-        ${(data.img !== undefined) ? `<img class="image-post" src="${imgPost}" alt=""/>` : ""}
-        </div>
-        <img class="mini-img" src="img/like.svg" alt="likes" title="likes" /><span id="likes-count-${data.id}"class="">${data.likes} Likes</span>
-    `;
+        <div class='post-date'> 
+        <span>${data.date}</span>
+        <select class='select-edited' id="selec-privacy-${data.id}" disabled="true">
+      </select>
+      </div>
+    </div>
+  </header>
+  <textarea id="textarea-${data.id}" class="only-lines" disabled="true">${data.content}</textarea>
+  <div class="image-post" id ="get-file-upload" type="file" accept="image/*">
+    ${(data.img !== undefined) ? `<img class="image-post" src="${imgPost}" alt=""/>` : ""}
+  </div>
+  <img class="mini-img" src="img/like.svg" alt="likes" title="likes" /><span id="likes-count-${data.id}"class="">${data.likes} Likes</span>
+  `;
+  // cargar valor de privacidad en select
+  const selectPriv = viewpostpublish.querySelector(`#selec-privacy-${data.id}`);
+  const optionpublic = document.createElement('option');
+  const optionprivac = document.createElement('option');
+  optionpublic.value = 'public';
+  optionprivac.value = 'privacity';
+  optionpublic.innerHTML = '🌎';
+  optionprivac.innerHTML = '🔒';
+  if (data.state === 'privacity') {
+    selectPriv.appendChild(optionprivac);
+    selectPriv.appendChild(optionpublic);
+  } else {
+    selectPriv.appendChild(optionpublic);
+    selectPriv.appendChild(optionprivac);
+  }
 
   // actualizar post
   const btnEditPost = viewpostpublish.querySelector(`#btn-edit-post-${data.id}`);
@@ -75,6 +92,8 @@ export const allPost = (data, autor) => {
     viewpostpublish.querySelector(`#btn-edit-post-${data.id}`).classList.remove('showbtn');
     viewpostpublish.querySelector(`#btn-edit-post-${data.id}`).classList.add('hide');
     ToEditPost(btnSavePost, btnCancelPost, textAPost, selPrivPost, data.id);
+    viewpostpublish.querySelector(`#btn-edit-post-${data.id}`).classList.remove('hide');
+    viewpostpublish.querySelector(`#btn-edit-post-${data.id}`).classList.add('showbtn');
   });
   // const btnDeletePost = document.querySelector(`#btn-delete-${data.id}`);
   viewpostpublish.querySelector(`#btn-delete-${data.id}`).addEventListener('click', () => deletePost(data.id));
