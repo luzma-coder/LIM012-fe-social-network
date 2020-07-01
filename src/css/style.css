@@ -189,6 +189,12 @@ header{
     text-align: center;
 }
 /* -------------- estilos generales para post --- -------------- */
+.image-post{
+    max-width: 100%;
+    border-bottom: 1px solid #ccc;
+    background-color: #fff;
+    box-sizing: border-box;
+}
 .post, .user{
     padding: 0% 1%;
 }
