@@ -19,10 +19,12 @@ const changeView = (hash) => {
       headerElem.classList.remove('hide');
       headerElem.classList.add('show');
       container.appendChild(components.wal(false));
+      // container.appendChild(components.wal());
     }
       break;
     case '#/profile':
       container.appendChild(components.wal(true));
+      // container.appendChild(components.profi());
       break;
     default:
       container.appendChild(components.different());

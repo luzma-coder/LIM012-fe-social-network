@@ -48,10 +48,11 @@ export default (profile) => {
   divElemt.classList.add('view-wall');
   divElemt.innerHTML = viewWall;
   const postSection = divElemt.querySelector('#post-published');
+  // revisar y simplificar la función.
   getPosts((objArray) => {
     postSection.innerHTML = '';
     objArray.forEach((element) => {
-      if (profile === 'true') {
+      if (profile === true) {
         if (element.userId === user.uid) {
           db.collection('users').doc(element.userId).get()
             .then((doc) => {
