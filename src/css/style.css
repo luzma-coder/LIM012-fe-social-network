@@ -184,6 +184,8 @@ header{
     position: relative;
     width: 100%;
     background-color: #6CD3FF;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
 }
 .user-name-profile{
     text-align: center;
@@ -216,7 +218,7 @@ header{
     display: flex;
     flex-direction: column;
     border: 2px solid #ccc;
-    border-radius: 4px;
+    border-radius: 10px;
     /* flex-wrap: wrap-reverse; */
 }
 select {
@@ -230,11 +232,13 @@ select {
 }
 
 .select-edited{
-    width: 15%;
-    /* height: 40%; */
-    /* margin-left: 7%; */
+    width: 40px;
+    height: 18px;
+    margin-left: 2px;
     border-bottom: 100%;
     padding: 0%;
+    border-radius: 10px;
+    font-size: 10px;
 }
 .new-state{
     padding-left: 1%;
@@ -275,9 +279,14 @@ article.post-format{
 .only-lines{
     border-left: none;
     border-right: none;
-    border-top-color:#c1c1c1;
+    /* border-top-color: #c1c1c1; */
     border-bottom-color: 1px solid #C1C1C1;
-    border-radius: 0px;
+    /* border-radius: 0px; */
+    margin-top: 0%;
+    margin-bottom: 0%;
+    /* padding-bottom: 20%; */
+    /* overflow-x: scroll; */
+    /* overflow-y: hidden; */
 }
 
 .post-show-like-comments{
