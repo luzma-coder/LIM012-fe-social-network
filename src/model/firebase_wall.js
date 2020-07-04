@@ -1,7 +1,7 @@
 export const createPost = (uid, contentText, privacy, imgPost) => firebase.firestore().collection('posts').add({
   userId: uid,
   content: contentText,
-  likes: 0,
+  likes: [],
   date: new Date().toLocaleString(),
   state: privacy,
   img: imgPost,
@@ -17,7 +17,7 @@ export const getPosts = callback => firebase.firestore().collection('posts')
         id: doc.id,
         userId: doc.data().userId,
         content: doc.data().content,
-        likes: doc.data().likes,
+        likes: [],
         date: doc.data().date,
         state: doc.data().state,
         img: doc.data().img,
@@ -62,13 +62,14 @@ export const updateUser = (idDoc, newUserName, newUserPhoto) => firebase.firesto
   photoURL: newUserPhoto,
 });
 
-export const likePost = (user, idPost) => firebase.firestore().collection('posts').doc(idPost).collection('likes')
+/* likePost = (user, idPost) => firebase.firestore().collection('posts').doc(idPost)
+.collection('likes')
   .add({
     userName: user,
     postId: idPost,
   });
 
-export const getLikesPost = (idPost, callback) => firebase.firestore().doc(`posts/${idPost}`).collection('likes')
+getLikesPost = (idPost, callback) => firebase.firestore().doc(`posts/${idPost}`).collection('likes')
   .onSnapshot((querySnapshot) => {
     const data = [];
     querySnapshot.forEach((post) => {
@@ -79,7 +80,8 @@ export const getLikesPost = (idPost, callback) => firebase.firestore().doc(`post
       });
     });
     callback(data);
-  });
+  }); */
+export const updateLike = (id, likes) => firebase.firestore().collection('posts').doc(id).update({ likes });
 
 export const removeLikePost = (idPost, idLike) => firebase.firestore().collection('posts').doc(idPost).collection('likes')
   .doc(idLike)
