@@ -11,6 +11,11 @@ header{
     justify-content: space-between;
     align-items: center;
 }
+#toggle-menu{
+    background: #6CD3FF;
+    line-height: 2;
+    color: #fff;
+}
 .fa-bars:before {
     content: "\f0c9";
     color: #EB79BD;
