@@ -1,5 +1,5 @@
 import {
-  updatePost, deletePost, addComment, getComments, getUser,
+  updatePost, deletePost, updateLike, addComment, getComments, getUser,
 } from '../model/firebase_wall.js';
 
 const ToEditPost = (btnSavePost, btnCancelPost, idDoc) => {
@@ -70,7 +70,8 @@ export const allPost = (data, autor) => {
   <div class="image-post" id ="get-file-upload" type="file" accept="image/*">
     ${(data.img !== undefined) ? `<img class="image-post" src="${imgPost}" alt=""/>` : ''}
   </div>
-  <img class="mini-img" src="img/like.svg" alt="likes" title="likes" /><span id="likes-count-${data.id}"class="">${data.likes} Likes</span>
+  <img id ="btnLike-${data.id}" class="mini-img" src="img/like.svg" alt="likes" title="likes"/>
+  <p class="counter-text">${data.likes.length}</p><p class="counter-text">Likes</p>
   <img id="btn-show-comm" class="i-send" src="img/message-square.svg" alt="Mostrar Comentarios">
   <span> Comentarios </span>
   <section id="comments" class="hide">
@@ -97,6 +98,23 @@ export const allPost = (data, autor) => {
     selectPriv.appendChild(optionpublic);
     selectPriv.appendChild(optionprivac);
   }
+
+  const btnLike = viewpostpublish.querySelector(`#btnLike-${data.id}`);
+  btnLike.addEventListener('click', () => {
+    // event.preventDefault();
+    const arrayLikes = data.likes.indexOf(userActual.uid);
+    if (arrayLikes === -1) {
+      data.likes.push(userActual.uid);
+      updateLike(data.id, data.likes);
+    } else {
+      data.likes.splice(arrayLikes, 1);
+      updateLike(data.id, data.likes);
+    }
+    console.log(data.likes);
+    console.log(userActual.uid);
+    console.log(data.likes.length);
+  });
+
 
   // actualizar post
   const btnEditPost = viewpostpublish.querySelector(`#btn-edit-post-${data.id}`);
@@ -170,3 +188,12 @@ export const allPost = (data, autor) => {
   // console.log(data);
   return viewpostpublish;
 };
+
+
+// btnDeletePost.addEventListener('click', () => {
+//   deletePost(data.id);
+//   console.log(data.id);
+// });
+// console.log(data.content);
+// console.log(viewpostpublish);
+// console.log(data);

@@ -1,7 +1,7 @@
 export const createPost = (uid, contentText, privacy, imgPost) => firebase.firestore().collection('posts').add({
   userId: uid,
   content: contentText,
-  likes: 0,
+  likes: [],
   date: new Date().toLocaleString(),
   state: privacy,
   img: imgPost,
@@ -114,15 +114,7 @@ export const deleteDoc = (idPost, idComm) => firebase.firestore().collection('po
   .doc(idComm)
   .delete();
 
-export const addLikeToPost = (id, user) => firebase.firestore().collection('posts').doc(id).collection('likes')
-  .add({
-    userName: user,
-    postId: id,
-  });
-
-export const removeLikeToPost = (idPost, idLike) => firebase.firestore().collection('posts').doc(idPost).collection('likes')
-  .doc(idLike)
-  .delete();
+export const updateLike = (id, likes) => firebase.firestore().collection('posts').doc(id).update({ likes });
 
 // export const dataUser = userNameDoc =>
 //  firebase.firestore().collection('users').doc(userNameDoc).get();
