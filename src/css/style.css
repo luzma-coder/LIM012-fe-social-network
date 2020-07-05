@@ -24,6 +24,9 @@ header label:hover{
 #btn-menu{
     display:none;
 }
+#btn-menu:checked ~ .menu{
+    margin-left: 0;
+}
 .fa-bars:before {
     content: "\f0c9";
     color: #EB79BD;
@@ -67,7 +70,9 @@ nav{
     line-height: 3;
     position: absolute;
     background: #6CD3FF;
+    margin-left: -70%;
 }
+
 
 .menu a{
     color: black;

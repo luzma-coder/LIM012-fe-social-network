@@ -146,7 +146,7 @@ body {
         flex:auto;
         line-height: 3;
         position: relative; 
-
+        margin-left: 0%;
     }
     header label{
         display: none;
