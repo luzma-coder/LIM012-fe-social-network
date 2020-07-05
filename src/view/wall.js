@@ -33,7 +33,7 @@ export default (profile) => {
           <textarea id="post-new-text" cols="" rows="3" placeholder="¿Qué pasos compartiras hoy?"></textarea>
           <div class="post-buttoms">
             <label class ="btn btn-file">
-              <input type="file" name="" id="get-file" hidden>
+              <input class='allInputs' type="file" name="" id="get-file" hidden>
               <img class="circulo-img bgcolor" src="img/image.svg" alt="Insertar imagen">
             </label>
             <button class="bgcolor" id="post-btn-publish">PUBLICAR</button>
