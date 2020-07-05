@@ -13,9 +13,32 @@
 </head>
 <body>
   <header id='header' class="hide">
-      <a class='btn-header' id='btn-profile' href='#/profile'><i class="fas fa-user-edit"></i></a>
-      <a href='#/wall'><img src="img/logoHeader.png" class="logo-header"/></a>
-      <a class='btn-header' id = "btn-logout" href='#/'><i class="fas fa-sign-out-alt"></i></a>
+    <nav class='hide'>
+      <div class='nav-icon'>
+        <a id="toggle-menu"><i class="fas fa-barss"></i></a>
+        <img src="img/logoHeader.png" class="logo-header"/>
+      </div>
+      <ul class='menu'>
+        <li class="menu-option">
+          <a class='btn-header' id='btn-profile' href='#/profile'>
+            <i class="fas fa-user-edit"></i>
+            Mi Perfil
+          </a>
+        </li>
+        <li class="menu-option">
+          <a href='#/wall'>
+            <i class="fas fa-home"></i>
+            Inicio
+          </a>
+        </li>
+        <li class="menu-option">
+          <a class='btn-header' id = "btn-logout" href='#/'>
+            <i class="fas fa-sign-out-alt"></i>
+            Cerrar Sesión
+          </a>
+        </li>
+      </ul>
+    </nav>
   </header>
   <section id ='container'></section>
 
