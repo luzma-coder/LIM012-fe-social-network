@@ -130,9 +130,9 @@ body {
      /*========== Header ========== */
     .logo-header{
         display: flex;
-        height: 40px;
-        margin-top: 4px;
-        margin-left: 4px;
+        height: 30px;
+        margin-top: 10px;
+        margin-left: 10px;
         margin-right: 0%;
     }
     .menu{
