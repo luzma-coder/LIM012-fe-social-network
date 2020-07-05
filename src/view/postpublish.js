@@ -69,8 +69,8 @@ export const allPost = (data, autor) => {
   <div class="image-post" id ="get-file-upload" type="file" accept="image/*">
     ${(data.img !== undefined) ? `<img class="image-post" src="${imgPost}" alt=""/>` : ''}
   </div>
-  <img id ="btnLike-${data.likes}" class="mini-img" src="img/like.svg" alt="likes" title="likes"/>
-  <p class="counter-text">${(data.likes.indexOf(data.id) === -1)}</p><p class="counter-text">Likes</p>
+  <img id ="btnLike-${data.id}" class="mini-img" src="img/like.svg" alt="likes" title="likes"/>
+  <p class="counter-text">${data.likes.length}</p><p class="counter-text">Likes</p>
   `;
   // cargar valor de privacidad en select
   const selectPriv = viewpostpublish.querySelector(`#selec-privacy-${data.id}`);
@@ -88,26 +88,20 @@ export const allPost = (data, autor) => {
     selectPriv.appendChild(optionprivac);
   }
 
-  const btnLike = viewpostpublish.querySelector(`#btnLike-${data.likes}`);
-
-  btnLike.addEventListener('click', (event) => {
-    event.preventDefault();
-    const arrayLikes = data.likes.indexOf(data.id);
+  const btnLike = viewpostpublish.querySelector(`#btnLike-${data.id}`);
+  btnLike.addEventListener('click', () => {
+    // event.preventDefault();
+    const arrayLikes = data.likes.indexOf(userActual.uid);
     if (arrayLikes === -1) {
-      data.likes.push(data.id);
+      data.likes.push(userActual.uid);
       updateLike(data.id, data.likes);
     } else {
       data.likes.splice(arrayLikes, 1);
       updateLike(data.id, data.likes);
     }
     console.log(data.likes);
-    console.log(data.id);
+    console.log(userActual.uid);
     console.log(data.likes.length);
-    console.log(arrayLikes);
-    // const numLikes = [];
-    // numLikes.push({
-    //  id: data.id,
-    // });
   });
 
 
