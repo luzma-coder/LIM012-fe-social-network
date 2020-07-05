@@ -131,6 +131,15 @@ body {
     .logo-header{
         display: flex;
         height: 40px;
+        margin-top: 4px;
+        margin-left: 4px;
+        margin-right: 0%;
+    }
+    .menu{
+        display: flex;
         text-align: center;
+    }
+    .fa-bars:before {
+        display: none;
     }
 }
