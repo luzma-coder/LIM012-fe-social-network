@@ -58,7 +58,11 @@ export default () => {
   btngoogleSignIn.addEventListener(('click'), () => {
     googleSignIn()
       .then((result) => {
-        updateUser(result.user.uid, result.user.displayName, result.user.photoURL);
+        updateUser(result.user.uid, result.user.displayName, result.user.photoURL)
+          .catch((error) => {
+            console.log(error);
+            console.log('No se actualizo usuario');
+          });
         window.location.hash = '#/wall';
         // changeHash('#/wall');
         console.log(result);

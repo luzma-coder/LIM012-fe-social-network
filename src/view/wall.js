@@ -1,22 +1,13 @@
 import {
   createPost, getPosts, logOut, uploadImage, getUser,
-} from '../model/firebase_wall.js';
+} from '../model/firebase_wall';
 import { allPost } from './postpublish.js';
 
 export default (profile) => {
   const user = firebase.auth().currentUser;
-  const db = firebase.firestore();
-  const nameUser = user.displayName;
-  const photoUser = user.photoURL;
-  // dataUser(user.uid).then((userData) => {
-  //   // const photoUser = userData.photoUser;
-  //   // const nameUser = userData.nameUser;
-  //   console.log(userData);
-  //   console.log(userData.doc());
-  //   console.log(userData.doc().nameUser);
-  //   console.log(userData.doc().photoUser);
-  // });
-  // console.log(nameUser);
+  // const db = firebase.firestore();
+  // const nameUser = user.displayName;
+  // const photoUser = user.photoURL;
   const viewWall = `
   <aside class="user">
     <div id="userInfo">
@@ -46,10 +37,19 @@ export default (profile) => {
       </section>
   </section>
     `;
-  // Pinta todos los posts y segun el state de la privacidad, los hace visible o no //
   const divElemt = document.createElement('div');
   divElemt.classList.add('view-wall');
   divElemt.innerHTML = viewWall;
+
+  // insertar datos del usuario
+  // const divUserName = divElemt.querySelector('#post-published');
+  // getUser(element.userId)
+  // .then((docUser) => {
+  //   doc.data().displayName;
+  //   doc.data().photoURL;
+  // });
+
+  // Pinta todos los posts y segun el state de la privacidad, los hace visible o no //
   const postSection = divElemt.querySelector('#post-published');
   // revisar y simplificar la función.
   // DOM para agregar Info del usuario //
@@ -72,13 +72,13 @@ export default (profile) => {
     objArray.forEach((element) => {
       if (profile === true) {
         if (element.userId === user.uid) {
-          db.collection('users').doc(element.userId).get()
+          getUser(element.userId)
             .then((doc) => {
               postSection.appendChild(allPost(element, doc.data()));
             });
         }
       } else if (element.state !== 'privacity' || element.userId === user.uid) {
-        db.collection('users').doc(element.userId).get()
+        getUser(element.userId)
           .then((doc) => {
             postSection.appendChild(allPost(element, doc.data()));
           });

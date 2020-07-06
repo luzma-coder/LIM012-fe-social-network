@@ -105,7 +105,7 @@ li{
     width: 20px;
     border-radius: 100%;
     border: 2px solid #FFFFFF;
-    /* margin-left: 20%; */
+    margin-right: 4%;
     padding: 1%;
     cursor: pointer;
 }
@@ -251,6 +251,7 @@ button{
     border-bottom: 1px solid #ccc;
     background-color: #fff;
     box-sizing: border-box;
+    text-align: center;
 }
 .post, .user{
     padding: 0% 1%;
@@ -368,10 +369,9 @@ h4 {
 }
 #infoAlign{
     display: flex;
-    height: 30;
-    /* margin-bottom: 0%; */
+    height: 34px;
     flex-direction: row;
-    width: 100%;
+    /* width: 100%; */
     justify-content: space-between;
 }
 #miniButtons{
@@ -385,6 +385,106 @@ h4 {
     flex-flow: column;
     width: 100%;
 }
+/* -------------- estilos para div botones like comentarios-------------  */
+.btns-likes-comments{
+    height: 60px;
+    border-bottom-color: #e5e5e5;
+    border-bottom-style: double;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#btn-show-comm{
+    margin-left: 20%;
+}
+.counter-text{
+    margin: 0% 2%;
+}
+/* ------------------- estilos para comentarios -------------------  */
+section#comments{
+    flex-direction: column;
+}
+.new-comment{
+    display: flex;
+    align-items: center;
+    margin-right: 3%;
+}
+.bg{
+    background-color: #f6e9e9;
+}
+div.new-comment input, div.new-comment input:focus{
+    margin: 0%;
+    color:#333;
+    border: none;
+    border-radius: 6px;
+    font-size: 1.2em;
+    padding: 2%;
+}
+section.old-comments{
+    flex-direction: column;
+}
+.comment-main{
+    display: flex;
+    padding-right: 2%;
+    margin-bottom: 3%;
+}
+.comment-data{
+    max-width: 100%;
+    min-width: inherit;
+    border-radius: 10px;
+    padding: 1% 2%;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+.comment-data h4{
+    margin-top: 0px;
+}
+.comment-date{
+    font-size: 0.8em;
+}
+.i-mnu-options, .i-send{
+    padding: 2px;
+    margin-left: 2px;
+    cursor: pointer;
+}
+.i-mnu-options:hover {
+    padding: 2px;
+    border-radius: 100%;
+    background-color: rgba(0,0,0,0.1);
+}
+
+/*------------------- menu para editar eliminar comentarios ------------- */
+.tooltip-container {
+    position: relative;
+}
+.tooltip {
+position: relative;
+border-radius: 6px;
+padding: 6px;
+width: 100px;
+height: 70px;
+left: 4px;
+background: #FFFFFF;
+border-color: rgba(0, 0, 0, .5);
+box-shadow: 0 0 5px rgba(0, 0, 0, .3);
+}
+.opt {
+  position: relative;
+  color: #1d1c1c;
+  padding: 7px 10px;
+}
+.opt:hover {
+  display: block;
+  background: #666;
+  cursor: pointer;
+}
+.icon-tool {
+  font-size: 10px;
+  cursor: pointer;
+  padding-right: 4px
+}
+
 @media only screen and (max-width: 768px) {
     body{
         padding-top: 0%;
