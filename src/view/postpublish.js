@@ -38,6 +38,7 @@ const ToEditPost = (btnSavePost, btnCancelPost, idDoc) => {
 export const allPost = (data, autor) => {
   const userActual = firebase.auth().currentUser;
   const viewpostpublish = document.createElement('article');
+  console.log(autor);
   viewpostpublish.classList.add('post-format');
   const nameUser = autor.displayName;
   const photoUser = autor.photoURL;
@@ -70,10 +71,12 @@ export const allPost = (data, autor) => {
   <div class="image-post" id ="get-file-upload" type="file" accept="image/*">
     ${(data.img !== undefined) ? `<img class="image-post" src="${imgPost}" alt=""/>` : ''}
   </div>
-  <img id ="btnLike-${data.id}" class="mini-img" src="img/like.svg" alt="likes" title="likes"/>
-  <p class="counter-text">${data.likes.length}</p><p class="counter-text">Likes</p>
-  <img id="btn-show-comm" class="i-send" src="img/message-square.svg" alt="Mostrar Comentarios">
-  <span> Comentarios </span>
+  <div class="btns-likes-comments">
+    <img id ="btnLike-${data.id}" class="mini-img" src="img/like.svg" alt="likes" title="likes"/>
+    <p class="counter-text">${data.likes.length}</p><p class="counter-text">Likes</p>
+    <img id="btn-show-comm" class="i-send" src="img/message-square.svg" alt="Mostrar Comentarios">
+    <span> Comentarios </span>
+  </div>
   <section id="comments" class="hide">
     <div class="new-comment">
       <img class="circulo-min" src="${userActual.photoURL}" alt="">
@@ -120,9 +123,6 @@ export const allPost = (data, autor) => {
   const btnEditPost = viewpostpublish.querySelector(`#btn-edit-post-${data.id}`);
   const btnSavePost = viewpostpublish.querySelector(`#btn-save-post-${data.id}`);
   const btnCancelPost = viewpostpublish.querySelector(`#btn-cancel-post-${data.id}`);
-  // const textAPost = viewpostpublish.querySelector(`#textarea-${data.id}`);
-  // const selPrivPost = viewpostpublish.querySelector(`#selec-privacy-${data.id}`);
-  // evento click para editar
   btnEditPost.addEventListener('click', () => {
     viewpostpublish.querySelector(`#btn-edit-post-${data.id}`).classList.remove('showbtn');
     viewpostpublish.querySelector(`#btn-edit-post-${data.id}`).classList.add('hide');
@@ -171,13 +171,26 @@ export const allPost = (data, autor) => {
         </div>
       </div>
       <div>
-        <img class="i-mnu-options" id="options" src="img/more-horizontal.svg">
+        <img class="i-mnu-options" id="options-${element.commDocId}" src="img/more-horizontal.svg">
       </div>
+      <div class="tooltip-container hide">
+        <div class="tooltip">
+          <div class="opt"> <i class="fas fa-edit icon-tool"></i> Editar</div>
+          <div class="opt"> <i class="fas fa-trash-alt icon-tool"></i> Borrar</div>
+        </div>
+      <div>
         `;
+          // comentarios: mostrar menu editar y eliminar
+          const mnuOptions = artElement.querySelector(`#options-${element.commDocId}`);
+          mnuOptions.addEventListener(('click'), () => {
+            const toolContainer = artElement.querySelector('.tooltip-container');
+            toolContainer.classList.toggle('hide');
+          });
           secOldComments.appendChild(artElement);
         });
     });
   });
+
 
   // btnDeletePost.addEventListener('click', () => {
   //   deletePost(data.id);

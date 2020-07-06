@@ -322,6 +322,17 @@ h4 {
     flex-flow: column;
     width: 100%;
 }
+/* -------------- estilos para div botones like comentarios-------------  */
+.btns-likes-comments{
+    display: flex;
+    justify-content: center;
+}
+#btn-show-comm{
+    margin-left: 20%;
+}
+.counter-text{
+    margin: 0% 2%;
+}
 /* ------------------- estilos para comentarios -------------------  */
 section#comments{
     flex-direction: column;
@@ -375,6 +386,53 @@ section#old-comments{
     border-radius: 100%;
     background-color: rgba(0,0,0,0.1);
 }
+
+/*------------------- menu para editar eliminar comentarios ------------- */
+.tooltip-container {
+    position: relative;
+}
+.tooltip {
+position: absolute;
+width: 150px;
+height: 50px;
+left: 4px;
+top: 8px;
+background: #FFFFFF;
+box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.20), -1px -1px 4px rgba(0, 0, 0, 0.20);
+border-radius: 6px;
+}
+.opt {
+  position: relative;
+  background-color: red;
+  font-size: 12px;
+  font-style: normal;
+  color: #333;
+  padding: 5.5px 10px;
+  z-index: 2;
+  background: #FFFFFF;
+  border-radius: 6px;
+}
+.opt:hover {
+  display: block;
+  background: #CCCCCC;
+  cursor: pointer;
+  z-index: 30;
+  border-radius: 6px;
+}
+.icon-tool {
+  font-size: 10px;
+  cursor: pointer;
+  padding-right: 4px
+}
+.fa-ellipsis-h {
+    font-size: 10px;
+    padding: 4px 10px 0 0;
+    height: 10px;
+    cursor: pointer;
+}
+/* .hide {
+  display: none;
+} */
 
 @media only screen and (max-width: 768px) {
     body{

@@ -52,7 +52,7 @@ export default (profile) => {
   getPosts((objArray) => {
     postSection.innerHTML = '';
     objArray.forEach((element) => {
-      if (profile === 'true') {
+      if (profile === true) {
         if (element.userId === user.uid) {
           getUser(element.userId)
             .then((doc) => {

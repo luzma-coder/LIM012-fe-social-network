@@ -86,22 +86,6 @@ export const getComments = (idDocPost, callback) => firebase.firestore().collect
     console.log(`Encountered error: ${err}`);
   });
 
-//
-//   db.collection("cities").doc("SF")
-//   .onSnapshot(function(doc) {
-//       console.log("Current data: ", doc.data());
-//   });
-//   000000000000000000000000
-//   let doc = db.collection('cities').doc('SF');
-
-// let observer = doc.onSnapshot(docSnapshot => {
-//   console.log(`Received doc snapshot: ${docSnapshot}`);
-//   // ...
-// }, err => {
-//   console.log(`Encountered error: ${err}`);
-// });
-// 0000000000000000000000000000
-
 // actualizar comentario
 export const updateComment = (idDoc, idComm, newTextComm) => firebase.firestore().collection('posts').doc(idDoc).collection('comments')
   .doc(idComm)
