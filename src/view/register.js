@@ -47,9 +47,9 @@ export default () => {
   <p id='texto'>¿Qué esperas para unirte? Somos la comunidad de baile más grande de internet. Aprende, comparte y disfruta en MOVES.</p>
   <img id="dance" src="img/dance.png">
   <p class='subtitle'>CREA TU CUENTA</p>
-  <div><i class="far fa-user"></i><input type="text" id ="names" placeholder ="Nombres y Apellidos"></div>
-  <div><i class="fas fa-at"></i><input type="text" id = "email" placeholder="Correo electronico"></div>
-  <div><i class="fas fa-lock"></i><input type="password" id = "pass" placeholder="Contraseña"></div>
+  <div><i class="far fa-user"></i><input class='allInputs' type="text" id ="names" placeholder ="Nombres y Apellidos"></div>
+  <div><i class="fas fa-at"></i><input class='allInputs' type="text" id = "email" placeholder="Correo electronico"></div>
+  <div><i class="fas fa-lock"></i><input class='allInputs' type="password" id = "pass" placeholder="Contraseña"></div>
   <button type="button" id="btn-register" class='principal-button'>REGISTRATE</button>
   <span id="messages" class="messages"></span>
   <p class='lil-text'>¿Ya tienes una cuenta?</p><a id='just-link'href="">Inicia Sesión</a>
