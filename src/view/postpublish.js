@@ -49,10 +49,10 @@ export const allPost = (data, autor) => {
             <div id='infoAlign'>
               <h4 class="user-name">${nameUser}</h4>
               <div id='miniButtons'>
-                  <img id="btn-edit-post-${data.id}" class="showbtn circulo-imgbut bgcolor" src="img/edit.svg" alt="Editar Post">
+                  <img id="btn-edit-post-${data.id}" class="hide circulo-imgbut bgcolor" src="img/edit.svg" alt="Editar Post">
                   <img id="btn-save-post-${data.id}" class="hide circulo-imgbut bgcolor" src="img/save.svg" alt="Guardar cambios">
                   <img id="btn-cancel-post-${data.id}" class="hide circulo-imgbut bgcolor" src="img/x.svg" alt="Cancelar cambios">
-                  <a id='btn-delete-${data.id}'><img class="mini-img bgcolor" src="img/trash.png" alt="Insertar imagen"></a>
+                  <a class="hide" id='btn-delete-${data.id}'><img class="mini-img bgcolor" src="img/trash.png" alt="Insertar imagen"></a>
               </div>
             </div>
               <div class='post-date'> 
@@ -111,6 +111,15 @@ export const allPost = (data, autor) => {
   const btnCancelPost = viewpostpublish.querySelector(`#btn-cancel-post-${data.id}`);
   const textAPost = viewpostpublish.querySelector(`#textarea-${data.id}`);
   const selPrivPost = viewpostpublish.querySelector(`#selec-privacy-${data.id}`);
+
+  // Ocultar botones cuando el usuario logueado no es dueño del post
+  if (userActual.uid === data.userId) {
+    viewpostpublish.querySelector(`#btn-edit-post-${data.id}`).classList.remove('hide');
+    viewpostpublish.querySelector(`#btn-edit-post-${data.id}`).classList.add('showbtn');
+    viewpostpublish.querySelector(`#btn-delete-${data.id}`).classList.remove('hide');
+    // viewpostpublish.querySelector(`#btn-delete-${data.id}`).classList.add('showbtn');
+  }
+
   // evento click para editar
   btnEditPost.addEventListener('click', () => {
     viewpostpublish.querySelector(`#btn-edit-post-${data.id}`).classList.remove('showbtn');

@@ -67,17 +67,7 @@ export default (profile) => {
       }
     });
   });
-  // DOM para el cerrar sesion //
-  const btnLogOut = document.querySelector('#btn-logout');
-  btnLogOut.addEventListener('click', () => {
-    logOut()
-      .then(() => {
-        window.location.hash = '#/';
-        document.querySelector('#header').classList.remove('show');
-        document.querySelector('#header').classList.add('hide');
-        // changeHash('#/');
-      });
-  });
+
   // En esta seccion se crea post con o sin imagen
   const btnCreatePost = divElemt.querySelector('#post-btn-publish');
   if (user) {
@@ -100,5 +90,16 @@ export default (profile) => {
       }
     });
   }
+  // DOM para el cerrar sesion //
+  const btnLogOut = document.querySelector('#btn-logout');
+  btnLogOut.addEventListener('click', () => {
+    logOut()
+      .then(() => {
+        window.location.hash = '#/';
+        document.querySelector('#header').classList.remove('show');
+        document.querySelector('#header').classList.add('hide');
+        // changeHash('#/');
+      });
+  });
   return divElemt;
 };
