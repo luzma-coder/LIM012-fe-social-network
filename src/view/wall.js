@@ -81,6 +81,7 @@ export default (profile) => {
       divElemt.querySelector('#post-new-text').value = '';
       if (imgPost === undefined) {
         createPost(user.uid, contentText, privacy, '');
+        // divElemt.querySelector('#get-file-upload').classList.add('hide');
         console.log('Se creo post sin imagen');
       } else {
         uploadImage(date, imgPost)
