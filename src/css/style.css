@@ -105,7 +105,7 @@ li{
     width: 20px;
     border-radius: 100%;
     border: 2px solid #FFFFFF;
-    /* margin-left: 20%; */
+    margin-right: 4%;
     padding: 1%;
     cursor: pointer;
 }
@@ -369,10 +369,9 @@ h4 {
 }
 #infoAlign{
     display: flex;
-    height: 30;
-    /* margin-bottom: 0%; */
+    height: 34px;
     flex-direction: row;
-    width: 100%;
+    /* width: 100%; */
     justify-content: space-between;
 }
 #miniButtons{
@@ -388,8 +387,12 @@ h4 {
 }
 /* -------------- estilos para div botones like comentarios-------------  */
 .btns-likes-comments{
+    height: 60px;
+    border-bottom-color: #e5e5e5;
+    border-bottom-style: double;
     display: flex;
     justify-content: center;
+    align-items: center;
 }
 #btn-show-comm{
     margin-left: 20%;
@@ -417,7 +420,7 @@ div.new-comment input, div.new-comment input:focus{
     font-size: 1.2em;
     padding: 2%;
 }
-section#old-comments{
+section.old-comments{
     flex-direction: column;
 }
 .comment-main{
@@ -456,47 +459,31 @@ section#old-comments{
     position: relative;
 }
 .tooltip {
-position: absolute;
-width: 150px;
-height: 50px;
-left: 4px;
-top: 8px;
-background: #FFFFFF;
-box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.20), -1px -1px 4px rgba(0, 0, 0, 0.20);
+position: relative;
 border-radius: 6px;
+padding: 6px;
+width: 100px;
+height: 70px;
+left: 4px;
+background: #FFFFFF;
+border-color: rgba(0, 0, 0, .5);
+box-shadow: 0 0 5px rgba(0, 0, 0, .3);
 }
 .opt {
   position: relative;
-  background-color: red;
-  font-size: 12px;
-  font-style: normal;
-  color: #333;
-  padding: 5.5px 10px;
-  z-index: 2;
-  background: #FFFFFF;
-  border-radius: 6px;
+  color: #1d1c1c;
+  padding: 7px 10px;
 }
 .opt:hover {
   display: block;
-  background: #CCCCCC;
+  background: #666;
   cursor: pointer;
-  z-index: 30;
-  border-radius: 6px;
 }
 .icon-tool {
   font-size: 10px;
   cursor: pointer;
   padding-right: 4px
 }
-.fa-ellipsis-h {
-    font-size: 10px;
-    padding: 4px 10px 0 0;
-    height: 10px;
-    cursor: pointer;
-}
-/* .hide {
-  display: none;
-} */
 
 @media only screen and (max-width: 768px) {
     body{

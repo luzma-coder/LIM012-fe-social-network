@@ -2,7 +2,7 @@ export const createPost = (uid, contentText, privacy, imgPost) => firebase.fires
   userId: uid,
   content: contentText,
   likes: [],
-  date: new Date().toLocaleString(),
+  date: new Date(),
   state: privacy,
   img: imgPost,
 });
@@ -60,16 +60,18 @@ export const updateUser = (idDoc, newUserName, newUserPhoto) => firebase.firesto
 export const getUser = docUser => firebase.firestore().collection('users').doc(docUser).get();
 
 // agregar comentario
-export const addComment = (idPost, newTextComm, currentUserId) => firebase.firestore().collection('posts').doc(idPost).collection('comments')
+export const addComment = (newTextComm, currentUserId, currentPostId) => firebase.firestore().collection('comments')
   .add({
     commTexto: newTextComm,
     commDate: new Date(),
     commUserId: currentUserId,
+    commPostId: currentPostId,
   });
 
-// leer subcoleccion comentarios
-export const getComments = (idDocPost, callback) => firebase.firestore().collection('posts').doc(idDocPost).collection('comments')
+// leer comentarios usando where
+export const getComments = (idDocPost, callback) => firebase.firestore().collection('comments')
   .orderBy('commDate', 'desc')
+  // .where('commPostId', '==', idDocPost)
   .onSnapshot((docsCommentSnapshot) => {
     const output = [];
     docsCommentSnapshot.forEach((doc) => {
@@ -78,6 +80,7 @@ export const getComments = (idDocPost, callback) => firebase.firestore().collect
         commTexto: doc.data().commTexto,
         commDate: doc.data().commDate,
         commUserId: doc.data().commUserId,
+        commPostId: doc.data().commPostId,
       });
     });
     callback(output);
@@ -87,14 +90,14 @@ export const getComments = (idDocPost, callback) => firebase.firestore().collect
   });
 
 // actualizar comentario
-export const updateComment = (idDoc, idComm, newTextComm) => firebase.firestore().collection('posts').doc(idDoc).collection('comments')
+export const updateComment = (idComm, newTextComm) => firebase.firestore().collection('comments')
   .doc(idComm)
   .update({
     commTexto: newTextComm,
   });
 
 // eliminar comentario
-export const deleteDoc = (idPost, idComm) => firebase.firestore().collection('posts').doc(idPost).collection('comments')
+export const deleteComment = idComm => firebase.firestore().collection('comments')
   .doc(idComm)
   .delete();
 

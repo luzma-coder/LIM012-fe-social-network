@@ -1,6 +1,16 @@
 import {
-  updatePost, deletePost, updateLike, addComment, getComments, getUser,
+  updatePost, deletePost, updateLike, addComment, getComments, getUser, deleteComment,
 } from '../model/firebase_wall.js';
+
+// const showDate = (currentdate) => {
+//   console.log('fecha que viene');
+//   console.log(new Date(currentdate).toloc);
+//   // const newdate = currentdate.getDate();
+//   // // const newdate = `${currentdate.getDate()}-${currentdate.getMonth()}-${currentdate.getFullYear()}`;
+//   // console.log('fecha formateada');
+//   // console.log(newdate);
+//   // return newdate;
+// };
 
 const ToEditPost = (btnSavePost, btnCancelPost, idDoc) => {
   const textAPost = document.querySelector(`#textarea-${idDoc}`);
@@ -35,10 +45,15 @@ const ToEditPost = (btnSavePost, btnCancelPost, idDoc) => {
   });
 };
 
+const toEditComment = (btnE, btnD, IdDocComment) => {
+  const textComm = document.querySelector(`txtNewComm-${IdDocComment}`).value;
+  const oldTextComent = textComm;
+  console.log(oldTextComent);
+};
+
 export const allPost = (data, autor) => {
   const userActual = firebase.auth().currentUser;
   const viewpostpublish = document.createElement('article');
-  console.log(autor);
   viewpostpublish.classList.add('post-format');
   const nameUser = autor.displayName;
   const photoUser = autor.photoURL;
@@ -77,13 +92,13 @@ export const allPost = (data, autor) => {
     <img id="btn-show-comm" class="i-send" src="img/message-square.svg" alt="Mostrar Comentarios">
     <span> Comentarios </span>
   </div>
-  <section id="comments" class="hide">
+  <section class="comments" class="hide">
     <div class="new-comment">
       <img class="circulo-min" src="${userActual.photoURL}" alt="">
       <input type="text" class="bg" id="txtNewComm-${data.id}" placeholder="Escriba un comentario">
       <img id="btn-save-comm-${data.id}" class="i-send" src="img/send.svg" alt="Grabar Comentario">
     </div>
-    <section id="old-comments"></section>
+    <section class="old-comments"></section>
   </section>
   `;
   // post: cargar valor de privacidad en select
@@ -118,7 +133,6 @@ export const allPost = (data, autor) => {
     console.log(data.likes.length);
   });
 
-
   // actualizar post
   const btnEditPost = viewpostpublish.querySelector(`#btn-edit-post-${data.id}`);
   const btnSavePost = viewpostpublish.querySelector(`#btn-save-post-${data.id}`);
@@ -139,66 +153,69 @@ export const allPost = (data, autor) => {
   btnSaveComment.addEventListener('click', () => {
     const NewComm = viewpostpublish.querySelector(`#txtNewComm-${data.id}`).value;
     if (NewComm) {
-      addComment(data.id, NewComm, userActual.uid);
+      addComment(NewComm, userActual.uid, data.id);
     }
     viewpostpublish.querySelector(`#txtNewComm-${data.id}`).value = '';
     viewpostpublish.querySelector(`#txtNewComm-${data.id}`).focus();
   });
 
   // comentarios: mostrar seccion de comentarios
-  const secComments = viewpostpublish.querySelector('#comments');
+  const secComments = viewpostpublish.querySelector('.comments');
   const btnShowComments = viewpostpublish.querySelector('#btn-show-comm');
   btnShowComments.addEventListener('click', () => {
     secComments.classList.toggle('hide');
   });
 
   // comentarios: leer y mostrar comentarios anteriores
-  const secOldComments = viewpostpublish.querySelector('#old-comments');
+  const secOldComments = viewpostpublish.querySelector('.old-comments');
   getComments(data.id, (arrayComm) => {
-    secOldComments.innerHTML = '';
+    // secOldComments.innerHTML = '';
     arrayComm.forEach((element) => {
+      console.log(element);
       const artElement = document.createElement('article');
       artElement.classList.add('comment-main');
       getUser(element.commUserId)
         .then((docUser) => {
           artElement.innerHTML = `
-      <img class="circulo-min" src="${docUser.data().photoURL}" alt="">
+      <img class="circulo-min" src="" alt="">
       <div class="comment-data bg">
         <div>
-          <h4 class="comment-name">${docUser.data().displayName}</h4>
+          <h4 class="comment-name">nombre</h4>
           <span class="comment-date">04jul2020 11:30</span>
           <p id="txtNewComm-${element.commDocId}">${element.commTexto}</p>
         </div>
       </div>
       <div>
-        <img class="i-mnu-options" id="options-${element.commDocId}" src="img/more-horizontal.svg">
+        <img class="i-mnu-options" id="options" src="img/more-horizontal.svg">
       </div>
       <div class="tooltip-container hide">
         <div class="tooltip">
-          <div class="opt"> <i class="fas fa-edit icon-tool"></i> Editar</div>
-          <div class="opt"> <i class="fas fa-trash-alt icon-tool"></i> Borrar</div>
+          <div class="opt" id=btn-edit-comm-${element.commDocId}> <i class="fas fa-edit icon-tool"></i> Editar</div>
+          <div class="opt" id=btn-del-comm-${element.commDocId}> <i class="fas fa-trash-alt icon-tool"></i> Borrar</div>
         </div>
       <div>
         `;
           // comentarios: mostrar menu editar y eliminar
-          const mnuOptions = artElement.querySelector(`#options-${element.commDocId}`);
-          mnuOptions.addEventListener(('click'), () => {
-            const toolContainer = artElement.querySelector('.tooltip-container');
-            toolContainer.classList.toggle('hide');
-          });
+          // const mnuOptions = artElement.querySelector('#options');
+          // mnuOptions.addEventListener(('click'), () => {
+          //   const toolContainer = artElement.querySelector('.tooltip-container');
+          //   toolContainer.classList.toggle('hide');
+          // });
+          // // comentarios: editar texto del comentario
+          // const editComm = artElement.querySelector(`btn-edit-comm-${element.commDocId}`);
+          // editComm.addEventListener('click', () => {
+          //   toEditComment(element.commDocId);
+          // });
+
+          // // comentarios: eliminar comentario
+          // const delComm = artElement.querySelector(`btn-del-comm-${element.commDocId}`);
+          // delComm.addEventListener('click', () => {
+          //   deleteComment(element.commDocId);
+          // });
           secOldComments.appendChild(artElement);
         });
     });
   });
-
-
-  // btnDeletePost.addEventListener('click', () => {
-  //   deletePost(data.id);
-  //   console.log(data.id);
-  // });
-  // console.log(data.content);
-  // console.log(viewpostpublish);
-  // console.log(data);
   return viewpostpublish;
 };
 
