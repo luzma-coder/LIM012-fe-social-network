@@ -54,6 +54,7 @@ export const uploadImage = (date, img) => {
 export const deletePost = idPost => firebase.firestore().collection('posts').doc(idPost).delete();
 
 export const deleteDoc = idComm => firebase.firestore().collection('posts').doc(idComm).delete();
+
 export const logOut = () => firebase.auth().signOut();
 
 
@@ -62,30 +63,7 @@ export const updateUser = (idDoc, newUserName, newUserPhoto) => firebase.firesto
   photoURL: newUserPhoto,
 });
 
-/* likePost = (user, idPost) => firebase.firestore().collection('posts').doc(idPost)
-.collection('likes')
-  .add({
-    userName: user,
-    postId: idPost,
-  });
-
-getLikesPost = (idPost, callback) => firebase.firestore().doc(`posts/${idPost}`).collection('likes')
-  .onSnapshot((querySnapshot) => {
-    const data = [];
-    querySnapshot.forEach((post) => {
-      data.push({
-        id: post.idPost,
-        userId: post.data().userId,
-        likes: post.data().likes,
-      });
-    });
-    callback(data);
-  }); */
 export const updateLike = (id, likes) => firebase.firestore().collection('posts').doc(id).update({ likes });
-
-export const removeLikePost = (idPost, idLike) => firebase.firestore().collection('posts').doc(idPost).collection('likes')
-  .doc(idLike)
-  .delete();
 
 // export const dataUser = userNameDoc =>
 //  firebase.firestore().collection('users').doc(userNameDoc).get();
