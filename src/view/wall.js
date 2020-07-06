@@ -1,5 +1,5 @@
 import {
-  createPost, getPosts, logOut, uploadImage,
+  createPost, getPosts, logOut, uploadImage, getUser,
 } from '../model/firebase_wall.js';
 import { allPost } from './postpublish.js';
 
@@ -19,10 +19,13 @@ export default (profile) => {
   // console.log(nameUser);
   const viewWall = `
   <aside class="user">
-      <div id="user-name">
-      ${photoUser === null ? '<img class="circulo-profile" src="img/avatar-perfil.jpg"/>' : `<img class="circulo-profile" src="${photoUser}" alt=""/>`}
-      ${nameUser === null ? `<p id="user-name-profile">${user.email}<p>` : `<p class="user-name-profile">${nameUser}</p>`}
-      <p class='lil-text'>Aprendiendo a bailar</p>
+    <div id="userInfo">
+    <img class="circulo-profile" src=""><a class='hide' href=''><a class='hide' class='edit-button hide' href=''><i class="far fa-edit"></i></a>
+    <p content-editable='true' id="user-name-profile"></p><a class='hide' class='edit-button hide' href=''><i class="far fa-edit"></i></a>
+    <input class="hide" class="inputProfile" type="text" value=""> 
+    <p content-editable='true' class="profile-text" id="description">Aprendiendo a bailar</p><a class='edit-button hide' href=''><i class="far fa-edit"></i></a> 
+    <input class="inputProfile hide" type="text" value="">    
+    </div>
   </aside>
   <section class="post">
       <section id="post-new">
@@ -49,6 +52,21 @@ export default (profile) => {
   divElemt.innerHTML = viewWall;
   const postSection = divElemt.querySelector('#post-published');
   // revisar y simplificar la función.
+  // DOM para agregar Info del usuario //
+  const nameProfile = divElemt.querySelector('#user-name-profile');
+  const photoProfile = divElemt.querySelector('.circulo-profile');
+  const editButton = divElemt.querySelector('.edit-button');
+  const inputsProfile = divElemt.querySelector('.inputProfile');
+  getUser(user.uid)
+    .then((docUser) => {
+      console.log(docUser.data().displayName);
+      nameProfile.innerHTML = docUser.data().displayName;
+      photoProfile.src = docUser.data().photoURL;
+      if (profile === true) {
+        editButton.classList.remove('hide');
+        inputsProfile.classList.remove('hide');
+      }
+    });
   getPosts((objArray) => {
     postSection.innerHTML = '';
     objArray.forEach((element) => {

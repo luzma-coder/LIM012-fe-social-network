@@ -56,6 +56,8 @@ export const deletePost = idPost => firebase.firestore().collection('posts').doc
 export const deleteDoc = idComm => firebase.firestore().collection('posts').doc(idComm).delete();
 export const logOut = () => firebase.auth().signOut();
 
+// getUserInfo
+export const getUser = docUser => firebase.firestore().collection('users').doc(docUser).get();
 
 export const updateUser = (idDoc, newUserName, newUserPhoto) => firebase.firestore().collection('users').doc(idDoc).set({
   displayName: newUserName,
