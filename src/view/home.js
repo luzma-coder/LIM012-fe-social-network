@@ -1,5 +1,5 @@
-import { logIn, googleSignIn, loginFacebook } from '../model/firebase.js';
-import { updateUser } from '../model/firebase_wall.js';
+import { logIn, googleSignIn, loginFacebook } from '../model/firebase_auth.js';
+import { updateUser } from '../model/firebase_user.js';
 
 // export const changeHash = (hash) => {
 //   window.location.hash = hash;

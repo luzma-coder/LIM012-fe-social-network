@@ -1,4 +1,4 @@
-import { logIn, googleSignIn, loginFacebook } from '../src/model/firebase.js';
+import { logIn, googleSignIn, loginFacebook } from '../src/model/firebase_auth.js';
 
 const firebasemock = require('firebase-mock');
 

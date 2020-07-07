@@ -1,12 +1,14 @@
-import {
-  updatePost, deletePost, updateLike, addComment, getComments, getUser, deleteComment,
-} from '../model/firebase_wall.js';
+import { addComment, getComments } from '../model/firebase_comments.js';
+
+import { updatePost, deletePost, updateLike } from '../model/firebase_posts';
+
+import { getUser } from '../model/firebase_user.js';
 
 // const showDate = (currentdate) => {
 //   console.log('fecha que viene');
 //   console.log(new Date(currentdate).toloc);
-//   // const newdate = currentdate.getDate();
-//   // // const newdate = `${currentdate.getDate()}-${currentdate.getMonth()}-${currentdate.getFullYear()}`;
+//   const newdate = currentdate.getDate();
+//   const newdate = `${currentdate.getDate()}-${currentdate.getMonth()}-${currentdate.getFullYear()}`;
 //   // console.log('fecha formateada');
 //   // console.log(newdate);
 //   // return newdate;
@@ -128,9 +130,6 @@ export const allPost = (data, autor) => {
       data.likes.splice(arrayLikes, 1);
       updateLike(data.id, data.likes);
     }
-    console.log(data.likes);
-    console.log(userActual.uid);
-    console.log(data.likes.length);
   });
 
   // actualizar post
@@ -192,7 +191,7 @@ export const allPost = (data, autor) => {
       <img class="circulo-min" src="" alt="">
       <div class="comment-data bg">
         <div>
-          <h4 class="comment-name">nombre</h4>
+          <h4 class="comment-name">${docUser.photoURL}</h4>
           <span class="comment-date">04jul2020 11:30</span>
           <p id="txtNewComm-${element.commDocId}">${element.commTexto}</p>
         </div>

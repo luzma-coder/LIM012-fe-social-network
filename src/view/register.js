@@ -1,5 +1,5 @@
-import { newUser, verifEmail } from '../model/firebase.js';
-import { updateUser } from '../model/firebase_wall.js';
+import { newUser, verifEmail } from '../model/firebase_auth.js';
+import { updateUser } from '../model/firebase_user.js';
 
 const showMessage = (txtmessage) => {
   const showWindow = document.createElement('div');

@@ -1,7 +1,13 @@
-import {
-  createPost, getPosts, logOut, uploadImage, getUser,
-} from '../model/firebase_wall.js';
+import { getUser } from '../model/firebase_user.js';
+
 import { allPost } from './postpublish.js';
+
+import { createPost, getPosts } from '../model/firebase_posts';
+
+import { logOut } from '../model/firebase_auth.js';
+
+import { uploadImage } from '../model/storage';
+
 
 export default (profile) => {
   const user = firebase.auth().currentUser;
