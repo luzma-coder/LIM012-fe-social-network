@@ -39,14 +39,6 @@ export default (profile) => {
   divElemt.classList.add('view-wall');
   divElemt.innerHTML = viewWall;
 
-  // insertar datos del usuario
-  // const divUserName = divElemt.querySelector('#post-published');
-  // getUser(element.userId)
-  // .then((docUser) => {
-  //   doc.data().displayName;
-  //   doc.data().photoURL;
-  // });
-
   // Pinta todos los posts y segun el state de la privacidad, los hace visible o no //
   const postSection = divElemt.querySelector('#post-published');
   // revisar y simplificar la función.

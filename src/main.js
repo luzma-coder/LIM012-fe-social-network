@@ -19,6 +19,15 @@ const firebaseConfig = {
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 
+firebase.auth().onAuthStateChanged((user) => {
+  if (user) {
+    window.location.hash = '#/wall';
+  } else {
+    window.location.hash = '#';
+    // apagar observador
+  }
+});
+
 export const storage = firebase.storage();
 
 export const storageRef = storage.ref('');
