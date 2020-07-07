@@ -1,6 +1,6 @@
 import {
   createPost, getPosts, logOut, uploadImage, getUser,
-} from '../model/firebase_wall';
+} from '../model/firebase_wall.js';
 import { allPost } from './postpublish.js';
 
 export default (profile) => {
@@ -11,10 +11,10 @@ export default (profile) => {
   const viewWall = `
   <aside class="user">
     <div id="userInfo">
-    <img class="circulo-profile" src=""><a class='hide' href=''><a class='hide' class='edit-button hide' href=''><i class="far fa-edit"></i></a>
-    <p content-editable='true' id="user-name-profile"></p><a class='hide' class='edit-button hide' href=''><i class="far fa-edit"></i></a>
+    <img class="circulo-profile" src=""><a class='hide' id='edit-button-image' href=''><i class="far fa-edit"></i></a>
+    <p content-editable='true' id="user-name-profile"></p><a class='hide' id='edit-button-name' href=''><i class="far fa-edit"></i></a>
     <input class="hide" class="inputProfile" type="text" value=""> 
-    <p content-editable='true' class="profile-text" id="description">Aprendiendo a bailar</p><a class='edit-button hide' href=''><i class="far fa-edit"></i></a> 
+    <p content-editable='true' class="profile-text" id="description">Aprendiendo a bailar</p><a class='hide' id='edit-button-text' href=''><i class="far fa-edit"></i></a> 
     <input class="inputProfile hide" type="text" value="">    
     </div>
   </aside>
@@ -55,16 +55,18 @@ export default (profile) => {
   // DOM para agregar Info del usuario //
   const nameProfile = divElemt.querySelector('#user-name-profile');
   const photoProfile = divElemt.querySelector('.circulo-profile');
-  const editButton = divElemt.querySelector('.edit-button');
-  const inputsProfile = divElemt.querySelector('.inputProfile');
+  const editImage = divElemt.querySelector('#edit-button-image');
+  const editName = divElemt.querySelector('#edit-button-name');
+  const editText = divElemt.querySelector('#edit-button-text');
   getUser(user.uid)
     .then((docUser) => {
       console.log(docUser.data().displayName);
       nameProfile.innerHTML = docUser.data().displayName;
       photoProfile.src = docUser.data().photoURL;
       if (profile === true) {
-        editButton.classList.remove('hide');
-        inputsProfile.classList.remove('hide');
+        editImage.classList.remove('hide');
+        editName.classList.remove('hide');
+        editText.classList.remove('hide');
       }
     });
   getPosts((objArray) => {
