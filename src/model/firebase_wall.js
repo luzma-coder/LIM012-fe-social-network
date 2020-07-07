@@ -34,13 +34,6 @@ export const updatePost = (idPost, newContent, newPrivacy) => {
     state: newPrivacy,
   });
 };
-// export const createComm= (idPost, txtComment, idUserComm) => {
-//   const refPost = firebase.firestore().collection('posts').doc(idPost);
-//   return refPost.update({
-//     postComments[idx].commTexto : txtComment,
-//   });
-// };
-// postComments: [],
 
 // cargar imagen
 

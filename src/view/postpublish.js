@@ -131,15 +131,6 @@ export const allPost = (data, autor) => {
   // const btnDeletePost = document.querySelector(`#btn-delete-${data.id}`);
   viewpostpublish.querySelector(`#btn-delete-${data.id}`).addEventListener('click', () => deletePost(data.id));
 
-  // const allComments = `
-  // <div>
-  //   <input type="text" id="txtNewComm" placeholder="Escriba un comentario">
-  //   <img id="btn-save-comm-${data.id}" class="circulo-imgbut bgcolor" src="img/save.svg" alt="Enviar Comentario">
-  // </div>
-  // <input type="text" id="txtNewComm" placeholder="Escriba un comentario">
-  // <img id="btn-menu-comm-${data.id}" class="circulo-imgbut bgcolor" src="img/save.svg" alt="Menu Comentario">
-  // `
-
   // btnDeletePost.addEventListener('click', () => {
   //   deletePost(data.id);
   //   console.log(data.id);
