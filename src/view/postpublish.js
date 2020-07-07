@@ -1,6 +1,6 @@
 import { addComment, getComments } from '../model/firebase_comments.js';
 
-import { updatePost, deletePost, updateLike } from '../model/firebase_posts';
+import { updatePost, deletePost, updateLike } from '../model/firebase_posts.js';
 
 import { getUser } from '../model/firebase_user.js';
 
@@ -191,7 +191,7 @@ export const allPost = (data, autor) => {
       <img class="circulo-min" src="" alt="">
       <div class="comment-data bg">
         <div>
-          <h4 class="comment-name">${docUser.photoURL}</h4>
+          <h4 class="comment-name">${docUser.newUserName}</h4>
           <span class="comment-date">04jul2020 11:30</span>
           <p id="txtNewComm-${element.commDocId}">${element.commTexto}</p>
         </div>

@@ -2,11 +2,11 @@ import { getUser } from '../model/firebase_user.js';
 
 import { allPost } from './postpublish.js';
 
-import { createPost, getPosts } from '../model/firebase_posts';
+import { createPost, getPosts } from '../model/firebase_posts.js';
 
 import { logOut } from '../model/firebase_auth.js';
 
-import { uploadImage } from '../model/storage';
+import { uploadImage } from '../model/storage.js';
 
 
 export default (profile) => {
