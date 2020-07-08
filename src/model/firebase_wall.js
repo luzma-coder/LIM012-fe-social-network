@@ -51,9 +51,21 @@ export const deletePost = idPost => firebase.firestore().collection('posts').doc
 export const logOut = () => firebase.auth().signOut();
 
 // actualizar datos del usuario loguedado por gmail y facebook
-export const updateUser = (idDoc, newUserName, newUserPhoto) => firebase.firestore().collection('users').doc(idDoc).update({
+export const updateUser = (idDoc, newUserName, newUserPhoto, newInfoUser) => firebase.firestore().collection('users').doc(idDoc).update({
   displayName: newUserName,
+  infoUser: newInfoUser,
   photoURL: newUserPhoto,
+});
+
+export const createUser = (idDoc, newUserName, newUserPhoto, newInfoUser) => firebase.firestore().collection('users').doc(idDoc).set({
+  displayName: newUserName,
+  infoUser: newInfoUser,
+  photoURL: newUserPhoto,
+});
+
+export const updateInfoUser = (idDoc, newUserName, newInfoUser) => firebase.firestore().collection('users').doc(idDoc).update({
+  displayName: newUserName,
+  infoUser: newInfoUser,
 });
 
 // leer datos del usuario
