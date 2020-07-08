@@ -1,12 +1,8 @@
-import { addComment, getComments } from '../model/firebase_comments.js';
+import { addComment, getComments, updateComment, deleteComment } from '../model/firebase_comments.js';
 
 import { updatePost, deletePost, updateLike } from '../model/firebase_posts.js';
 
-import { getUser } from '../model/firebase_user.js';
-
-const showDate = (currentdate) => {
-  return new Date(currentdate).toLocaleString();
-};
+const showDate = currentdate => new Date(currentdate).toLocaleString();
 
 const ToEditPost = (btnSavePost, btnCancelPost, idDoc) => {
   const textAPost = document.querySelector(`#textarea-${idDoc}`);
@@ -41,10 +37,20 @@ const ToEditPost = (btnSavePost, btnCancelPost, idDoc) => {
   });
 };
 
-const toEditComment = (btnE, btnD, IdDocComment) => {
-  const textComm = document.querySelector(`txtNewComm-${IdDocComment}`).value;
+const toEditComment = (IdDocComment) => {
+  const menuTool = document.querySelector('.tooltip-container');
+  menuTool.classList.add('hide');
+  const btnUpdateComment = document.querySelector(`#btn-update-${IdDocComment}`);
+  btnUpdateComment.classList.remove('hide');
+  const textComm = document.querySelector(`#txtNewComm-${IdDocComment}`).textContent;
+  textComm.contentEditable = true;
   const oldTextComent = textComm;
-  console.log(oldTextComent);
+  btnUpdateComment.addEventListener('click', () => {
+    // const textComm = document.querySelector(`#txtNewComm-${IdDocComment}`).textContent;
+    console.log(oldTextComent);
+    updateComment(IdDocComment, textComm);
+    document.querySelector(`#btn-update-${IdDocComment}`).add('hide');
+  });
 };
 
 export const allPost = (data, autor) => {
@@ -65,11 +71,11 @@ export const allPost = (data, autor) => {
                   <img id="btn-edit-post-${data.id}" class="hide circulo-imgbut bgcolor" src="img/edit.svg" alt="Editar Post">
                   <img id="btn-save-post-${data.id}" class="hide circulo-imgbut bgcolor" src="img/save.svg" alt="Guardar cambios">
                   <img id="btn-cancel-post-${data.id}" class="hide circulo-imgbut bgcolor" src="img/x.svg" alt="Cancelar cambios">
-                  <a class="hide" id='btn-delete-${data.id}'><img class="mini-img bgcolor" src="img/trash.png" alt="Insertar imagen"></a>
+                  <a class="hide" id='btn-delete-${data.id}'><img class="mini-img bgcolor" src="img/trash.png" alt="Eliminar imagen"></a>
               </div>
             </div>
               <div class='post-date'> 
-                <p>${data.date}</p>
+                <p>${showDate(data.date)}</p>
                 <select class='select-edited' id="selec-privacy-${data.id}" disabled="true">
                   </select>
               </div>
@@ -130,8 +136,6 @@ export const allPost = (data, autor) => {
   const btnEditPost = viewpostpublish.querySelector(`#btn-edit-post-${data.id}`);
   const btnSavePost = viewpostpublish.querySelector(`#btn-save-post-${data.id}`);
   const btnCancelPost = viewpostpublish.querySelector(`#btn-cancel-post-${data.id}`);
-  const textAPost = viewpostpublish.querySelector(`#textarea-${data.id}`);
-  const selPrivPost = viewpostpublish.querySelector(`#selec-privacy-${data.id}`);
 
   // Ocultar botones cuando el usuario logueado no es dueño del post
   if (userActual.uid === data.userId) {
@@ -158,7 +162,7 @@ export const allPost = (data, autor) => {
   btnSaveComment.addEventListener('click', () => {
     const NewComm = viewpostpublish.querySelector(`#txtNewComm-${data.id}`).value;
     if (NewComm) {
-      addComment(NewComm, nameUser, photoUser, data.id);
+      addComment(NewComm, userActual.displayName, userActual.photoURL, data.id);
     }
     viewpostpublish.querySelector(`#txtNewComm-${data.id}`).value = '';
     viewpostpublish.querySelector(`#txtNewComm-${data.id}`).focus();
@@ -185,46 +189,38 @@ export const allPost = (data, autor) => {
           <h4 class="comment-name">${element.commUserName}</h4>
           <span class="comment-date">${showDate(element.commDate)}</span>
           <p id="txtNewComm-${element.commDocId}">${element.commText}</p>
-        </div>
+          <a id="btn-update-${element.commDocId}" class="hide"><i class="far fa-save"></i></a>
+          </div>
       </div>
       <div>
         <img class="i-mnu-options" id="options" src="img/more-horizontal.svg">
       </div>
       <div class="tooltip-container hide">
         <div class="tooltip">
-          <div class="opt" id=btn-edit-comm-${element.commDocId}> <i class="fas fa-edit icon-tool"></i> Editar</div>
-          <div class="opt" id=btn-del-comm-${element.commDocId}> <i class="fas fa-trash-alt icon-tool"></i> Borrar</div>
+          <div class="opt" id="btn-edit-comm-${element.commDocId}"> <i class="fas fa-edit icon-tool"></i> Editar</div>
+          <div class="opt" id="btn-del-comm-${element.commDocId}"> <i class="fas fa-trash-alt icon-tool"></i> Eliminar</div>
         </div>
       <div>
     `;
       // comentarios: mostrar menu editar y eliminar
-      // const mnuOptions = artElement.querySelector('#options');
-      // mnuOptions.addEventListener(('click'), () => {
-      //   const toolContainer = artElement.querySelector('.tooltip-container');
-      //   toolContainer.classList.toggle('hide');
-      // });
-      // // comentarios: editar texto del comentario
-      // const editComm = artElement.querySelector(`btn-edit-comm-${element.commDocId}`);
-      // editComm.addEventListener('click', () => {
-      //   toEditComment(element.commDocId);
-      // });
+      const mnuOptions = artElement.querySelector('#options');
+      mnuOptions.addEventListener('click', () => {
+        const toolContainer = artElement.querySelector('.tooltip-container');
+        toolContainer.classList.toggle('hide');
+      });
+      // comentarios: editar texto del comentario
+      const editComm = artElement.querySelector(`#btn-edit-comm-${element.commDocId}`);
+      editComm.addEventListener('click', () => {
+        toEditComment(element.commDocId);
+      });
 
-      // // comentarios: eliminar comentario
-      // const delComm = artElement.querySelector(`btn-del-comm-${element.commDocId}`);
-      // delComm.addEventListener('click', () => {
-      //   deleteComment(element.commDocId);
-      // });
+      // comentarios: eliminar comentario
+      const delComm = artElement.querySelector(`#btn-del-comm-${element.commDocId}`);
+      delComm.addEventListener('click', () => {
+        deleteComment(element.commDocId);
+      });
       secOldComments.appendChild(artElement);
     });
   });
   return viewpostpublish;
 };
-
-
-// btnDeletePost.addEventListener('click', () => {
-//   deletePost(data.id);
-//   console.log(data.id);
-// });
-// console.log(data.content);
-// console.log(viewpostpublish);
-// console.log(data);

@@ -8,7 +8,6 @@ import { logOut } from '../model/firebase_auth.js';
 
 import { uploadImage } from '../model/storage.js';
 
-
 export default (profile) => {
   const user = firebase.auth().currentUser;
   // const db = firebase.firestore();
