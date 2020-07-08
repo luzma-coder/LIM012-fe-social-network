@@ -1,4 +1,4 @@
-import { getUser } from '../model/firebase_user.js';
+import { getUser, updateInfoUser } from '../model/firebase_user.js';
 
 import { allPost } from './postpublish.js';
 
@@ -12,15 +12,23 @@ import { uploadImage } from '../model/storage.js';
 export default (profile) => {
   const user = firebase.auth().currentUser;
   // const db = firebase.firestore();
-  const nameUser = user.displayName;
-  const photoUser = user.photoURL;
+  // const nameUser = user.displayName;
+  // const photoUser = user.photoURL;
   const viewWall = `
   <aside class="user">
-      <div id="user-name">
-        ${photoUser === null ? '<img class="circulo-profile" src="img/avatar-perfil.jpg"/>' : `<img class="circulo-profile" src="${photoUser}" alt=""/>`}
-        ${nameUser === null ? `<p id="user-name-profile">${user.email}<p>` : `<p class="user-name-profile">${nameUser}</p>`}
-        <p class='lil-text'>Aprendiendo a bailar</p>
-      </div>
+    <div id="userInfo">
+    <img class="circulo-profile" src="">
+    <a class='hide' id='edit-button-image' href='#/profile'><i class="far fa-edit"></i></a>
+    <a href='#/profile' class='hide' id='save-button-image'><i class="far fa-save"></i></a>    
+    <p id="user-name-profile"></p>
+    <a class='hide' id='edit-button-name' href='#/profile'><i class="far fa-edit"></i></a>
+    <a href='#/profile' class='hide' id='save-button-name'><i class="far fa-save"></i></a>
+    <input class="hide" class="inputProfile" type="text" value=""> 
+    <p id="user-name-description"></p>
+    <a class='hide' id='edit-button-text' href='#/profile'><i class="far fa-edit"></i></a>
+    <a href='#/profile' class='hide' id='save-button-text'><i class="far fa-save"></i></a> 
+    <input class="inputProfile hide" type="text" value="">       
+    </div>
   </aside>
   <section class="post">
       <section id="post-new">
@@ -56,6 +64,36 @@ export default (profile) => {
   // Pinta todos los posts y segun el state de la privacidad, los hace visible o no //
   const postSection = divElemt.querySelector('#post-published');
   // revisar y simplificar la función.
+  // DOM para agregar Info del usuario //
+  const nameProfile = divElemt.querySelector('#user-name-profile');
+  const descriptionProfile = divElemt.querySelector('#user-name-description');
+  const photoProfile = divElemt.querySelector('.circulo-profile');
+  const buttonEditText = divElemt.querySelector('#edit-button-text');
+  const buttonSaveText = divElemt.querySelector('#save-button-text');
+  getUser(user.uid)
+    .then((docUser) => {
+      // console.log(docUser.data().displayName);
+      nameProfile.innerHTML = docUser.data().displayName;
+      photoProfile.src = docUser.data().photoURL;
+      descriptionProfile.innerHTML = docUser.data().infoUser;
+    });
+  if (profile) {
+    buttonEditText.classList.remove('hide');
+    buttonEditText.addEventListener('click', () => {
+      // buttonSaveName.classList.remove('hide');
+      buttonSaveText.classList.remove('hide');
+      nameProfile.contentEditable = true;
+      descriptionProfile.contentEditable = true;
+    });
+    buttonSaveText.addEventListener('click', () => {
+      const newDescriptionProfile = descriptionProfile.textContent;
+      const newNameProfile = nameProfile.textContent;
+      updateInfoUser(user.uid, newNameProfile, newDescriptionProfile);
+      buttonSaveText.classList.add('hide');
+      nameProfile.contentEditable = false;
+      descriptionProfile.contentEditable = false;
+    });
+  }
   getPosts((objArray) => {
     postSection.innerHTML = '';
     objArray.forEach((element) => {
