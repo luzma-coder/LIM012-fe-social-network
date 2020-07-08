@@ -1,31 +1,29 @@
-// agregar comentario
-export const addComment = (newTextComm, currentUserId, currentPostId) => firebase.firestore().collection('comments')
+export const addComment = (newTextComm, currentUserName, currentUserPhotoUrl, currentPostId) => firebase.firestore().collection('comments')
   .add({
-    commTexto: newTextComm,
+    commText: newTextComm,
     commDate: new Date(),
-    commUserId: currentUserId,
+    commUserName: currentUserName,
+    commUserPhoto: currentUserPhotoUrl,
     commPostId: currentPostId,
   });
 
 // leer comentarios usando where
 export const getComments = (idDocPost, callback) => firebase.firestore().collection('comments')
+  .where('commPostId', '==', idDocPost)
   .orderBy('commDate', 'desc')
-  // .where('commPostId', '==', idDocPost)
   .onSnapshot((docsCommentSnapshot) => {
     const output = [];
     docsCommentSnapshot.forEach((doc) => {
       output.push({
         commDocId: doc.id,
-        commTexto: doc.data().commTexto,
-        commDate: doc.data().commDate,
-        commUserId: doc.data().commUserId,
+        commText: doc.data().commText,
+        commDate: doc.data().commDate.toDate(),
+        commUserName: doc.data().commUserName,
+        commUserPhoto: doc.data().commUserPhoto,
         commPostId: doc.data().commPostId,
       });
     });
     callback(output);
-  },
-  (err) => {
-    console.log(`Encountered error: ${err}`);
   });
 
 // actualizar comentario
