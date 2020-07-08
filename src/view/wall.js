@@ -10,9 +10,6 @@ import { uploadImage } from '../model/storage.js';
 
 export default (profile) => {
   const user = firebase.auth().currentUser;
-  // const db = firebase.firestore();
-  // const nameUser = user.displayName;
-  // const photoUser = user.photoURL;
   const viewWall = `
   <aside class="user">
     <div id="userInfo">
@@ -117,13 +114,10 @@ export default (profile) => {
       divElemt.querySelector('#post-new-text').value = '';
       if (imgPost === undefined) {
         createPost(user.uid, contentText, privacy, '');
-        // divElemt.querySelector('#get-file-upload').classList.add('hide');
-        console.log('Se creo post sin imagen');
       } else {
         uploadImage(date, imgPost)
           .then(url => console.log(url) || createPost(user.uid, contentText, privacy, url));
         file.value = '';
-        console.log('Se subio la imagen');
       }
     });
   }
@@ -135,7 +129,6 @@ export default (profile) => {
         window.location.hash = '#/';
         document.querySelector('#header').classList.remove('show');
         document.querySelector('#header').classList.add('hide');
-        // changeHash('#/');
       });
   });
   return divElemt;

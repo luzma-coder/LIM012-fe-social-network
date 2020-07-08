@@ -18,11 +18,3 @@ export const updateInfoUser = (idDoc, newUserName, newInfoUser) => firebase.fire
 
 // leer datos del usuario
 export const getUser = docUser => firebase.firestore().collection('users').doc(docUser).get();
-
-// export const dataUser = userNameDoc =>
-//  firebase.firestore().collection('users').doc(userNameDoc).get();
-
-// db.collection('users').doc(user.uid).set({
-//   displayName: user.displayName,
-//   photoURL: user.photoURL,
-// });

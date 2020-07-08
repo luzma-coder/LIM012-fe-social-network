@@ -1,4 +1,6 @@
-import { addComment, getComments, updateComment, deleteComment } from '../model/firebase_comments.js';
+import {
+  addComment, getComments, updateComment, deleteComment,
+} from '../model/firebase_comments.js';
 
 import { updatePost, deletePost, updateLike } from '../model/firebase_posts.js';
 
