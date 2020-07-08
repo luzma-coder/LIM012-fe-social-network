@@ -18,7 +18,7 @@ export const getPosts = callback => firebase.firestore().collection('posts')
         userId: doc.data().userId,
         content: doc.data().content,
         likes: doc.data().likes,
-        date: doc.data().date,
+        date: doc.data().date.toDate(),
         state: doc.data().state,
         img: doc.data().img,
       });

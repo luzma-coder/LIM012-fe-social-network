@@ -8,12 +8,8 @@ import { logOut } from '../model/firebase_auth.js';
 
 import { uploadImage } from '../model/storage.js';
 
-
 export default (profile) => {
   const user = firebase.auth().currentUser;
-  // const db = firebase.firestore();
-  // const nameUser = user.displayName;
-  // const photoUser = user.photoURL;
   const viewWall = `
   <aside class="user">
     <div id="userInfo">
@@ -52,14 +48,6 @@ export default (profile) => {
   const divElemt = document.createElement('div');
   divElemt.classList.add('view-wall');
   divElemt.innerHTML = viewWall;
-
-  // insertar datos del usuario
-  // const divUserName = divElemt.querySelector('#post-published');
-  // getUser(element.userId)
-  // .then((docUser) => {
-  //   doc.data().displayName;
-  //   doc.data().photoURL;
-  // });
 
   // Pinta todos los posts y segun el state de la privacidad, los hace visible o no //
   const postSection = divElemt.querySelector('#post-published');
@@ -126,13 +114,10 @@ export default (profile) => {
       divElemt.querySelector('#post-new-text').value = '';
       if (imgPost === undefined) {
         createPost(user.uid, contentText, privacy, '');
-        // divElemt.querySelector('#get-file-upload').classList.add('hide');
-        console.log('Se creo post sin imagen');
       } else {
         uploadImage(date, imgPost)
           .then(url => console.log(url) || createPost(user.uid, contentText, privacy, url));
         file.value = '';
-        console.log('Se subio la imagen');
       }
     });
   }
@@ -144,7 +129,6 @@ export default (profile) => {
         window.location.hash = '#/';
         document.querySelector('#header').classList.remove('show');
         document.querySelector('#header').classList.add('hide');
-        // changeHash('#/');
       });
   });
   return divElemt;
