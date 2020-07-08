@@ -18,6 +18,10 @@ export const verifEmail = () => {
   const user = firebase.auth().currentUser;
   return user.sendEmailVerification();
 };
+
+// logout
+export const logOut = () => firebase.auth().signOut();
+
 /* export const loginAndVerif = firebase.auth().onAuthStateChanged((user) => {
   if (user) {
     window.location.hash = '#/wall';

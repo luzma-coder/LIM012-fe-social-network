@@ -1,7 +1,13 @@
-import {
-  createPost, getPosts, logOut, uploadImage, getUser, updateInfoUser,
-} from '../model/firebase_wall.js';
+import { getUser, updateInfoUser } from '../model/firebase_user.js';
+
 import { allPost } from './postpublish.js';
+
+import { createPost, getPosts } from '../model/firebase_posts.js';
+
+import { logOut } from '../model/firebase_auth.js';
+
+import { uploadImage } from '../model/storage.js';
+
 
 export default (profile) => {
   const user = firebase.auth().currentUser;
@@ -106,17 +112,7 @@ export default (profile) => {
       }
     });
   });
-  // DOM para el cerrar sesion //
-  const btnLogOut = document.querySelector('#btn-logout');
-  btnLogOut.addEventListener('click', () => {
-    logOut()
-      .then(() => {
-        window.location.hash = '#/';
-        document.querySelector('#header').classList.remove('show');
-        document.querySelector('#header').classList.add('hide');
-        // changeHash('#/');
-      });
-  });
+
   // En esta seccion se crea post con o sin imagen
   const btnCreatePost = divElemt.querySelector('#post-btn-publish');
   if (user) {
@@ -130,6 +126,7 @@ export default (profile) => {
       divElemt.querySelector('#post-new-text').value = '';
       if (imgPost === undefined) {
         createPost(user.uid, contentText, privacy, '');
+        // divElemt.querySelector('#get-file-upload').classList.add('hide');
         console.log('Se creo post sin imagen');
       } else {
         uploadImage(date, imgPost)
@@ -139,5 +136,16 @@ export default (profile) => {
       }
     });
   }
+  // DOM para el cerrar sesion //
+  const btnLogOut = document.querySelector('#btn-logout');
+  btnLogOut.addEventListener('click', () => {
+    logOut()
+      .then(() => {
+        window.location.hash = '#/';
+        document.querySelector('#header').classList.remove('show');
+        document.querySelector('#header').classList.add('hide');
+        // changeHash('#/');
+      });
+  });
   return divElemt;
 };

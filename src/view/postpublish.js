@@ -1,12 +1,14 @@
-import {
-  updatePost, deletePost, updateLike, addComment, getComments, getUser, deleteComment,
-} from '../model/firebase_wall.js';
+import { addComment, getComments } from '../model/firebase_comments.js';
+
+import { updatePost, deletePost, updateLike } from '../model/firebase_posts.js';
+
+import { getUser } from '../model/firebase_user.js';
 
 // const showDate = (currentdate) => {
 //   console.log('fecha que viene');
 //   console.log(new Date(currentdate).toloc);
-//   // const newdate = currentdate.getDate();
-//   // // const newdate = `${currentdate.getDate()}-${currentdate.getMonth()}-${currentdate.getFullYear()}`;
+//   const newdate = currentdate.getDate();
+//   const newdate = `${currentdate.getDate()}-${currentdate.getMonth()}-${currentdate.getFullYear()}`;
 //   // console.log('fecha formateada');
 //   // console.log(newdate);
 //   // return newdate;
@@ -66,10 +68,10 @@ export const allPost = (data, autor) => {
             <div id='infoAlign'>
               <h4>${nameUser}</h4>
               <div id='miniButtons'>
-                  <img id="btn-edit-post-${data.id}" class="showbtn circulo-imgbut bgcolor" src="img/edit.svg" alt="Editar Post">
+                  <img id="btn-edit-post-${data.id}" class="hide circulo-imgbut bgcolor" src="img/edit.svg" alt="Editar Post">
                   <img id="btn-save-post-${data.id}" class="hide circulo-imgbut bgcolor" src="img/save.svg" alt="Guardar cambios">
                   <img id="btn-cancel-post-${data.id}" class="hide circulo-imgbut bgcolor" src="img/x.svg" alt="Cancelar cambios">
-                  <a id='btn-delete-${data.id}'><img class="mini-img bgcolor" src="img/trash.png" alt="Insertar imagen"></a>
+                  <a class="hide" id='btn-delete-${data.id}'><img class="mini-img bgcolor" src="img/trash.png" alt="Insertar imagen"></a>
               </div>
             </div>
               <div class='post-date'> 
@@ -83,8 +85,8 @@ export const allPost = (data, autor) => {
     </div>
   </header>
   <textarea id="textarea-${data.id}" class="only-lines" disabled="true">${data.content}</textarea>
-  <div class="image-post" id ="get-file-upload" type="file" accept="image/*">
-    ${(data.img !== undefined) ? `<img class="image-post" src="${imgPost}" alt=""/>` : ''}
+  <div id ="get-file-upload" type="file" accept="image/*">
+    ${(data.img !== undefined) ? `<img class="image-post" src="${imgPost}" alt=""/>` : `<img class="hide image-post" src="${imgPost}" alt=""/>`}
   </div>
   <div class="btns-likes-comments">
     <img id ="btnLike-${data.id}" class="mini-img" src="img/like.svg" alt="likes" title="likes"/>
@@ -128,15 +130,24 @@ export const allPost = (data, autor) => {
       data.likes.splice(arrayLikes, 1);
       updateLike(data.id, data.likes);
     }
-    console.log(data.likes);
-    console.log(userActual.uid);
-    console.log(data.likes.length);
   });
 
   // actualizar post
   const btnEditPost = viewpostpublish.querySelector(`#btn-edit-post-${data.id}`);
   const btnSavePost = viewpostpublish.querySelector(`#btn-save-post-${data.id}`);
   const btnCancelPost = viewpostpublish.querySelector(`#btn-cancel-post-${data.id}`);
+  const textAPost = viewpostpublish.querySelector(`#textarea-${data.id}`);
+  const selPrivPost = viewpostpublish.querySelector(`#selec-privacy-${data.id}`);
+
+  // Ocultar botones cuando el usuario logueado no es dueño del post
+  if (userActual.uid === data.userId) {
+    viewpostpublish.querySelector(`#btn-edit-post-${data.id}`).classList.remove('hide');
+    viewpostpublish.querySelector(`#btn-edit-post-${data.id}`).classList.add('showbtn');
+    viewpostpublish.querySelector(`#btn-delete-${data.id}`).classList.remove('hide');
+    // viewpostpublish.querySelector(`#btn-delete-${data.id}`).classList.add('showbtn');
+  }
+
+  // evento click para editar
   btnEditPost.addEventListener('click', () => {
     viewpostpublish.querySelector(`#btn-edit-post-${data.id}`).classList.remove('showbtn');
     viewpostpublish.querySelector(`#btn-edit-post-${data.id}`).classList.add('hide');
@@ -180,7 +191,7 @@ export const allPost = (data, autor) => {
       <img class="circulo-min" src="" alt="">
       <div class="comment-data bg">
         <div>
-          <h4 class="comment-name">nombre</h4>
+          <h4 class="comment-name">${docUser.newUserName}</h4>
           <span class="comment-date">04jul2020 11:30</span>
           <p id="txtNewComm-${element.commDocId}">${element.commTexto}</p>
         </div>

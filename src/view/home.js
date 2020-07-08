@@ -1,5 +1,5 @@
-import { logIn, googleSignIn, loginFacebook } from '../model/firebase.js';
-import { createUser } from '../model/firebase_wall.js';
+import { logIn, googleSignIn, loginFacebook } from '../model/firebase_auth.js';
+import { createUser } from '../model/firebase_user.js';
 
 // export const changeHash = (hash) => {
 //   window.location.hash = hash;
@@ -77,7 +77,7 @@ export default () => {
   btnLoginFAcebook.addEventListener(('click'), () => {
     loginFacebook()
       .then((result) => {
-        updateUser(result.user.uid, result.user.displayName, result.user.photoURL);
+        createUser(result.user.uid, result.user.displayName, result.user.photoURL, 'Aprendiendo a Bailar');
         window.location.hash = '#/wall';
         // changeHash('#/wall');
         console.log('Ingreso con facebook');
