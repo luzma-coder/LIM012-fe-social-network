@@ -44,14 +44,24 @@ const toEditComment = (IdDocComment) => {
   menuTool.classList.add('hide');
   const btnUpdateComment = document.querySelector(`#btn-update-${IdDocComment}`);
   btnUpdateComment.classList.remove('hide');
-  const textComm = document.querySelector(`#txtNewComm-${IdDocComment}`).textContent;
+  const textComm = document.querySelector(`#txtNewComm-${IdDocComment}`);
   textComm.contentEditable = true;
-  const oldTextComent = textComm;
+  textComm.focus();
+  const oldTextComent = textComm.textContent;
+  // salvar cambios comentarios
   btnUpdateComment.addEventListener('click', () => {
-    // const textComm = document.querySelector(`#txtNewComm-${IdDocComment}`).textContent;
-    console.log(oldTextComent);
-    updateComment(IdDocComment, textComm);
-    document.querySelector(`#btn-update-${IdDocComment}`).add('hide');
+    console.log(textComm.textContent);
+    updateComment(IdDocComment, textComm.textContent);
+    document.querySelector(`#btn-update-${IdDocComment}`).classList.add('hide');
+  });
+  // comentario: cancelar edicion
+  const btnCancelComment = document.querySelector(`#btn-cancel-comm-${IdDocComment}`);
+  btnCancelComment.classList.remove('hide');
+  btnCancelComment.addEventListener('click', () => {
+    document.querySelector(`#btn-update-${IdDocComment}`).classList.add('hide');
+    document.querySelector(`#btn-cancel-comm-${IdDocComment}`).classList.add('hide');
+    textComm.contentEditable = false;
+    textComm.textContent = oldTextComent;
   });
 };
 
@@ -192,6 +202,7 @@ export const allPost = (data, autor) => {
           <span class="comment-date">${showDate(element.commDate)}</span>
           <p id="txtNewComm-${element.commDocId}">${element.commText}</p>
           <a id="btn-update-${element.commDocId}" class="hide"><i class="far fa-save"></i></a>
+          <a id="btn-cancel-comm-${element.commDocId}" class="hide"><i class="fas fa-times"></i></a>
           </div>
       </div>
       <div>

@@ -30,7 +30,7 @@ export const getComments = (idDocPost, callback) => firebase.firestore().collect
 export const updateComment = (idComm, newTextComm) => firebase.firestore().collection('comments')
   .doc(idComm)
   .update({
-    commTexto: newTextComm,
+    commText: newTextComm,
   });
 
 // eliminar comentario
