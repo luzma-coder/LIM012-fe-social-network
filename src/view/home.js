@@ -1,5 +1,5 @@
 import { logIn, googleSignIn, loginFacebook } from '../model/firebase_auth.js';
-import { updateUser } from '../model/firebase_user.js';
+import { createUser } from '../model/firebase_user.js';
 
 // export const changeHash = (hash) => {
 //   window.location.hash = hash;
@@ -58,7 +58,7 @@ export default () => {
   btngoogleSignIn.addEventListener(('click'), () => {
     googleSignIn()
       .then((result) => {
-        updateUser(result.user.uid, result.user.displayName, result.user.photoURL)
+        createUser(result.user.uid, result.user.displayName, result.user.photoURL, 'Aprendiendo a Bailar')
           .catch((error) => {
             console.log(error);
             console.log('No se actualizo usuario');
@@ -77,7 +77,7 @@ export default () => {
   btnLoginFAcebook.addEventListener(('click'), () => {
     loginFacebook()
       .then((result) => {
-        updateUser(result.user.uid, result.user.displayName, result.user.photoURL);
+        createUser(result.user.uid, result.user.displayName, result.user.photoURL, 'Aprendiendo a Bailar');
         window.location.hash = '#/wall';
         // changeHash('#/wall');
         console.log('Ingreso con facebook');

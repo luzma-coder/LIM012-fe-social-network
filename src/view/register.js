@@ -1,5 +1,5 @@
 import { newUser, verifEmail } from '../model/firebase_auth.js';
-import { updateUser } from '../model/firebase_user.js';
+import { createUser } from '../model/firebase_user.js';
 
 const showMessage = (txtmessage) => {
   const showWindow = document.createElement('div');
@@ -25,7 +25,7 @@ const registerUser = (userEmail, userPass, userNames) => {
         // Error occurred. Inspect error.code.
         });
       // guardar nombre del usuario en coleccion users
-      updateUser(result.user.uid, userNames, './img/avatar-perfil.jpg');
+      createUser(result.user.uid, userNames, './img/avatar-perfil.jpg', 'Aprendiendo a bailar');
       window.location.hash = '';
     })
     .catch(() => {
