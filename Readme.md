@@ -10,6 +10,17 @@ MOVES es una Red Social, Single-Page Application (SPA), responsiva en la que pod
 
 Para ello usamos Firebase, el MVC, modularización, CSS, JS y HTML.
 
+Prototipo de Alta Fidelidad:
+
+- Versión Mobile
+
+![prototipobaja](/src/screen/proto1.jpg)
+
+
+- Versión Web
+
+![prototipoalata](/src/screen/proto2.jpg)
+
 Versión final del proyecto:
 
 - Versón Mobile
@@ -32,12 +43,16 @@ Versión final del proyecto:
 * Publico Objetivo: Personas aficionadas al baile/danza.
 * Planificación en el github projects, se crearon Milestones por cada Historia de Usuario e 'Issues' por cada tarea dividida. Además se usaron etiquetas y se asignaron dueños a los Issues.
 * Se usaron estrategias como el SCRUM pocker:
+
+
 ![poker](/src/screen/poker.jpg)
 
 
-* **Priorizar** la implementación de tus funcionalidades, en función al esfuerzo que demandan en relación al valor que le aportan al usuario, y ejecutar en equipo todas las historias de usuario dentro del tiempo estimado para cada sprint y que finalmente se vean reflejadas en publicaciones completamentamente funcionales al final de cada sprint.
+* Se trabajo por Sprint con cada Historia de Usuario
 
-* Adquirir la disciplina de la completitud, terminando una historia de usuario antes de pasar a la siguiente (es decir, que cumple con *Definición de Terminado* y *Criterios de Aceptación* contemplando todos los puntos que son objetivos de aprendizaje para este proyecto).
+* Cada Historia de usuario se trabajo con Criterios de Aceptación y Definición de Terminado
+
+* ([GitHub-Projects/MOVES](https://github.com/CarmenVictoriaFarinez/LIM012-fe-social-network/projects/1?fullscreen=true))
 
 ### Desarrollo frontend
 
