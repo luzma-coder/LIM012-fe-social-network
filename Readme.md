@@ -10,24 +10,23 @@ MOVES es una Red Social, Single-Page Application (SPA), responsiva en la que pod
 
 Para ello usamos Firebase, el MVC, modularización, CSS, JS y HTML.
 
-![prototipobaja](/src/screen/altafidelidadantesjpg)
 
 ### Prototipos de Alta Fidelidad:
 
 - Versión Mobile antes de test de usabilidad
 
-![prototipobaja](/src/screen/altafidelidadantesjpg)
+![prototipobaja](/src/screen/altafidelidadantes.png)
 
 
 Prototipos de alta fidelidad final
 
 - Versión Mobile 
 
-![prototipoaltam](/src/screen/img1.jpg)
+![prototipoaltam](/src/screen/img1.png)
 
 - Versión Web
 
-![prototipoaltad](/src/screen/img2.jpg)
+![prototipoaltad](/src/screen/img2.png)
 
 ### Test de Usabilidad
 
