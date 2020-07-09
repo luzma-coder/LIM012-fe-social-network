@@ -1,41 +1,58 @@
-# Creando una Red Social
+# MOVES - Social Network del equipo CLI (Carmen, Luz e Isabela)
 
-Bienvenida a tu primer proyecto del track de Frontend en Laboratoria.
+¿Amante del baile? ¡Esta es tu comunidad!
 
-En este proyecto construirás una red social, cuya temáticas dejaremos a tu elección.
+MOVES es una red social que te anima a seguir el ritmo, comparte eventos de baile, tus hacks y experiencias a la hora de disfrutar de diferentes danzas.
 
-Aquí algunas ideas para inspirarte:
+## Resumen del Proyecto
 
-- Alimentación
-- Feminismo
-- Educación
-- Salud
-- Energías Renovables
+MOVES es una Red Social, Single-Page Application (SPA), responsiva en la que podamos escribir, leer, actualizar y eliminar datos.
 
-Las **caraterísticas técnicas** de tu aplicación serán las siguientes:
-- Debe ser una Single-Page Application [SPA](https://dzone.com/articles/how-single-page-web-applications-actually-work) ([versión traducida](https://dzone.com/articles/how-single-page-web-applications-actually-work))
-- Debe ser diseñada con un enfoque [mobile first](https://darwindigital.com/mobile-first-versus-responsive-web-design/) ([versión traducida](https://translate.google.com/translate?hl=&sl=auto&tl=es&u=https%3A%2F%2Fdarwindigital.com%2Fmobile-first-versus-responsive-web-design))
-- Debe permitir la persintencia de datos
-  
-Para implementar tu aplicación usarás *HTML5*, *CCS3* o *SASS*, *Vanilla JavaScript(ES6+)*, *Firebase* o *LocalStogarge*
+Para ello usamos Firebase, el MVC, modularización, CSS, JS y HTML.
 
-## Objetivo
+Prototipo de Alta Fidelidad:
 
-El objetivo de este proyecto es construir una Red Social, Single-Page Application (SPA), responsiva en la que podamos escribir, leer, actualizar y eliminar datos.
+- Versión Mobile
 
-Para ello deberás poner en juego tu creatividad para generar ideas que lleven a una solución original y valiosa del problema, trabajando en equipo buscando feedback constante.
+![prototipobaja](/src/screen/proto1.jpg)
 
-En otras palabras, seguirás afianzando todo lo aprendido en el Common Core, pero en particular verás :
+
+- Versión Web
+
+![prototipoalata](/src/screen/proto2.jpg)
+
+Versión final del proyecto:
+
+- Versón Mobile
+
+
+ ![mobile](/src/screen/pag1m.jpg)
+ ![mobile](/src/screen/pag2m.jpg)
+
+- Versión Web:
+
+
+ ![web](/src/screen/pag1.jpg)
+ ![web](/src/screen/pag2.jpg)
+
+
 
 ### Planificación
 
-* Te recomendamos utilizar *projects*, *issues* y *milestones* de GitHub para gestionar la planificación de tu proyecto. Estos recursos serán la fuente de organización de tu equipo y a través de estas herramientas tus coaches podrán ver el avance del proyecto y darte feedback.
+* Tema principal: Red Social para bailarines amateurs y expertos
+* Publico Objetivo: Personas aficionadas al baile/danza.
+* Planificación en el github projects, se crearon Milestones por cada Historia de Usuario e 'Issues' por cada tarea dividida. Además se usaron etiquetas y se asignaron dueños a los Issues.
+* Se usaron estrategias como el SCRUM pocker:
 
-* Escribir, de manera colaborativa, las **Definiciones de terminado** y **Criterios de Aceptación** por cada **Historia de usuario** que te daremos para este proyecto y que se deberán ver reflejadas en tu planificación.
 
-* **Priorizar** la implementación de tus funcionalidades, en función al esfuerzo que demandan en relación al valor que le aportan al usuario, y ejecutar en equipo todas las historias de usuario dentro del tiempo estimado para cada sprint y que finalmente se vean reflejadas en publicaciones completamentamente funcionales al final de cada sprint.
+![poker](/src/screen/poker.jpg)
 
-* Adquirir la disciplina de la completitud, terminando una historia de usuario antes de pasar a la siguiente (es decir, que cumple con *Definición de Terminado* y *Criterios de Aceptación* contemplando todos los puntos que son objetivos de aprendizaje para este proyecto).
+
+* Se trabajo por Sprint con cada Historia de Usuario
+
+* Cada Historia de usuario se trabajo con Criterios de Aceptación y Definición de Terminado
+
+* ([GitHub-Projects/MOVES](https://github.com/CarmenVictoriaFarinez/LIM012-fe-social-network/projects/1?fullscreen=true))
 
 ### Desarrollo frontend
 

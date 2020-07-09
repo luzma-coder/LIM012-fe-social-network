@@ -50,7 +50,6 @@ const toEditComment = (IdDocComment) => {
   const oldTextComent = textComm.textContent;
   // salvar cambios comentarios
   btnUpdateComment.addEventListener('click', () => {
-    console.log(textComm.textContent);
     updateComment(IdDocComment, textComm.textContent);
     document.querySelector(`#btn-update-${IdDocComment}`).classList.add('hide');
   });

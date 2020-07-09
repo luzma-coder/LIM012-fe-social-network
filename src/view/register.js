@@ -34,7 +34,6 @@ const registerUser = (userEmail, userPass, userNames) => {
     });
   firebase.auth().signOut()
     .then(() => {
-      console.log('cerro sesion');
     })
     .catch((error) => {
       console.log(error.code);
