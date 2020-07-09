@@ -50,7 +50,6 @@ const toEditComment = (IdDocComment) => {
   const oldTextComent = textComm.textContent;
   // salvar cambios comentarios
   btnUpdateComment.addEventListener('click', () => {
-    console.log(textComm.textContent);
     updateComment(IdDocComment, textComm.textContent);
     document.querySelector(`#btn-update-${IdDocComment}`).classList.add('hide');
   });
@@ -97,7 +96,7 @@ export const allPost = (data, autor) => {
     </div>
   </header>
   <textarea id="textarea-${data.id}" class="only-lines" disabled="true">${data.content}</textarea>
-  <div id ="get-file-upload" type="file" accept="image/*">
+  <div class="get-file-upload" type="file" accept="image/*">
     ${(data.img !== undefined) ? `<img class="image-post" src="${imgPost}" alt=""/>` : `<img class="hide image-post" src="${imgPost}" alt=""/>`}
   </div>
   <div class="btns-likes-comments">
